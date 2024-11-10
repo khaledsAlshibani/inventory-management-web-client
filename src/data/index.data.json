@@ -1,0 +1,18 @@
+{
+    "dynamicContent": "This is content from the JSON file yessss works",
+    "title": "Welcome to the test",
+    "items": [
+        {
+            "name": "Item 1",
+            "description": "This is the first item."
+        },
+        {
+            "name": "Item 2",
+            "description": "This is the second item."
+        },
+        {
+            "name": "Item 3",
+            "description": "This is the third item."
+        }
+    ]
+}

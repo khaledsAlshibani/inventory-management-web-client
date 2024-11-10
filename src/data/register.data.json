@@ -1,0 +1,18 @@
+{
+    "dynamicContent": "register This is content from the JSON file yessss",
+    "title": "register",
+    "items": [
+        {
+            "name": "register Item 1",
+            "description": "This is the first item."
+        },
+        {
+            "name": "register Item 2",
+            "description": "This is the second item."
+        },
+        {
+            "name": "register Item 3",
+            "description": "This is the third item."
+        }
+    ]
+}

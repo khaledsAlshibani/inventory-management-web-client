@@ -1,0 +1,8 @@
+div {
+    $lol: red;
+    color: $lol;
+
+    p {
+        font-size: 200px;
+    }
+}

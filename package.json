@@ -1,0 +1,25 @@
+{
+  "name": "inventory-management-web-client",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "watch": "node scripts/watch.js",
+    "start": "node server.js",
+    "dev": "node scripts/dev.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "express": "^4.21.1",
+    "handlebars": "^4.7.8",
+    "open": "^10.1.0"
+  },
+  "devDependencies": {
+    "chokidar": "^4.0.1",
+    "sass": "^1.80.6"
+  }
+}
