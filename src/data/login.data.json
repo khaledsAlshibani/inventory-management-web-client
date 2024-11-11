@@ -1,18 +1,43 @@
 {
-    "dynamicContent": "login This is content from the JSON file yessss",
-    "title": "login",
-    "items": [
+    "title": "Registration",
+    "logo": "assets/images/logo.png",
+    "logoAlt": "Inventory Management System",
+    "formTitle": "Sign Up",
+    "formDescription": "Create your free account to effortlessly manage all your inventories in one place.",
+    "forgetPassword": "Forgot your password?",
+    "createAccountMessage": "Do not have an account?",
+    "createAccount": "Create Account",
+    "inputFields": [
         {
-            "name": "login Item 1",
-            "description": "This is the first item."
+            "id": "email",
+            "name": "email",
+            "type": "email",
+            "placeholder": "",
+            "label": "Email",
+            "hideLabel": false,
+            "required": true
         },
         {
-            "name": "login Item 2",
-            "description": "This is the second item."
-        },
+            "id": "password",
+            "name": "password",
+            "type": "password",
+            "placeholder": "",
+            "label": "Password",
+            "hideLabel": false,
+            "required": true
+        }
+    ],
+    "buttons": [
         {
-            "name": "login Item 3",
-            "description": "This is the third item."
+            "label": "Login",
+            "type": "submit",
+            "variant": "primary",
+            "size": "large",
+            "class": "",
+            "disabled": false,
+            "fullWidth": true,
+            "iconStart": true,
+            "iconName": "log-in"
         }
     ]
 }

@@ -30,8 +30,7 @@ async function cleanDist() {
     }
 }
 
-async function registerPartials() {
-    const chalk = await getChalk();
+function registerPartials() {
     try {
         if (!fs.existsSync(componentsDir)) {
             throw new Error(`Components directory not found: ${componentsDir}`);
@@ -44,9 +43,9 @@ async function registerPartials() {
             const componentTemplate = fs.readFileSync(componentPath, 'utf8');
             Handlebars.registerPartial(componentName, componentTemplate);
         });
-        console.log(chalk.green('✔ Registered all Handlebars partials.'));
+        console.log('✔ Registered all Handlebars partials.');
     } catch (error) {
-        console.error(chalk.red("✘ Error registering partials:"), chalk.yellow(error.message));
+        console.error("Error registering partials:", error.message);
         process.exit(1);
     }
 }
@@ -124,14 +123,21 @@ async function compileSass() {
         }
 
         const result = sass.compile(scssFile);
-        const cssOutputPath = path.join(distDir, 'style.css');
+
+        const cssDir = path.join(distDir, 'css');
+        if (!fs.existsSync(cssDir)) {
+            fs.mkdirSync(cssDir, { recursive: true });
+        }
+
+        const cssOutputPath = path.join(cssDir, 'style.css');
         fs.writeFileSync(cssOutputPath, result.css, 'utf8');
-        console.log(chalk.green('✔ Compiled SCSS to CSS.'));
+        console.log(chalk.green('✔ Compiled SCSS to CSS in "dist/css/style.css".'));
     } catch (error) {
         console.error(chalk.red("✘ Error compiling SCSS:"), chalk.yellow(error.message));
         process.exit(1);
     }
 }
+
 
 async function build() {
     const chalk = await getChalk();

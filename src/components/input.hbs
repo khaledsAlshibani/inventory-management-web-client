@@ -1,0 +1,15 @@
+{{!-- inputComponent.hbs --}}
+<div class="input__wrapper">
+  <input
+    id="{{id}}"
+    name="{{name}}"
+    type="{{type}}"
+    value="{{value}}"
+    placeholder="{{placeholder}}"
+    class="input {{class}}"
+    required="{{required}}"
+  />
+  {{#if label}}
+    <label for="{{id}}" class="input__label {{#if hideLabel}}sr-only{{/if}}">{{label}}</label>
+  {{/if}}
+</div>

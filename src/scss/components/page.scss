@@ -1,0 +1,11 @@
+.page {
+    &--center {
+        display: flex;
+        place-items: center;
+    }
+
+    &--fullHeight {
+        min-height: 100vh;
+        height: 100%;
+    }
+}

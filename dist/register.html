@@ -1,29 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>register</title>
+  <title>Registration</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <h1>register</h1>
-  <p>register This is content from the JSON file yessss</p>
-  
-  <h2>Registers</h2>
-  <ul>
-      <li>
-        <strong>register Item 1</strong>: This is the first item.
-      </li>
-      <li>
-        <strong>register Item 2</strong>: This is the second item.
-      </li>
-      <li>
-        <strong>register Item 3</strong>: This is the third item.
-      </li>
-  </ul>
 
-  <div>
-  	<p>This is a reusable component.</p>
-  	<p>Dynamic content: register This is content from the JSON file yessss</p>
-  </div></body>
+<body>
+  <main class="page page--center page--fullHeight login-page">
+    <div class="container container--center">
+      <div class="login-page__form">
+        <div class="login-page__form-header">
+          <img src="assets/images/logo.png" alt="Inventory Management System" class="login-page__form-logo">
+          <h2 class="login-page__form-title">Sign Up</h2>
+          <p class="login-page__form-description">Create your free account to effortlessly manage all your inventories in one place.</p>
+        </div>
+
+        <form action="#" class="form form--login">
+          <div class="form__controls">
+                <div class="input__wrapper">
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    value=""
+                    placeholder=""
+                    class="input "
+                    required="true"
+                  />
+                    <label for="fullName" class="input__label ">Full Name</label>
+                </div>                <div class="input__wrapper">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value=""
+                    placeholder=""
+                    class="input "
+                    required="true"
+                  />
+                    <label for="email" class="input__label ">Email</label>
+                </div>                <div class="input__wrapper">
+                  <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    value=""
+                    placeholder=""
+                    class="input "
+                    required="true"
+                  />
+                    <label for="username" class="input__label ">Username</label>
+                </div>                <div class="input__wrapper">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    value=""
+                    placeholder=""
+                    class="input "
+                    required="true"
+                  />
+                    <label for="password" class="input__label ">Password</label>
+                </div>          </div>
+          <p class="login-page__form-resetPassword"><a href="#">Forgot your password?</a></p>
+              <button
+                type="submit"
+                class="button button--primary button--large   button--fullWidth"
+                
+              >
+                  <i class="button__icon icon-user-plus"></i>
+                <span class="button__label">Register</span>
+              </button>        </form>
+
+        <div class="login-page__form-footer">
+          <p class="login-page__form-footer-message">Already have an account? <a href="#">Login</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
 </html>

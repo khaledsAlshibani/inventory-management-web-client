@@ -16,7 +16,7 @@ async function startServer() {
     try {
         const { default: open } = await import('open');
         const { default: chalk } = await import('chalk');
-        
+
         app.listen(PORT, () => {
             const url = `http://localhost:${PORT}`;
             console.log(chalk.green.bold(`Server running at ${chalk.blue.underline(url)}`));

@@ -1,18 +1,61 @@
 {
-    "dynamicContent": "register This is content from the JSON file yessss",
-    "title": "register",
-    "items": [
+    "title": "Registration",
+    "logo": "assets/images/logo.png",
+    "logoAlt": "Inventory Management System",
+    "formTitle": "Sign Up",
+    "formDescription": "Create your free account to effortlessly manage all your inventories in one place.",
+    "forgetPassword": "Forgot your password?",
+    "loginMessage": "Already have an account?",
+    "login": "Login",
+    "inputFields": [
         {
-            "name": "register Item 1",
-            "description": "This is the first item."
+            "id": "fullName",
+            "name": "fullName",
+            "type": "text",
+            "placeholder": "",
+            "label": "Full Name",
+            "hideLabel": false,
+            "required": true
         },
         {
-            "name": "register Item 2",
-            "description": "This is the second item."
+            "id": "email",
+            "name": "email",
+            "type": "email",
+            "placeholder": "",
+            "label": "Email",
+            "hideLabel": false,
+            "required": true
         },
         {
-            "name": "register Item 3",
-            "description": "This is the third item."
+            "id": "username",
+            "name": "username",
+            "type": "text",
+            "placeholder": "",
+            "label": "Username",
+            "hideLabel": false,
+            "required": true
+        },
+        {
+            "id": "password",
+            "name": "password",
+            "type": "password",
+            "placeholder": "",
+            "label": "Password",
+            "hideLabel": false,
+            "required": true
+        }
+    ],
+    "buttons": [
+        {
+            "label": "Register",
+            "type": "submit",
+            "variant": "primary",
+            "size": "large",
+            "class": "",
+            "disabled": false,
+            "fullWidth": true,
+            "iconStart": true,
+            "iconName": "user-plus"
         }
     ]
 }

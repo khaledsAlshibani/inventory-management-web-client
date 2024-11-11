@@ -1,0 +1,53 @@
+.login-page {
+	&__form {
+		background-image: linear-gradient(
+			to bottom,
+			rgba(255, 106, 0, 0.025) 20%,
+			var(--bg-color-secondary) 40%
+		);
+		border: 1px solid var(--border-color-light);
+		padding: 30px;
+		border-radius: var(--border-radius-lg);
+		width: 100%;
+		max-width: 500px;
+		box-shadow: 0 8px 20px 0px rgba(255, 106, 0, 0.15);
+
+        &-header {
+			margin-bottom: 40px;
+            text-align: center;
+        }
+
+		&-logo {
+            margin: 0 auto;
+			width: 45px;
+			height: 45px;
+			display: block;
+			margin-bottom: 40px;
+		}
+
+        &-title {
+            font-size: var(--font-6);
+        }
+
+        &-description  {
+            font-size: var(--font-2);
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+		&-resetPassword {
+			font-size: var(--font-2);
+			text-align: right;
+			color: var(--text-color-light);
+		}
+
+		&-footer {
+			margin-top: 30px;
+			text-align: center;
+
+			&-message {
+				color: var(--text-color-light);
+			}
+		}
+	}
+}

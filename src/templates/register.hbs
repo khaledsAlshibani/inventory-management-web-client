@@ -1,23 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{title}}</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <h1>{{title}}</h1>
-  <p>{{dynamicContent}}</p>
-  
-  <h2>Registers</h2>
-  <ul>
-    {{#each items}}
-      <li>
-        <strong>{{name}}</strong>: {{description}}
-      </li>
-    {{/each}}
-  </ul>
 
-  {{> component }}
+<body>
+  <main class="page page--center page--fullHeight login-page">
+    <div class="container container--center">
+      <div class="login-page__form">
+        <div class="login-page__form-header">
+          <img src="{{logo}}" alt="{{logoAlt}}" class="login-page__form-logo">
+          <h2 class="login-page__form-title">{{formTitle}}</h2>
+          <p class="login-page__form-description">{{formDescription}}</p>
+        </div>
+
+        <form action="#" class="form form--login">
+          <div class="form__controls">
+            {{#each inputFields}}
+                {{> input 
+                  id=this.id
+                  name=this.name
+                  type=this.type
+                  placeholder=this.placeholder
+                  label=this.label
+                  hideLabel=this.hideLabel
+                }}
+            {{/each}}
+          </div>
+          <p class="login-page__form-resetPassword"><a href="#">{{forgetPassword}}</a></p>
+          {{#each buttons}}
+              {{> button 
+                label=this.label
+                type=this.type
+                iconName=this.iconName
+                variant=variant
+                size=size
+                disabled=disabled
+                class=class
+                fullWidth=fullWidth
+              }}
+          {{/each}}
+        </form>
+
+        <div class="login-page__form-footer">
+          <p class="login-page__form-footer-message">{{loginMessage}} <a href="#">{{login}}</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
+
 </html>

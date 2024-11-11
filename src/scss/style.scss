@@ -1,8 +1,42 @@
-div {
-    $lol: red;
-    color: $lol;
+@use 'variables.scss';
+@use 'icomoon.scss';
+@use 'fontface.scss';
+@use 'components/components.scss';
+@use 'pages/pages.scss';
+@use 'reset.scss';
 
-    p {
-        font-size: 200px;
+* {
+    margin: 0;
+    padding: 0;
+    outline: transparent;
+    border: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font);
+    font-size: var(--font-3);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1024px;
+    width: 95%;
+    margin: 0 auto;
+
+    &--wide {
+        max-width: unset;
+    }
+
+    &--center {
+        display: grid;
+        place-items: center;
     }
 }
