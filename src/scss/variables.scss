@@ -1,6 +1,7 @@
 :root {
 	--border-radius: 5px;
 	--border-radius-lg: 15px;
+	--border-radius-full: 1000px;
 
 	--text-color: #222;
 	--text-color-light: #444;
@@ -64,4 +65,16 @@
 
 	--shadow-row: hsla(219, 7%, 48%, 0.15) 0px 25px 20px -20px,
 		hsla(220, 7%, 48%, 0.15) 0px -25px 20px -20px;
+
+	@media screen and (max-width: 567px) {
+		& {
+			--font-4: 16px;
+			--font-5: 18px;
+			--font-6: 22px;
+			--font-7: 28px;
+			--font-8: 32px;
+			--font-9: 38px;
+			--font-10: 46px;
+		}
+	}
 }

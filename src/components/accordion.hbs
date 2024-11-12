@@ -1,0 +1,23 @@
+<div class="accordion" data-accordion>
+	<button
+		data-accordion-button={{buttonId}}
+		id={{buttonId}}
+		aria-expanded="false"
+		aria-controls={{contentId}}
+		tabindex="0"
+		class="accordion__header"
+	>
+		<i class="accordion__icon icon-keyboard_arrow_down"></i>
+		<h3 class="accordion__title">{{title}}</h3>
+	</button>
+
+	<div
+		data-accordion-content={{buttonId}}
+		id={{contentId}}
+		class="accordion__body"
+		role="region"
+		aria-labelledby={{buttonId}}
+	>
+		<p class="accordion__content">{{content}}</p>
+	</div>
+</div>

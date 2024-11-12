@@ -3,9 +3,17 @@
     flex-direction: column;
     gap: 25px;
 
+    @media screen and (max-width: 567px) {
+        gap: 15px;
+    }
+
     &__controls {
         display: flex;
         flex-direction: column;
         gap: 25px;
+
+        @media screen and (max-width: 567px) {
+            gap: 15px;
+        }
     }
 }

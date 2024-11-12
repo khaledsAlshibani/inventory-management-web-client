@@ -5,7 +5,7 @@
 	display: flex;
 	justify-content: space-between;
 	padding: $contentPaddingBlock $contentPaddingInline;
-    transition: all .3s ease-in-out;
+    transition: all .32s ease-in-out;
 
 	&:hover {
         box-shadow: var(--shadow-row);

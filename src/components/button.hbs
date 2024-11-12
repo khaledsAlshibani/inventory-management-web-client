@@ -1,13 +1,26 @@
-<button
-  type="{{type}}"
-  class="button {{#if variant}}button--{{variant}}{{/if}} {{#if size}}button--{{size}}{{/if}} {{class}} {{#if disabled}}button--disabled{{/if}} {{#if fullWidth}}button--fullWidth{{/if}}"
-  {{#if disabled}}disabled{{/if}}
->
-  {{#if iconStart}}
-    <i class="button__icon {{#if iconName}}icon-{{iconName}}{{/if}}"></i>
-  {{/if}}
-  <span class="button__label">{{label}}</span>
-  {{#if iconEnd}}
-    <i class="button__icon button__icon--end {{#if iconName}}icon-{{iconName}}{{/if}}"></i>
-  {{/if}}
-</button>
+{{#if href}}
+  <a
+    href="{{href}}"
+    class="button {{#if variant}}button--{{variant}}{{/if}} {{#if size}}button--{{size}}{{/if}} {{class}} {{#if disabled}}button--disabled{{/if}} {{#if fullWidth}}button--fullWidth{{/if}}"
+    {{#if target}}target="{{target}}"{{/if}}
+    {{#if disabled}}aria-disabled="true"{{/if}}
+  >
+{{else}}
+  <button
+    type="{{type}}"
+    class="button {{#if variant}}button--{{variant}}{{/if}} {{#if size}}button--{{size}}{{/if}} {{class}} {{#if disabled}}button--disabled{{/if}} {{#if fullWidth}}button--fullWidth{{/if}}"
+    {{#if disabled}}disabled{{/if}}
+  >
+{{/if}}
+    {{#if iconStart}}
+      <i class="button__icon {{#if iconName}}icon-{{iconName}}{{/if}}"></i>
+    {{/if}}
+    <span class="button__label">{{label}}</span>
+    {{#if iconEnd}}
+      <i class="button__icon button__icon--end {{#if iconName}}icon-{{iconName}}{{/if}}"></i>
+    {{/if}}
+{{#if href}}
+  </a>
+{{else}}
+  </button>
+{{/if}}

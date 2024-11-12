@@ -1,0 +1,29 @@
+<header id="top" class="header">
+    {{> navbar}}
+
+	<div class="header__banner">
+        <div class="container">
+            <div class="header__banner-content">
+                <h1 class="header__banner-title">{{title}}</h1>
+                <p class="header__banner-description">{{description}}</p>
+                <div class="header__banner-buttons">
+                    {{> button
+                        label="Get Started For Free"
+                        variant="primary"
+                        href="register.html"
+                        iconStart=true
+                        iconName="user-plus"
+                    }}
+                    {{> button
+                        label="Login"
+                        variant="outlined"
+                        href="login.html"
+                        iconStart=true
+                        iconName="log-in"
+                    }}
+                </div>
+            </div>
+            <img class="header__banner-image" src="assets/images/dashboard.png" alt="Inveit">
+        </div>
+	</div>
+</header>

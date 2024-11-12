@@ -1,18 +1,46 @@
 {
-    "dynamicContent": "This is content from the JSON file yessss works",
-    "title": "Welcome to the test",
-    "items": [
-        {
-            "name": "Item 1",
-            "description": "This is the first item."
-        },
-        {
-            "name": "Item 2",
-            "description": "This is the second item."
-        },
-        {
-            "name": "Item 3",
-            "description": "This is the third item."
-        }
-    ]
+    "title": "Inveit - Inventory Management System",
+    "headerTitle": "Take Control of Your Inventory, Effortlessly",
+    "headerDescription": "Say goodbye to stock stress. Manage everything from stock levels to supplier relationships, all from one simple dashboard.",
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "faqs": [
+            {
+                "title": "What is Inveit, and how can it help my business?",
+                "content": "Inveit is a powerful inventory management system designed to help businesses track stock levels, manage orders, and gain insights into their inventory. It simplifies daily operations and enables you to make data-driven decisions to optimize your business.",
+                "buttonId": "faq-accordion-button-1",
+                "contentId": "faq-accordion-content-1"
+            },
+            {
+                "title": "Is my data secure on Inveit?",
+                "content": "Yes, your data's privacy & security are our top priorities. We use industry-standard encryption and data protection measures to ensure that your information remains private and secure.",
+                "buttonId": "faq-accordion-button-2",
+                "contentId": "faq-accordion-content-2"
+            },
+            {
+                "title": "Can I manage inventory across multiple locations?",
+                "content": "Absolutely! Inveit allows you to track inventory across multiple locations, making it easy to keep stock levels optimized across warehouses, retail stores, or any other locations.",
+                "buttonId": "faq-accordion-button-3",
+                "contentId": "faq-accordion-content-3"
+            },
+            {
+                "title": "Do I need any special training to use Inveit?",
+                "content": "No special training is needed! Inveit is designed to be user-friendly, with an intuitive interface that’s easy to navigate. Plus, our support team is always here to help if you have questions.",
+                "buttonId": "faq-accordion-button-4",
+                "contentId": "faq-accordion-content-4"
+            },
+            {
+                "title": "Does Inveit integrate with other software?",
+                "content": "Yes, Inveit integrates with popular e-commerce platforms, accounting software, and CRMs, making it easy to connect with tools you already use for a seamless experience.",
+                "buttonId": "faq-accordion-button-5",
+                "contentId": "faq-accordion-content-5"
+            },
+            {
+                "title": "Is there a free trial available?",
+                "content": "Yes, we offer a free trial so you can explore Inveit's features before committing to a subscription. Sign up today to get started with your free trial.",
+                "buttonId": "faq-accordion-button-6",
+                "contentId": "faq-accordion-content-6"
+            }
+        ]
+    }
 }

@@ -1,0 +1,44 @@
+.section {
+	--section-spacing: 80px;
+	padding: var(--section-spacing) 0;
+	margin: var(--section-spacing) 0;
+
+	@media screen and (max-width: 1024px) {
+		& {
+			--section-spacing: 60px;
+		}
+	}
+
+	&:first-child {
+		margin-top: 5px;
+		padding-top: 5px;
+
+		@media screen and (max-width: 1024px) {
+			& {
+				margin-top: 15px;
+				padding-top: 15px;
+			}
+		}
+	}
+
+	&__heading {
+		text-align: center;
+		margin-bottom: 30px;
+
+		&-title {
+			font-size: var(--font-9);
+			font-weight: 600;
+			
+			@media screen and (max-width: 567px) {
+				font-size: var(--font-7);
+			}
+		}
+		&-description {
+			margin: 15px auto 0;
+			max-width: 700px;
+			width: 100%;
+			font-weight: 300;
+			line-height: var(--line-height-xl);
+		}
+	}
+}

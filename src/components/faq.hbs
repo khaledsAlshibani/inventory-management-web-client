@@ -1,0 +1,20 @@
+<section id="faq" class="section">
+    <div class="container">
+        <div class="section__content">
+            {{> section-heading
+                title=title
+            }}
+
+            <div class="faq">
+                {{#each faqs}}
+                    {{> accordion 
+                        title=this.title
+                        content=this.content
+                        buttonId=this.buttonId
+                        contentId=this.contentId
+                    }}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>

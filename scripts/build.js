@@ -138,6 +138,23 @@ async function compileSass() {
     }
 }
 
+async function copyFavicon() {
+    const chalk = await getChalk();
+    const srcFavicon = path.join(rootDir, 'favicon.ico');
+    const destFavicon = path.join(distDir, 'favicon.ico');
+    
+    try {
+        if (fs.existsSync(srcFavicon)) {
+            fs.copyFileSync(srcFavicon, destFavicon);
+            console.log(chalk.green('✔ Copied favicon.ico to the "dist" directory.'));
+        } else {
+            console.warn(chalk.yellow('⚠ favicon.ico not found in the root directory.'));
+        }
+    } catch (error) {
+        console.error(chalk.red("✘ Error copying favicon.ico:"), chalk.yellow(error.message));
+        process.exit(1);
+    }
+}
 
 async function build() {
     const chalk = await getChalk();
@@ -148,6 +165,7 @@ async function build() {
     await copyDirectory(assetsDir, path.join(distDir, 'assets'));
     await copyDirectory(jsDir, path.join(distDir, 'js'));
     await compileSass();
+    await copyFavicon();
     console.log(chalk.green.bold('\n✔ Build process completed successfully.\n'));
 }
 

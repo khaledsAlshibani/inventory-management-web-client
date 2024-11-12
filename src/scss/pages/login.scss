@@ -5,16 +5,28 @@
 			rgba(255, 106, 0, 0.025) 20%,
 			var(--bg-color-secondary) 40%
 		);
-		border: 1px solid var(--border-color-light);
+		border: 1px solid var(--border-color);
 		padding: 30px;
 		border-radius: var(--border-radius-lg);
 		width: 100%;
 		max-width: 500px;
 		box-shadow: 0 8px 20px 0px rgba(255, 106, 0, 0.15);
 
+		@media screen and (max-width: 567px) {
+			& {
+				padding: 20px;
+			}
+		}
+
         &-header {
 			margin-bottom: 40px;
             text-align: center;
+
+			@media screen and (max-width: 567px) {
+				& {
+					margin-bottom: 25px;
+				}
+			}
         }
 
 		&-logo {
@@ -23,6 +35,13 @@
 			height: 45px;
 			display: block;
 			margin-bottom: 40px;
+
+			@media screen and (max-width: 567px) {
+				& {
+					width: 40px;
+					height: 40px;
+				}
+			}
 		}
 
         &-title {
@@ -45,8 +64,20 @@
 			margin-top: 30px;
 			text-align: center;
 
+			@media screen and (max-width: 567px) {
+				& {
+					margin-top: 20px;
+				}
+			}
+
 			&-message {
 				color: var(--text-color-light);
+
+				@media screen and (max-width: 567px) {
+					& {
+						font-size: var(--font-2);
+					}
+				}
 			}
 		}
 	}

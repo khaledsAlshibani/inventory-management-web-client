@@ -2,13 +2,312 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Welcome to the test</title>
+        <title>Inveit - Inventory Management System</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <link rel="stylesheet" href="css/style.css" />
     </head>
 
     <body>
-        <header class="header">
-          
-        </header>
+        <header id="top" class="header">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar__content">
+                        <img class="navbar__logo" src="assets/images/full-logo.png" alt="Inveit - Inventory Management System">
+                        <ul class="navbar__menu" data-navbar-menu>
+                            <li><a class="navbar__menu-item" href="index.html">Home</a></li>
+                            <li><a class="navbar__menu-item" href="index.html#features">Features</a></li>
+                            <li><a class="navbar__menu-item" href="index.html#faq">FAQ</a></li>
+                            <li><a class="navbar__menu-item" href="index.html#contact">Contact</a></li>
+                        </ul>
+                        <div class="navbar__content-section">
+                              <a
+                                href="register.html"
+                                class="button button--primary button--small   "
+                                
+                                
+                              >
+                                <span class="button__label">Create Account</span>
+                              </a>
+                            
+                            <i role="button" aria-label="Toggle navigation" class="navbar__toggler icon-menu" data-navbar-menu-toggler></i>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        	<div class="header__banner">
+                <div class="container">
+                    <div class="header__banner-content">
+                        <h1 class="header__banner-title">Take Control of Your Inventory, Effortlessly</h1>
+                        <p class="header__banner-description">Say goodbye to stock stress. Manage everything from stock levels to supplier relationships, all from one simple dashboard.</p>
+                        <div class="header__banner-buttons">
+                              <a
+                                href="register.html"
+                                class="button button--primary    "
+                                
+                                
+                              >
+                                  <i class="button__icon icon-user-plus"></i>
+                                <span class="button__label">Get Started For Free</span>
+                              </a>
+                              <a
+                                href="login.html"
+                                class="button button--outlined    "
+                                
+                                
+                              >
+                                  <i class="button__icon icon-log-in"></i>
+                                <span class="button__label">Login</span>
+                              </a>
+                        </div>
+                    </div>
+                    <img class="header__banner-image" src="assets/images/dashboard.png" alt="Inveit">
+                </div>
+        	</div>
+        </header>        <section id="features" class="section">
+            <div class="container">
+                <div class="section__content">
+                    <div class="section__heading">
+                    	<h2 class="section__heading-title">Built to Make Your Life Easier</h2>
+                    	<p class="section__heading-description">Say goodbye to stock stress. Manage everything from stock levels to supplier relationships, all from one simple dashboard.</p>
+                    </div>
+                    <div class="features grid cols-3">
+                        <div class="features__card">
+                            <img class="features__card-image" src="assets/images/bag.png" alt="Inventory Tracking - Inveit">
+                            <div class="features__card-content">
+                                <h3 class="features__card-title">Inventory Tracking</h3>
+                                <p class="features__card-description">Easily monitor stock levels and stay on top of your inventory.</p>
+                            </div>
+                        </div>
+        
+                        <div class="features__card">
+                            <img class="features__card-image" src="assets/images/time.png" alt="Real-Time Updates - Inveit">
+                            <div class="features__card-content">
+                                <h3 class="features__card-title">Real-Time Updates</h3>
+                                <p class="features__card-description">Get instant updates on inventory, orders, and sales.</p>
+                            </div>
+                        </div>
+        
+                        <div class="features__card">
+                            <img class="features__card-image" src="assets/images/thunder.png" alt="Fast Performance - Inveit">
+                            <div class="features__card-content">
+                                <h3 class="features__card-title">Fast Performance</h3>
+                                <p class="features__card-description">Enjoy a fast, seamless experience with optimized performance.</p>
+                            </div>
+                        </div>
+        
+                        <div class="features__card">
+                            <img class="features__card-image" src="assets/images/location.png" alt="Multi-Location Management - Inveit">
+                            <div class="features__card-content">
+                                <h3 class="features__card-title">Multi-Location Management</h3>
+                                <p class="features__card-description">Manage inventory across multiple locations effortlessly.</p>
+                            </div>
+                        </div>
+        
+                        <div class="features__card">
+                            <img class="features__card-image" src="assets/images/privacy.png" alt="Privacy & Security - Inveit">
+                            <div class="features__card-content">
+                                <h3 class="features__card-title">Privacy &amp; Security</h3>
+                                <p class="features__card-description">Keep your data secure with top-notch privacy features.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>        <section id="faq" class="section">
+            <div class="container">
+                <div class="section__content">
+                    <div class="section__heading">
+                    	<h2 class="section__heading-title">Frequently Asked Questions</h2>
+                    </div>
+                    <div class="faq">
+                            <div class="accordion" data-accordion>
+                            	<button
+                            		data-accordion-button=faq-accordion-button-1
+                            		id=faq-accordion-button-1
+                            		aria-expanded="false"
+                            		aria-controls=faq-accordion-content-1
+                            		tabindex="0"
+                            		class="accordion__header"
+                            	>
+                            		<i class="accordion__icon icon-keyboard_arrow_down"></i>
+                            		<h3 class="accordion__title">What is Inveit, and how can it help my business?</h3>
+                            	</button>
+                            
+                            	<div
+                            		data-accordion-content=faq-accordion-button-1
+                            		id=faq-accordion-content-1
+                            		class="accordion__body"
+                            		role="region"
+                            		aria-labelledby=faq-accordion-button-1
+                            	>
+                            		<p class="accordion__content">Inveit is a powerful inventory management system designed to help businesses track stock levels, manage orders, and gain insights into their inventory. It simplifies daily operations and enables you to make data-driven decisions to optimize your business.</p>
+                            	</div>
+                            </div>                    <div class="accordion" data-accordion>
+                            	<button
+                            		data-accordion-button=faq-accordion-button-2
+                            		id=faq-accordion-button-2
+                            		aria-expanded="false"
+                            		aria-controls=faq-accordion-content-2
+                            		tabindex="0"
+                            		class="accordion__header"
+                            	>
+                            		<i class="accordion__icon icon-keyboard_arrow_down"></i>
+                            		<h3 class="accordion__title">Is my data secure on Inveit?</h3>
+                            	</button>
+                            
+                            	<div
+                            		data-accordion-content=faq-accordion-button-2
+                            		id=faq-accordion-content-2
+                            		class="accordion__body"
+                            		role="region"
+                            		aria-labelledby=faq-accordion-button-2
+                            	>
+                            		<p class="accordion__content">Yes, your data&#x27;s privacy &amp; security are our top priorities. We use industry-standard encryption and data protection measures to ensure that your information remains private and secure.</p>
+                            	</div>
+                            </div>                    <div class="accordion" data-accordion>
+                            	<button
+                            		data-accordion-button=faq-accordion-button-3
+                            		id=faq-accordion-button-3
+                            		aria-expanded="false"
+                            		aria-controls=faq-accordion-content-3
+                            		tabindex="0"
+                            		class="accordion__header"
+                            	>
+                            		<i class="accordion__icon icon-keyboard_arrow_down"></i>
+                            		<h3 class="accordion__title">Can I manage inventory across multiple locations?</h3>
+                            	</button>
+                            
+                            	<div
+                            		data-accordion-content=faq-accordion-button-3
+                            		id=faq-accordion-content-3
+                            		class="accordion__body"
+                            		role="region"
+                            		aria-labelledby=faq-accordion-button-3
+                            	>
+                            		<p class="accordion__content">Absolutely! Inveit allows you to track inventory across multiple locations, making it easy to keep stock levels optimized across warehouses, retail stores, or any other locations.</p>
+                            	</div>
+                            </div>                    <div class="accordion" data-accordion>
+                            	<button
+                            		data-accordion-button=faq-accordion-button-4
+                            		id=faq-accordion-button-4
+                            		aria-expanded="false"
+                            		aria-controls=faq-accordion-content-4
+                            		tabindex="0"
+                            		class="accordion__header"
+                            	>
+                            		<i class="accordion__icon icon-keyboard_arrow_down"></i>
+                            		<h3 class="accordion__title">Do I need any special training to use Inveit?</h3>
+                            	</button>
+                            
+                            	<div
+                            		data-accordion-content=faq-accordion-button-4
+                            		id=faq-accordion-content-4
+                            		class="accordion__body"
+                            		role="region"
+                            		aria-labelledby=faq-accordion-button-4
+                            	>
+                            		<p class="accordion__content">No special training is needed! Inveit is designed to be user-friendly, with an intuitive interface that’s easy to navigate. Plus, our support team is always here to help if you have questions.</p>
+                            	</div>
+                            </div>                    <div class="accordion" data-accordion>
+                            	<button
+                            		data-accordion-button=faq-accordion-button-5
+                            		id=faq-accordion-button-5
+                            		aria-expanded="false"
+                            		aria-controls=faq-accordion-content-5
+                            		tabindex="0"
+                            		class="accordion__header"
+                            	>
+                            		<i class="accordion__icon icon-keyboard_arrow_down"></i>
+                            		<h3 class="accordion__title">Does Inveit integrate with other software?</h3>
+                            	</button>
+                            
+                            	<div
+                            		data-accordion-content=faq-accordion-button-5
+                            		id=faq-accordion-content-5
+                            		class="accordion__body"
+                            		role="region"
+                            		aria-labelledby=faq-accordion-button-5
+                            	>
+                            		<p class="accordion__content">Yes, Inveit integrates with popular e-commerce platforms, accounting software, and CRMs, making it easy to connect with tools you already use for a seamless experience.</p>
+                            	</div>
+                            </div>                    <div class="accordion" data-accordion>
+                            	<button
+                            		data-accordion-button=faq-accordion-button-6
+                            		id=faq-accordion-button-6
+                            		aria-expanded="false"
+                            		aria-controls=faq-accordion-content-6
+                            		tabindex="0"
+                            		class="accordion__header"
+                            	>
+                            		<i class="accordion__icon icon-keyboard_arrow_down"></i>
+                            		<h3 class="accordion__title">Is there a free trial available?</h3>
+                            	</button>
+                            
+                            	<div
+                            		data-accordion-content=faq-accordion-button-6
+                            		id=faq-accordion-content-6
+                            		class="accordion__body"
+                            		role="region"
+                            		aria-labelledby=faq-accordion-button-6
+                            	>
+                            		<p class="accordion__content">Yes, we offer a free trial so you can explore Inveit&#x27;s features before committing to a subscription. Sign up today to get started with your free trial.</p>
+                            	</div>
+                            </div>            </div>
+                </div>
+            </div>
+        </section>
+        <footer id="contact" class="footer">
+        	<div class="container">
+        		<div class="footer__upper">
+        			<div class="footer__column">
+        				<img
+        					class="footer__logo"
+        					src="assets/images/full-logo.png"
+        					alt="Inveit - Inventory Management System"
+        				/>
+                        <div class="footer__icons">
+                            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                                <i class="footer__icon icon-facebook"></i>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                                <i class="footer__icon icon-x"></i>
+                            </a>
+                            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">
+                                <i class="footer__icon icon-linkedin"></i>
+                            </a>
+                        </div>
+        			</div>
+        			<div class="footer__column">
+        				<p class="footer__description">Inveit is a powerful inventory
+        					management system that helps you manage your inventory
+        					efficiently.</p>
+        			</div>
+        			<div class="footer__column">
+        				<h3 class="footer__title">Quick Links</h3>
+        				<ul class="footer__links">
+        					<li class="footer__link"><a href="index.html">Home</a></li>
+        					<li class="footer__link"><a
+        							href="index.html#features"
+        						>Features</a></li>
+        					<li class="footer__link"><a
+        							href="index.html#faq"
+        						>FAQ</a></li>
+        					<li class="footer__link"><a href="register.html">Create
+        							Account</a></li>
+        					<li class="footer__link"><a href="login.html">Login</a></li>
+        				</ul>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="footer__lower">
+        		<div class="container">
+        			<p>Copyright &copy; 2024 All Rights Reserved by Khaled</p>
+        		</div>
+        	</div>
+        
+        	<a class="scroll-to-top" href="#top" aria-label="Scroll to tops" data-scroll-to-top>
+        	    <i class="scroll-to-top__icon icon-arrow-up"></i>
+        	</a></footer>
+        <script src="js/script.js"></script>
     </body>
 </html>

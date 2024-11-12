@@ -15,7 +15,8 @@
 		outline-color: var(--primary-color);
 	}
 
-	&:focus ~ &__label {
+	&:focus ~ &__label,
+	&:not(:placeholder-shown) ~ &__label {
 		top: -2px;
 		font-size: var(--font-1);
 	}

@@ -3,12 +3,26 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{{title}}</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <link rel="stylesheet" href="css/style.css" />
     </head>
 
     <body>
-        <header class="header">
-          
-        </header>
+        {{> header
+            title=headerTitle
+            description=headerDescription
+        }}
+        {{> features
+            title=headerTitle
+            description=headerDescription
+        }}
+        {{> faq
+            title=faq.title
+            description=faq.description
+            faqs=faq.faqs
+        }}
+        {{> footer }}
+
+        <script src="js/script.js"></script>
     </body>
 </html>
