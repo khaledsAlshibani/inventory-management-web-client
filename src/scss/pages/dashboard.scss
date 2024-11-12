@@ -1,0 +1,21 @@
+.charts {
+	margin-top: 60px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	canvas {
+		width: 100%;
+		max-height: 450px;
+		border: 1px solid var(--border-color);
+		border-radius: var(--border-radius);
+        padding: 20px;
+
+		&:first-child {
+			max-width: calc(100% - 450px);
+		}
+		&:nth-child(2) {
+			max-width: 400px;
+		}
+	}
+}

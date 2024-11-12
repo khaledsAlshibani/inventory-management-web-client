@@ -1,0 +1,38 @@
+.listing {
+	$contentPadding: 30px;
+
+	background-color: var(--bg-color-secondary);
+	border-radius: var(--border-radius);
+	border: 1px solid var(--border-color);
+
+	&__header {
+		background-color: var(--bg-color);
+		border-bottom: 1px solid var(--border-color);
+        padding: 10px $contentPadding;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    
+        &-title {
+            font-size: var(--font-3);
+            font-weight: 600;
+        }
+    
+        &-count {
+            $size: 22px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            font-size: var(--font-2);
+            width: $size;
+            height: $size;
+            background-color: var(--gray-300);
+            color: var(--gray-900);
+            border-radius: 50%;
+        }
+	}
+
+    &__body {
+    }
+}

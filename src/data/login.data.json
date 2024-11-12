@@ -1,12 +1,13 @@
 {
-    "title": "Registration",
+    "title": "Login",
     "logo": "assets/images/logo.png",
     "logoAlt": "Inventory Management System",
-    "formTitle": "Sign Up",
+    "formTitle": "Login",
     "formDescription": "Create your free account to effortlessly manage all your inventories in one place.",
     "forgetPassword": "Forgot your password?",
     "createAccountMessage": "Do not have an account?",
     "createAccount": "Create Account",
+    "createAccountLink": "../register.html",
     "inputFields": [
         {
             "id": "email",

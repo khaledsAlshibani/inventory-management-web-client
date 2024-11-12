@@ -18,40 +18,84 @@
           <p class="login-page__form-description">{{formDescription}}</p>
         </div>
 
-        <form action="#" class="form form--login">
+        <form method="post" class="form form--login" data-login-form>
           <div class="form__controls">
             {{#each inputFields}}
-                {{> input 
-                  id=this.id
-                  name=this.name
-                  type=this.type
-                  placeholder=this.placeholder
-                  label=this.label
-                  hideLabel=this.hideLabel
-                }}
+              {{> input 
+                id=this.id
+                name=this.name
+                type=this.type
+                placeholder=this.placeholder
+                label=this.label
+                hideLabel=this.hideLabel
+              }}
             {{/each}}
           </div>
-          <p class="login-page__form-resetPassword"><a href="#">{{forgetPassword}}</a></p>
+          <a class="login-page__form-resetPassword" href="#">{{forgetPassword}}</a>
           {{#each buttons}}
-              {{> button 
-                label=this.label
-                type=this.type
-                iconName=this.iconName
-                variant=variant
-                size=size
-                disabled=disabled
-                class=class
-                fullWidth=fullWidth
-              }}
+            {{> button 
+              label=this.label
+              type=this.type
+              iconName=this.iconName
+              variant=this.variant
+              size=this.size
+              disabled=this.disabled
+              class=this.class
+              fullWidth=this.fullWidth
+            }}
           {{/each}}
         </form>
 
         <div class="login-page__form-footer">
-          <p class="login-page__form-footer-message">{{createAccountMessage}} <a href="#">{{createAccount}}</a></p>
+          <p class="login-page__form-footer-message">{{createAccountMessage}} <a href="{{createAccountLink}}">{{createAccount}}</a></p>
         </div>
       </div>
     </div>
   </main>
+
+  <script>
+    console.log("Script works 2");
+document.querySelector('[data-login-form]').addEventListener('submit', async function(event) {
+  event.preventDefault(); // Prevent default form submission
+
+  // Serialize form data into an object
+  const formData = new FormData(event.target);
+  const data = {};
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  console.log("Serialized form data:", data);
+
+  // Send the data as JSON in the fetch request
+  fetch('http://localhost:8082/api/v1/users/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data) // Convert data object to JSON
+  })
+  .then(response => {
+    if (response.ok) {
+      return response.json(); // Parse response as JSON if successful
+    } else {
+      return response.text(); // Otherwise, parse as plain text
+    }
+  })
+  .then(data => {
+    // Check if data is an object or a string to handle response accordingly
+    if (typeof data === "object") {
+      console.log("Login successful:", data);
+      // Handle successful login (redirect, store token, etc.)
+    } else {
+      console.log("Error message:", data); // Log the error message
+    }
+  })
+  .catch(error => console.error('Error:', error)); // Handle error response
+});
+
+  </script>
+
 </body>
 
 </html>

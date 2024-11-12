@@ -1,0 +1,266 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Inventories Management - Inveit</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+
+    <body>
+        <main class="page page--hasSidebar">
+            <aside class="app-sidebar">
+            	<div class="app-sidebar__header">
+            		<a href="#">
+            			<img src="assets/images/full-logo.png" alt="Inveit" class="app-sidebar__logo" />
+            		</a>
+            		<i
+            			class="app-sidebar__toggler icon-app-sidebar"
+            			role="button"
+            			aria-label="Toggle app-sidebar"
+            		></i>
+            	</div>
+            
+            	<nav class="app-sidebar__nav">
+            		<ul class="app-sidebar__nav-menu">
+            				<li>
+            					<a class="app-sidebar__nav-item" href="dashboard.html">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-dashboard"
+            							aria-hidden="true"
+            						></i>
+            						Dashboard
+            					</a>
+            				</li>
+            				<li>
+            					<a class="app-sidebar__nav-item" href="inventory-listing.html">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-inventory"
+            							aria-hidden="true"
+            						></i>
+            						Inventories Management
+            					</a>
+            				</li>
+            				<li>
+            					<a class="app-sidebar__nav-item" href="product-listing.html">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-stop_circle"
+            							aria-hidden="true"
+            						></i>
+            						Products Management
+            					</a>
+            				</li>
+            		</ul>
+            		<ul class="app-sidebar__nav-menu app-sidebar__nav-menu--secondary">
+            				<li>
+            					<a class="app-sidebar__nav-item" href="#">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-help-circle"
+            							aria-hidden="true"
+            						></i>
+            						FAQs
+            					</a>
+            				</li>
+            				<li>
+            					<a class="app-sidebar__nav-item" href="#">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-life-buoy"
+            							aria-hidden="true"
+            						></i>
+            						Help &amp; Center
+            					</a>
+            				</li>
+            				<li>
+            					<a class="app-sidebar__nav-item" href="#">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-privacy_tip"
+            							aria-hidden="true"
+            						></i>
+            						Privacy Policy
+            					</a>
+            				</li>
+            		</ul>
+            	</nav>
+            </aside>            
+            <div class="page__content">
+				<section class="app-navbar">
+				    <div class="container container--page">
+				        <div class="app-navbar__content">
+				            <div class="app-navbar__section">
+				                <h1 class="app-navbar__title">Inventories Management</h1>
+				            </div>
+				            <div class="app-navbar__section">
+				                <div class="search-field__wrapper">
+				                  <i class="search-field__icon icon-search"></i>
+				                  <input
+				                    id=""
+				                    name=""
+				                    type="search"
+				                    value=""
+				                    placeholder="Search ..."
+				                    class="search-field "
+				                  />
+				                </div>                
+				                <i class="app-navbar__icon icon-plus" role="button" aria-label="Choose What to add"></i>
+				
+				                <div class="app-navbar__user-photo-wrapper">
+				                    <img src="assets/images/default-user.png" alt="User profile photo" class="app-navbar__user-photo" />
+				                </div>
+				            </div>
+				        </div>
+					</div>
+				</section>                <div class="container container--page container--page-padding container--hasSidebar">
+                    <section class="listing">
+                        <header class="listing__header">
+                            <h2 class="listing__header-title">Your Inventories</h2>
+                            <span class="listing__header-count">3</span>
+                        </header>
+                    
+                        <div class="listing__body">
+                                <div class="listing-card">
+                                    <div class="listing-card__section">
+                                        <h3 class="listing-card__title">My Inventory 1</h3>
+                                        <span class="listing-card__subtitle">Address: 123 Main St</span>
+                                        <p class="listing-card__description">30 products</p>
+                                        <div class="listing-card__badges">
+                                                <div class="badge badge--success ">
+                                                    <span class="badge__label">Active</span>
+                                                </div>                <div class="badge badge--warning ">
+                                                    <span class="badge__label">Full</span>
+                                                </div>        </div>
+                                    </div>
+                                    
+                                    <div class="listing-card__section">
+                                        <button
+                                          type=""
+                                          class="button button--standard button--small listing-card__button  "
+                                          
+                                        >
+                                            <i class="button__icon icon-edit-3"></i>
+                                          <span class="button__label">Edit</span>
+                                        </button>    </div>
+                                </div>            <div class="listing-card">
+                                    <div class="listing-card__section">
+                                        <h3 class="listing-card__title">My Inventory 2</h3>
+                                        <span class="listing-card__subtitle">Address: 456 Another St</span>
+                                        <p class="listing-card__description">15 products</p>
+                                        <div class="listing-card__badges">
+                                                <div class="badge badge--danger ">
+                                                    <span class="badge__label">Inactive</span>
+                                                </div>        </div>
+                                    </div>
+                                    
+                                    <div class="listing-card__section">
+                                        <button
+                                          type=""
+                                          class="button button--standard button--small listing-card__button  "
+                                          
+                                        >
+                                            <i class="button__icon icon-edit-3"></i>
+                                          <span class="button__label">Edit</span>
+                                        </button>    </div>
+                                </div>            <div class="listing-card">
+                                    <div class="listing-card__section">
+                                        <h3 class="listing-card__title">My Inventory 3</h3>
+                                        <span class="listing-card__subtitle">Address: 789 Different Rd</span>
+                                        <p class="listing-card__description">50 products</p>
+                                        <div class="listing-card__badges">
+                                                <div class="badge badge--success ">
+                                                    <span class="badge__label">Active</span>
+                                                </div>        </div>
+                                    </div>
+                                    
+                                    <div class="listing-card__section">
+                                        <button
+                                          type=""
+                                          class="button button--standard button--small listing-card__button  "
+                                          
+                                        >
+                                            <i class="button__icon icon-edit-3"></i>
+                                          <span class="button__label">Edit</span>
+                                        </button>    </div>
+                                </div>    </div>
+                    </section>
+                    <aside class="statistics-sidebar">
+                    	<header class="statistics-sidebar__header">
+                    		<span class="statistics-sidebar__header-heading">Statistic</span>
+                    		<span class="statistics-sidebar__header-heading">Value</span>
+                    	</header>
+                    	<div class="statistics-sidebar__content">
+                    			<div class="statistics-sidebar__item">
+                    				<span
+                    					class="statistics-sidebar__item-heading"
+                    				>Total Inventory Locations</span>
+                    				<span
+                    					class="statistics-sidebar__item-value"
+                    				>100</span>
+                    			</div>
+                    			<div class="statistics-sidebar__item">
+                    				<span
+                    					class="statistics-sidebar__item-heading"
+                    				>Fully Stocked Inventories</span>
+                    				<span
+                    					class="statistics-sidebar__item-value"
+                    				>45</span>
+                    			</div>
+                    			<div class="statistics-sidebar__item">
+                    				<span
+                    					class="statistics-sidebar__item-heading"
+                    				>Active Inventory Locations</span>
+                    				<span
+                    					class="statistics-sidebar__item-value"
+                    				>30</span>
+                    			</div>
+                    			<div class="statistics-sidebar__item">
+                    				<span
+                    					class="statistics-sidebar__item-heading"
+                    				>Inactive Inventory Locations</span>
+                    				<span
+                    					class="statistics-sidebar__item-value"
+                    				>15</span>
+                    			</div>
+                    			<div class="statistics-sidebar__item">
+                    				<span
+                    					class="statistics-sidebar__item-heading"
+                    				>Empty Inventory Locations</span>
+                    				<span
+                    					class="statistics-sidebar__item-value"
+                    				>10</span>
+                    			</div>
+                    			<div class="statistics-sidebar__item">
+                    				<span
+                    					class="statistics-sidebar__item-heading"
+                    				>Inventories with Low Stock</span>
+                    				<span
+                    					class="statistics-sidebar__item-value"
+                    				>5</span>
+                    			</div>
+                    			<div class="statistics-sidebar__item">
+                    				<span
+                    					class="statistics-sidebar__item-heading"
+                    				>Average Items per Inventory</span>
+                    				<span
+                    					class="statistics-sidebar__item-value"
+                    				>350</span>
+                    			</div>
+                    			<div class="statistics-sidebar__item">
+                    				<span
+                    					class="statistics-sidebar__item-heading"
+                    				>Total Inventory Area (km²)</span>
+                    				<span
+                    					class="statistics-sidebar__item-value"
+                    				>350</span>
+                    			</div>
+                    			<div class="statistics-sidebar__item">
+                    				<span
+                    					class="statistics-sidebar__item-heading"
+                    				>Inventories with Expired Products</span>
+                    				<span
+                    					class="statistics-sidebar__item-value"
+                    				>3</span>
+                    			</div>
+                    	</div>
+                    </aside>                </div>
+            </div>
+        </main>
+    </body>
+</html>

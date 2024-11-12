@@ -1,0 +1,15 @@
+{{!-- inputComponent.hbs --}}
+<div class="search-field__wrapper">
+  <i class="search-field__icon icon-search"></i>
+  <input
+    id="{{id}}"
+    name="{{name}}"
+    type="search"
+    value="{{value}}"
+    placeholder="Search ..."
+    class="search-field {{class}}"
+  />
+  {{#if label}}
+    <label for="{{id}}" class="sr-only">Search ...</label>
+  {{/if}}
+</div>

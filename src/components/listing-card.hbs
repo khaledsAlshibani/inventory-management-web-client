@@ -1,0 +1,28 @@
+<div class="listing-card">
+    <div class="listing-card__section">
+        <h3 class="listing-card__title">{{title}}</h3>
+        <span class="listing-card__subtitle">{{subtitle}}</span>
+        <p class="listing-card__description">{{description}}</p>
+        <div class="listing-card__badges">
+            {{#each badges}}
+                {{> badge
+                    label=this.label
+                    class=this.class
+                    iconName=this.iconName
+                    variant=this.variant
+                }}
+            {{/each}}
+        </div>
+    </div>
+    
+    <div class="listing-card__section">
+        {{> button
+            label="Edit"
+            variant="standard"
+            class="listing-card__button"
+            size="small"
+            iconStart=true
+            iconName="edit-3"
+        }}
+    </div>
+</div>

@@ -1,0 +1,145 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard - Inveit</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+
+    <body>
+        <main class="page page--hasSidebar">
+            <aside class="app-sidebar">
+            	<div class="app-sidebar__header">
+            		<a href="#">
+            			<img src="assets/images/full-logo.png" alt="Inveit" class="app-sidebar__logo" />
+            		</a>
+            		<i
+            			class="app-sidebar__toggler icon-app-sidebar"
+            			role="button"
+            			aria-label="Toggle app-sidebar"
+            		></i>
+            	</div>
+            
+            	<nav class="app-sidebar__nav">
+            		<ul class="app-sidebar__nav-menu">
+            				<li>
+            					<a class="app-sidebar__nav-item" href="dashboard.html">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-dashboard"
+            							aria-hidden="true"
+            						></i>
+            						Dashboard
+            					</a>
+            				</li>
+            				<li>
+            					<a class="app-sidebar__nav-item" href="inventory-listing.html">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-inventory"
+            							aria-hidden="true"
+            						></i>
+            						Inventories Management
+            					</a>
+            				</li>
+            				<li>
+            					<a class="app-sidebar__nav-item" href="product-listing.html">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-stop_circle"
+            							aria-hidden="true"
+            						></i>
+            						Products Management
+            					</a>
+            				</li>
+            		</ul>
+            		<ul class="app-sidebar__nav-menu app-sidebar__nav-menu--secondary">
+            				<li>
+            					<a class="app-sidebar__nav-item" href="#">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-help-circle"
+            							aria-hidden="true"
+            						></i>
+            						FAQs
+            					</a>
+            				</li>
+            				<li>
+            					<a class="app-sidebar__nav-item" href="#">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-life-buoy"
+            							aria-hidden="true"
+            						></i>
+            						Help &amp; Center
+            					</a>
+            				</li>
+            				<li>
+            					<a class="app-sidebar__nav-item" href="#">
+            						<i
+            							class="app-sidebar__nav-item-icon icon-privacy_tip"
+            							aria-hidden="true"
+            						></i>
+            						Privacy Policy
+            					</a>
+            				</li>
+            		</ul>
+            	</nav>
+            </aside>            
+            <div class="page__content">
+					<section class="app-navbar">
+					    <div class="container container--page">
+					        <div class="app-navbar__content">
+					            <div class="app-navbar__section">
+					                <h1 class="app-navbar__title">Dashboard</h1>
+					            </div>
+					            <div class="app-navbar__section">
+					                <div class="search-field__wrapper">
+					                  <i class="search-field__icon icon-search"></i>
+					                  <input
+					                    id=""
+					                    name=""
+					                    type="search"
+					                    value=""
+					                    placeholder="Search ..."
+					                    class="search-field "
+					                  />
+					                </div>                
+					                <i class="app-navbar__icon icon-plus" role="button" aria-label="Choose What to add"></i>
+					
+					                <div class="app-navbar__user-photo-wrapper">
+					                    <img src="assets/images/default-user.png" alt="User profile photo" class="app-navbar__user-photo" />
+					                </div>
+					            </div>
+					        </div>
+						</div>
+					</section>                <div class="container container--page container--page-padding">
+                    <div class="grid cols-4">
+                            <div class="statistic-card">
+                                <i class="statistic-card__icon icon-shopping-bag" aria-hidden="true"></i>
+                                <span class="statistic-card__title">Total Sales</span>
+                                <span class="statistic-card__value">$5M</span>
+                                <span class="statistic-card__period">Full Time</span>
+                            </div>                            <div class="statistic-card">
+                                <i class="statistic-card__icon icon-category" aria-hidden="true"></i>
+                                <span class="statistic-card__title">Total Products</span>
+                                <span class="statistic-card__value">1,200</span>
+                                <span class="statistic-card__period">Full Time</span>
+                            </div>                            <div class="statistic-card">
+                                <i class="statistic-card__icon icon-inventory" aria-hidden="true"></i>
+                                <span class="statistic-card__title">Total Inventories</span>
+                                <span class="statistic-card__value">1,200</span>
+                                <span class="statistic-card__period">Full Time</span>
+                            </div>                            <div class="statistic-card">
+                                <i class="statistic-card__icon icon-stop_circle" aria-hidden="true"></i>
+                                <span class="statistic-card__title">Total Active Products</span>
+                                <span class="statistic-card__value">250</span>
+                                <span class="statistic-card__period">Full Time</span>
+                            </div>                    </div>
+                    <div class="charts">
+                        <canvas data-sells-chart></canvas>
+                        <canvas data-revenue-chart></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="js/dashboard.js"></script>
+    </body>
+</html>

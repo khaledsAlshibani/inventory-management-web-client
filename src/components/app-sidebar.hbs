@@ -1,0 +1,41 @@
+<aside class="app-sidebar">
+	<div class="app-sidebar__header">
+		<a href="#">
+			<img src="{{logo}}" alt="{{logoAlt}}" class="app-sidebar__logo" />
+		</a>
+		<i
+			class="app-sidebar__toggler icon-app-sidebar"
+			role="button"
+			aria-label="Toggle app-sidebar"
+		></i>
+	</div>
+
+	<nav class="app-sidebar__nav">
+		<ul class="app-sidebar__nav-menu">
+			{{#each navLinks}}
+				<li>
+					<a class="app-sidebar__nav-item" href="{{this.link}}">
+						<i
+							class="app-sidebar__nav-item-icon icon-{{this.icon}}"
+							aria-hidden="true"
+						></i>
+						{{this.label}}
+					</a>
+				</li>
+			{{/each}}
+		</ul>
+		<ul class="app-sidebar__nav-menu app-sidebar__nav-menu--secondary">
+			{{#each secondaryNavLinks}}
+				<li>
+					<a class="app-sidebar__nav-item" href="{{this.link}}">
+						<i
+							class="app-sidebar__nav-item-icon icon-{{this.icon}}"
+							aria-hidden="true"
+						></i>
+						{{this.label}}
+					</a>
+				</li>
+			{{/each}}
+		</ul>
+	</nav>
+</aside>

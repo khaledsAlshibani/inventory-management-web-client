@@ -1,0 +1,23 @@
+.search-field {
+	padding-top: var(--input-padding-block);
+	padding-bottom: var(--input-padding-block);
+	padding-right: var(--input-padding-inline);
+	padding-left: calc(var(--input-padding-inline) + 30px);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+
+	&__wrapper {
+		--input-padding-block: 10px;
+		--input-padding-inline: 15px;
+
+		position: relative;
+	}
+
+	&__icon {
+		position: absolute;
+		top: 50%;
+		left: var(--input-padding-inline);
+		transform: translateY(-50%);
+		font-size: var(--font-4);
+	}
+}

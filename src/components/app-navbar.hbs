@@ -1,0 +1,24 @@
+<section class="app-navbar">
+    <div class="container container--page">
+        <div class="app-navbar__content">
+            <div class="app-navbar__section">
+                <h1 class="app-navbar__title">{{title}}</h1>
+            </div>
+            <div class="app-navbar__section">
+                {{> search-field
+                    searchId = this.searchId
+                    searchName = this.searchName
+                    searchValue = this.searchValue
+                    searchPlaceholder = this.searchPlaceholder
+                    searchClass = this.searchClass
+                }}
+                
+                <i class="app-navbar__icon icon-plus" role="button" aria-label="Choose What to add"></i>
+
+                <div class="app-navbar__user-photo-wrapper">
+                    <img src="assets/images/default-user.png" alt="User profile photo" class="app-navbar__user-photo" />
+                </div>
+            </div>
+        </div>
+	</div>
+</section>

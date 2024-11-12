@@ -1,0 +1,42 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{title}}</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+
+    <body>
+        <main class="page page--hasSidebar">
+            {{> app-sidebar
+                logo=logo
+                logoAlt=logoAlt
+                navLinks=navLinks
+            }}
+            
+            <div class="page__content">
+				{{> app-navbar
+					title=navTitle
+					searchId=navSearchId
+					searchName=navSearchName
+					searchValue=navSearchValue
+					searchPlaceholder=navSearchPlaceholder
+					searchClass=navSearchClass
+					userPhoto=navUserPhoto
+					userPhotoAlt=navUserPhotoAlt
+				}}
+                <div class="container container--page container--page-padding container--hasSidebar">
+                    {{> listing
+						title=listingTitle
+						count=listingCount
+						cards=listingCards
+					}}
+                    {{> statistics-sidebar
+						title=statsSidebarTitle
+						items=statsSidebarItems
+					}}
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

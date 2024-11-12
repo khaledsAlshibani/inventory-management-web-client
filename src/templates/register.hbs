@@ -18,12 +18,12 @@
           <p class="login-page__form-description">{{formDescription}}</p>
         </div>
 
-        <form action="#" class="form form--login">
+        <form action="../dashboard.html" class="form form--login">
           <div class="form__controls">
             {{#each inputFields}}
                 {{> input 
-                  id=this.id
-                  name=this.name
+                  id=this.this.id
+                  name=this.this.name
                   type=this.type
                   placeholder=this.placeholder
                   label=this.label
@@ -31,23 +31,23 @@
                 }}
             {{/each}}
           </div>
-          <p class="login-page__form-resetPassword"><a href="#">{{forgetPassword}}</a></p>
+          <a class="login-page__form-resetPassword" href="#">{{forgetPassword}}</a>
           {{#each buttons}}
               {{> button 
                 label=this.label
                 type=this.type
                 iconName=this.iconName
-                variant=variant
-                size=size
-                disabled=disabled
-                class=class
-                fullWidth=fullWidth
+                variant=this.variant
+                size=this.size
+                disabled=this.disabled
+                class=this.class
+                fullWidth=this.fullWidth
               }}
           {{/each}}
         </form>
 
         <div class="login-page__form-footer">
-          <p class="login-page__form-footer-message">{{loginMessage}} <a href="#">{{login}}</a></p>
+          <p class="login-page__form-footer-message">{{loginMessage}} <a href="{{loginLink}}">{{login}}</a></p>
         </div>
       </div>
     </div>

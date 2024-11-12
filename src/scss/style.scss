@@ -1,42 +1,82 @@
-@use 'variables.scss';
-@use 'icomoon.scss';
-@use 'fontface.scss';
-@use 'components/components.scss';
-@use 'pages/pages.scss';
-@use 'reset.scss';
+@use "variables.scss";
+@use "icomoon.scss";
+@use "fontface.scss";
+@use "components/components.scss";
+@use "pages/pages.scss";
+@use "reset.scss";
 
 * {
-    margin: 0;
-    padding: 0;
-    outline: transparent;
-    border: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+	margin: 0;
+	padding: 0;
+	outline: transparent;
+	border: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
-html, body {
-    overflow-x: hidden;
+html,
+body {
+	overflow-x: hidden;
 }
 
 body {
-    background-color: var(--bg-color);
-    font-family: var(--font);
-    font-size: var(--font-3);
-    color: var(--text-color);
-    min-height: 100vh;
+	background-color: var(--bg-color);
+	font-family: var(--font);
+	font-size: var(--font-3);
+	color: var(--text-color);
+	min-height: 100vh;
 }
 
 .container {
-    max-width: 1024px;
-    width: 95%;
-    margin: 0 auto;
+	max-width: 1024px;
+	width: 95%;
+	margin: 0 auto;
 
-    &--wide {
-        max-width: unset;
-    }
+	&--page {
+		width: 100%;
+		$padding: 30px;
+		max-width: unset;
+		padding-right: $padding;
+		padding-left: $padding;
 
-    &--center {
-        display: grid;
-        place-items: center;
-    }
+		&-padding {
+			padding-top: calc($padding * 2);
+			padding-bottom: calc($padding * 2);
+		}
+	}
+
+	&--center {
+		display: grid;
+		place-items: center;
+	}
+
+	&--hasSidebar {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 15%;
+
+		& > :first-child {
+			grid-column: span 2;
+		}
+	}
+}
+
+.sr-only {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+}
+
+.grid {
+	display: grid;
+	gap: 30px;
+}
+.cols-4 {
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }

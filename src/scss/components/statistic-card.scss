@@ -1,0 +1,35 @@
+.statistic-card {
+	padding: 20px 30px;
+	background-color: var(--bg-color-secondary);
+	border-radius: var(--border-radius);
+	border: 1px solid var(--border-color);
+	transition: all .32s ease-in-out;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	transition: all .3s ease-in-out;
+
+	&:hover {
+		background-color: var(--bg-color);
+	}
+	
+	&__icon {
+		font-size: var(--font-6);
+		margin-bottom: 20px;
+	}
+
+	&__title {
+		font-size: var(--font-4);
+	}
+
+	&__value {
+		font-weight: 400;
+		font-size: var(--font-7);
+	}
+
+	&__period {
+		font-size: var(--font-2);
+		font-weight: 600;
+		color: var(--gray-500);
+	}
+}
