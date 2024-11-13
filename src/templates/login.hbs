@@ -18,7 +18,7 @@
           <p class="login-page__form-description">{{formDescription}}</p>
         </div>
 
-        <form action="dashboard.html" class="form form--login" data-login-form>
+        <form method="post" class="form form--login" data-login-form>
           <div class="form__controls">
             {{#each inputFields}}
               {{> input 
@@ -32,6 +32,7 @@
             {{/each}}
           </div>
           <a class="login-page__form-resetPassword" href="#">{{forgetPassword}}</a>
+          <p id="error-message"></p>
           {{#each buttons}}
             {{> button 
               label=this.label
@@ -53,6 +54,8 @@
     </div>
   </main>
 
+  <script src="js/views/login.mjs" type="module"></script>
+  <script src="js/index.mjs" type="module"></script>
 </body>
 
 </html>

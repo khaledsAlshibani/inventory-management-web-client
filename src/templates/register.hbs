@@ -18,7 +18,7 @@
           <p class="login-page__form-description">{{formDescription}}</p>
         </div>
 
-        <form action="dashboard.html" class="form form--login">
+        <form method="post" class="form form--login" data-register-form>
           <div class="form__controls">
             {{#each inputFields}}
                 {{> input 
@@ -52,6 +52,9 @@
       </div>
     </div>
   </main>
+
+  <script src="js/views/register.mjs" type="module"></script>
+  <script src="js/index.mjs" type="module"></script>
 </body>
 
 </html>

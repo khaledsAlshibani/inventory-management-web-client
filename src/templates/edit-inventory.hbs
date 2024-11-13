@@ -1,0 +1,32 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{title}}</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+
+    <body>
+        <main class="page page--hasSidebar">
+            {{> app-sidebar
+                logo=logo
+                logoAlt=logoAlt
+                navLinks=navLinks
+            }}
+            
+            <div class="page__content">
+                <section class="page__section">
+                    <h2 class="page__section-title">Edit Inventory</h2>
+                    <form action="" class="page__form">
+                        {{> input
+                            label=""
+                        }}
+                    </form>
+                </section>
+            </div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </body>
+</html>

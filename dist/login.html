@@ -18,7 +18,7 @@
           <p class="login-page__form-description">Create your free account to effortlessly manage all your inventories in one place.</p>
         </div>
 
-        <form action="dashboard.html" class="form form--login" data-login-form>
+        <form method="post" class="form form--login" data-login-form>
           <div class="form__controls">
               <div class="input__wrapper">
                 <input
@@ -44,6 +44,7 @@
                   <label for="password" class="input__label ">Password</label>
               </div>          </div>
           <a class="login-page__form-resetPassword" href="#">Forgot your password?</a>
+          <p id="error-message"></p>
               <button
                 type="submit"
                 class="button button--primary button--large   button--fullWidth"
@@ -61,6 +62,8 @@
     </div>
   </main>
 
+  <script src="js/views/login.mjs" type="module"></script>
+  <script src="js/index.mjs" type="module"></script>
 </body>
 
 </html>

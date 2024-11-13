@@ -9,6 +9,16 @@
 	padding: 40px 0;
 	overflow-y: auto;
 
+	/* @media screen and (max-width: 1024px) {
+		& {
+			display: none;
+		}
+	} */
+
+	&--visible {
+		display: block;
+	}
+
 	&__header {
 		width: 100%;
 		display: flex;

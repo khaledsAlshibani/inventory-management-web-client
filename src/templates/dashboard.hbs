@@ -16,16 +16,16 @@
             }}
             
             <div class="page__content">
-					{{> app-navbar
-						title=navTitle
-						searchId=navSearchId
-						searchName=navSearchName
-						searchValue=navSearchValue
-						searchPlaceholder=navSearchPlaceholder
-						searchClass=navSearchClass
-						userPhoto=navUserPhoto
-						userPhotoAlt=navUserPhotoAlt
-					}}
+                {{> app-navbar
+                    title=navTitle
+                    searchId=navSearchId
+                    searchName=navSearchName
+                    searchValue=navSearchValue
+                    searchPlaceholder=navSearchPlaceholder
+                    searchClass=navSearchClass
+                    userPhoto=navUserPhoto
+                    userPhotoAlt=navUserPhotoAlt
+                }}
                 <div class="container container--page container--page-padding">
                     <div class="grid cols-4">
                         {{#each statistics}}
@@ -45,6 +45,7 @@
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="js/dashboard.js"></script>
+        <script src="js/index.mjs" type="module"></script>
+        <script src="js/views/dashboard.mjs" type="module"></script>
     </body>
 </html>
