@@ -11,7 +11,7 @@
     "inputFields": [
         {
             "id": "fullName",
-            "name": "fullName",
+            "name": "name",
             "type": "text",
             "placeholder": "",
             "label": "Full Name",

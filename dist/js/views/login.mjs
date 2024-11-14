@@ -2,11 +2,12 @@ import { loginUser } from '../api/auth.mjs';
 import { setToken } from '../utils/storage.mjs';
 import { redirectToDashboard } from '../utils/redirect.mjs';
 
-const errorMessageElement = document.querySelector('#error-message');
 
 document.querySelector('[data-login-form]').addEventListener('submit', async function (event) {
     event.preventDefault();
-
+    
+    const errorMessageElement = document.querySelector('#error-message');
+    
     const formData = new FormData(event.target);
     const credentials = {};
     formData.forEach((value, key) => {

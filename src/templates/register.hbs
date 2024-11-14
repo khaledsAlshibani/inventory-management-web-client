@@ -13,7 +13,7 @@
     <div class="container container--center">
       <div class="login-page__form">
         <div class="login-page__form-header">
-          <img src="{{logo}}" alt="{{logoAlt}}" class="login-page__form-logo">
+          <a href="index.html"><img src="{{logo}}" alt="{{logoAlt}}" class="login-page__form-logo"></a>
           <h2 class="login-page__form-title">{{formTitle}}</h2>
           <p class="login-page__form-description">{{formDescription}}</p>
         </div>
@@ -21,28 +21,29 @@
         <form method="post" class="form form--login" data-register-form>
           <div class="form__controls">
             {{#each inputFields}}
-                {{> input 
-                  id=this.this.id
-                  name=this.this.name
-                  type=this.type
-                  placeholder=this.placeholder
-                  label=this.label
-                  hideLabel=this.hideLabel
-                }}
+              {{> input 
+                id=this.id
+                name=this.name
+                type=this.type
+                placeholder=this.placeholder
+                label=this.label
+                hideLabel=this.hideLabel
+              }}
             {{/each}}
           </div>
           <a class="login-page__form-resetPassword" href="#">{{forgetPassword}}</a>
+          <p id="error-message"></p>
           {{#each buttons}}
-              {{> button 
-                label=this.label
-                type=this.type
-                iconName=this.iconName
-                variant=this.variant
-                size=this.size
-                disabled=this.disabled
-                class=this.class
-                fullWidth=this.fullWidth
-              }}
+            {{> button 
+              label=this.label
+              type=this.type
+              iconName=this.iconName
+              variant=this.variant
+              size=this.size
+              disabled=this.disabled
+              class=this.class
+              fullWidth=this.fullWidth
+            }}
           {{/each}}
         </form>
 

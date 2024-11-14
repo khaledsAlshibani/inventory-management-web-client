@@ -13,7 +13,7 @@ export async function loginUser(credentials) {
 
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.message || 'Login failed');
+            throw new Error(errorData.message || 'Login Failed!');
         }
 
         return await response.json(); 
@@ -23,19 +23,24 @@ export async function loginUser(credentials) {
     }
 }
 
-export async function registerUser(userData) {
-    const response = await fetch(API_REGISTER, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-    });
+export async function registerUser(credentials) {
+    try {
+        const response = await fetch(API_REGISTER, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+        });
 
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Registration failed');
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Register Failed!');
+        }
+
+        return await response.json(); 
+    } catch (error) {
+        console.error('Register error:', error);
+        throw error;
     }
-
-    return await response.json();
 }

@@ -13,67 +13,68 @@
     <div class="container container--center">
       <div class="login-page__form">
         <div class="login-page__form-header">
-          <img src="assets/images/logo.png" alt="Inventory Management System" class="login-page__form-logo">
+          <a href="index.html"><img src="assets/images/logo.png" alt="Inventory Management System" class="login-page__form-logo"></a>
           <h2 class="login-page__form-title">Create Account</h2>
           <p class="login-page__form-description">Create your free account to effortlessly manage all your inventories in one place.</p>
         </div>
 
         <form method="post" class="form form--login" data-register-form>
           <div class="form__controls">
-                <div class="input__wrapper">
-                  <input
-                    id="fullName"
-                    name="fullName"
-                    type="text"
-                    value=""
-                    placeholder=""
-                    class="input "
-                    required="true"
-                  />
-                    <label for="fullName" class="input__label ">Full Name</label>
-                </div>                <div class="input__wrapper">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value=""
-                    placeholder=""
-                    class="input "
-                    required="true"
-                  />
-                    <label for="email" class="input__label ">Email</label>
-                </div>                <div class="input__wrapper">
-                  <input
-                    id="username"
-                    name="username"
-                    type="text"
-                    value=""
-                    placeholder=""
-                    class="input "
-                    required="true"
-                  />
-                    <label for="username" class="input__label ">Username</label>
-                </div>                <div class="input__wrapper">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    value=""
-                    placeholder=""
-                    class="input "
-                    required="true"
-                  />
-                    <label for="password" class="input__label ">Password</label>
-                </div>          </div>
+              <div class="input__wrapper">
+                <input
+                  id="fullName"
+                  name="name"
+                  type="text"
+                  value=""
+                  placeholder=""
+                  class="input "
+                  required="true"
+                />
+                  <label for="fullName" class="input__label ">Full Name</label>
+              </div>              <div class="input__wrapper">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value=""
+                  placeholder=""
+                  class="input "
+                  required="true"
+                />
+                  <label for="email" class="input__label ">Email</label>
+              </div>              <div class="input__wrapper">
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  value=""
+                  placeholder=""
+                  class="input "
+                  required="true"
+                />
+                  <label for="username" class="input__label ">Username</label>
+              </div>              <div class="input__wrapper">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  value=""
+                  placeholder=""
+                  class="input "
+                  required="true"
+                />
+                  <label for="password" class="input__label ">Password</label>
+              </div>          </div>
           <a class="login-page__form-resetPassword" href="#">Forgot your password?</a>
-                <button
-                  type="submit"
-                  class="button button--primary button--large   button--fullWidth"
-                  
-                >
-                    <i class="button__icon icon-user-plus"></i>
-                  <span class="button__label">Register</span>
-                </button>
+          <p id="error-message"></p>
+              <button
+                type="submit"
+                class="button button--primary button--large   button--fullWidth"
+                
+              >
+                  <i class="button__icon icon-user-plus"></i>
+                <span class="button__label">Register</span>
+              </button>
         </form>
 
         <div class="login-page__form-footer">
