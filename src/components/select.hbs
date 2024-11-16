@@ -1,0 +1,16 @@
+{{!-- selectComponent.hbs --}}
+<div class="select__wrapper">
+  {{#if label}}
+    <label for="{{id}}" class="select__label {{#if hideLabel}}sr-only{{/if}}">{{label}}</label>
+  {{/if}}
+  <select
+    id="{{id}}"
+    name="{{name}}"
+    class="select {{class}}"
+    required="{{required}}"
+  >
+    {{#each options}}
+      <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+    {{/each}}
+  </select>
+</div>

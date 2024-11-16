@@ -1,0 +1,14 @@
+<div class="number-input__wrapper">
+  {{#if label}}
+    <label for="{{id}}" class="number-input__label {{#if hideLabel}}sr-only{{/if}}">{{label}}</label>
+  {{/if}}
+  <input
+    id="{{id}}"
+    name="{{name}}"
+    type="number"
+    step="{{step}}"
+    placeholder="{{placeholder}}"
+    class="number-input {{class}}"
+    required="{{required}}"
+  />
+</div>

@@ -111,6 +111,91 @@
 				        </div>
 					</div>
 				</section>                <div class="container container--page container--page-padding container--hasSidebar">
+                    <form method="post" data-add-inventory>
+                            <div class="input__wrapper">
+                            	<input
+                            		id="inventoryName"
+                            		name="name"
+                            		type="text"
+                            		value=""
+                            		placeholder=" "
+                            		class="input "
+                            		required="true"
+                            	/>
+                            	<label for="inventoryName" class="input__label">Inventory Name</label>
+                            </div>                                                    <div class="textarea__wrapper">
+                                <label for="description" class="textarea__label ">Description</label>
+                              <textarea
+                                id="description"
+                                name="description"
+                                placeholder=""
+                                class="textarea "
+                                required="false"
+                              ></textarea>
+                            </div>
+                            <div class="select__wrapper">
+                                <label for="status" class="select__label ">Status</label>
+                              <select
+                                id="status"
+                                name="status"
+                                class="select "
+                                required="true"
+                              >
+                                  <option value="ACTIVE" >Active</option>
+                                  <option value="INACTIVE" >Inactive</option>
+                              </select>
+                            </div>
+                            <div class="select__wrapper">
+                                <label for="inventoryType" class="select__label ">Inventory Type</label>
+                              <select
+                                id="inventoryType"
+                                name="inventoryType"
+                                class="select "
+                                required="true"
+                              >
+                                  <option value="WAREHOUSE" >Warehouse</option>
+                                  <option value="STORE" >Store</option>
+                                  <option value="ONLINE" >Online</option>
+                              </select>
+                            </div>
+                            <div class="input__wrapper">
+                            	<input
+                            		id="address"
+                            		name="address"
+                            		type="text"
+                            		value=""
+                            		placeholder=" "
+                            		class="input "
+                            		required="false"
+                            	/>
+                            	<label for="address" class="input__label">Address</label>
+                            </div>                                                    <div class="number-input__wrapper">
+                                <label for="area" class="number-input__label ">Total Area</label>
+                              <input
+                                id="area"
+                                name="area"
+                                type="number"
+                                step="0.01"
+                                placeholder=""
+                                class="number-input "
+                                required="false"
+                              />
+                            </div>
+                            <div class="number-input__wrapper">
+                                <label for="availableArea" class="number-input__label ">Available Area</label>
+                              <input
+                                id="availableArea"
+                                name="availableArea"
+                                type="number"
+                                step="0.01"
+                                placeholder=""
+                                class="number-input "
+                                required="false"
+                              />
+                            </div>
+    <button type="submit">Add Inventory</button>
+                    </form>
+                    
                     <section class="listing">
                         <header class="listing__header">
                             <h2 class="listing__header-title">Your Inventories</h2>
@@ -267,5 +352,9 @@
                     </aside>                </div>
             </div>
         </main>
+
+        
+        <script src="js/views/inventory.mjs" type="module"></script>
+        <script src="js/index.mjs" type="module"></script>
     </body>
 </html>

@@ -27,6 +27,21 @@
 					userPhotoAlt=navUserPhotoAlt
 				}}
                 <div class="container container--page container--page-padding container--hasSidebar">
+                    <form method="post" data-add-inventory>
+                    {{#each inputFields}}
+                        {{#if (eq type "textarea")}}
+                            {{> textarea this}}
+                        {{else if (eq type "select")}}
+                            {{> select this}}
+                        {{else if (eq type "number")}}
+                            {{> number-input this}}
+                        {{else}}
+                            {{> input this}}
+                        {{/if}}
+                    {{/each}}
+    <button type="submit">Add Inventory</button>
+                    </form>
+                    
                     {{> listing
 						title=listingTitle
 						count=listingCount
@@ -39,5 +54,9 @@
                 </div>
             </div>
         </main>
+
+        
+        <script src="js/views/inventory.mjs" type="module"></script>
+        <script src="js/index.mjs" type="module"></script>
     </body>
 </html>

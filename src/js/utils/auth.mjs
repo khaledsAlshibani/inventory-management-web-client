@@ -1,4 +1,4 @@
-import { removeToken, getToken } from './storage.mjs';
+import { removeUserInfo, getToken } from './storage.mjs';
 import { redirectToLogin, redirectToDashboard } from './redirect.mjs';
 
 export function isUserLoggedIn() {
@@ -7,7 +7,7 @@ export function isUserLoggedIn() {
 
 export function logout() {
     if (isUserLoggedIn()) {
-        removeToken();
+        removeUserInfo();
         redirectToLogin();
         console.log('Logout successful');
     } else {

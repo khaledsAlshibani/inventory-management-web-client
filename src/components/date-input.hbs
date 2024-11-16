@@ -1,0 +1,14 @@
+<div class="datetime__wrapper">
+  {{#if label}}
+    <label for="{{id}}" class="datetime__label {{#if hideLabel}}sr-only{{/if}}">{{label}}</label>
+  {{/if}}
+  <input
+    id="{{id}}"
+    name="{{name}}"
+    type="datetime-local"
+    value="{{value}}"
+    placeholder="{{placeholder}}"
+    class="datetime {{class}}"
+    required="{{required}}"
+  />
+</div>

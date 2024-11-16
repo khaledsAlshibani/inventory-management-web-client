@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars');
+const helpers = require('handlebars-helpers')();
 const sass = require('sass');
 
 const rootDir = path.resolve(__dirname, '..');

@@ -1,3 +1,4 @@
+import { getToken } from '../utils/storage.mjs';
 import { API_LOGIN } from './api-config.mjs';
 import { API_REGISTER } from './api-config.mjs';
 
@@ -16,7 +17,7 @@ export async function loginUser(credentials) {
             throw new Error(errorData.message || 'Login Failed!');
         }
 
-        return await response.json(); 
+        return await response.json();
     } catch (error) {
         console.error('Login error:', error);
         throw error;
@@ -38,9 +39,32 @@ export async function registerUser(credentials) {
             throw new Error(errorData.message || 'Register Failed!');
         }
 
-        return await response.json(); 
+        return await response.json();
     } catch (error) {
         console.error('Register error:', error);
         throw error;
+    }
+}
+
+export async function fetchWithAuth(url, options = {}) {
+    const token = getToken();
+
+    if (token) {
+        options.headers = {
+            ...options.headers,
+            'Authorization': `Bearer ${token}`
+        };
+    }
+
+    try {
+        const response = await fetch(url, options);
+
+        console.log('Response Status:', response.status);
+        console.log('Response Headers:', Array.from(response.headers.entries()));
+
+        return response; 
+    } catch (error) {
+        console.error('Fetch error:', error);
+        throw error; 
     }
 }
