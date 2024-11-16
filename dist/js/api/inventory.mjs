@@ -71,11 +71,21 @@ export async function deleteInventory(id) {
     const response = await fetchWithAuth(`${API_INVENTORIES}/${id}`, {
         method: 'DELETE',
     });
+    
+    console.log(`response.status = ${response.status}`);
 
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to delete inventory.');
+    if (response.status === 200 || response.status === 204) {
+        return;
     }
 
-    return response.json();
+    if (!response.ok) {
+        let errorMessage = 'Failed to delete inventory.';
+        try {
+            const errorData = await response.json();
+            errorMessage = errorData.message || errorMessage;
+        } catch (e) {
+            console.error('Error parsing response JSON:', e);
+        }
+        throw new Error(errorMessage);
+    }
 }

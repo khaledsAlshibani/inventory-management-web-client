@@ -5,3 +5,7 @@ export function redirectToDashboard() {
 export function redirectToLogin() {
     window.location.href = '/login.html';
 }
+
+export function redirectToInventories() {
+    window.location.href = '/inventory-listing.html';
+}
