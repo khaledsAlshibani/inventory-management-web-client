@@ -1,7 +1,6 @@
 import { hasLocalStorageItem, hasQuerySelector } from './error-handler.mjs'
 
 export function displayUserName(elementSelector = '[data-display-user-name]') {
-    console.log('displayUserName called');
     if (hasLocalStorageItem('userName') && hasQuerySelector(elementSelector)) {
         const userName = localStorage.getItem('userName');
         if (userName) {
@@ -18,10 +17,8 @@ export function displayUserName(elementSelector = '[data-display-user-name]') {
 }
 
 export function displayUserEmail(elementSelector = '[data-display-user-email]') {
-    console.log(`hasLocalStorageItem('userEmail'): ${hasLocalStorageItem('userEmail')}`);
     if (hasLocalStorageItem('userEmail') && hasQuerySelector(elementSelector)) {
         const userEmail = localStorage.getItem('userEmail');
-        console.log(`userEmail from localStorage: ${userEmail}`);
         if (userEmail) {
             const element = document.querySelector(elementSelector);
             if (element) {

@@ -1,4 +1,4 @@
-import { addInventory, getInventories } from '../api/inventory.mjs';
+import { addInventory } from '../api/inventory.mjs';
 
 function handleAddInventory() {
     const form = document.querySelector('[data-add-inventory]');
@@ -29,7 +29,13 @@ function handleAddInventory() {
 async function renderInventories() {
     const listingContainer = document.querySelector('[data-inventory-listing]');
     try {
-        const inventories = await getInventories();
+        const inventories = await getUserInventories();
+
+        if (!inventories || inventories.length === 0) {
+            listingContainer.innerHTML = `<p class="error">No inventories found for this user.</p>`;
+            return;
+        }
+
         const inventoryHtml = inventories
             .map((inventory) => {
                 return `
@@ -41,8 +47,7 @@ async function renderInventories() {
                             <div class="listing-card__badges">
                                 ${inventory.status === 'ACTIVE'
                         ? `<span class="badge badge--success">Active</span>`
-                        : `<span class="badge badge--danger">Inactive</span>`
-                    }
+                        : `<span class="badge badge--danger">Inactive</span>`}
                             </div>
                         </div>
                         <div class="listing-card__section">
@@ -64,18 +69,16 @@ async function renderInventories() {
 
 function navigateToInventoryPage() {
     const cards = document.querySelectorAll('[data-inventory-id]');
-    console.log('cards:', cards);
     cards.forEach((card) => {
-        console.log('card:', card);
         card.addEventListener('click', (event) => {
             const inventoryId = card.getAttribute('data-inventory-id');
-            console.log(`card clicked: /inventory.html?id=${inventoryId}`);
             window.location.href = `/inventory.html?id=${inventoryId}`;
         });
     });
 }
 
 import { getInventoryById } from '../api/inventory.mjs';
+import { getUserInventories } from '../api/user.mjs';
 
 async function renderSingleInventory() {
     const inventoryContainer = document.querySelector('[data-single-inventory]');
@@ -95,36 +98,85 @@ async function renderSingleInventory() {
 
     try {
         const inventory = await getInventoryById(inventoryId);
+
         inventoryContainer.innerHTML = `
-            <div class="inventory-details">
-                <h1>${inventory.name}</h1>
-                <p><strong>Address:</strong> ${inventory.address || 'N/A'}</p>
-                <p><strong>Status:</strong> ${inventory.status}</p>
-                <p><strong>Type:</strong> ${inventory.inventoryType || 'N/A'}</p>
-                <p><strong>Area:</strong> ${inventory.area || 'N/A'} m²</p>
-                <p><strong>Available Area:</strong> ${inventory.availableArea || 'N/A'} m²</p>
-                <p><strong>Created At:</strong> ${new Date(inventory.createdAt).toLocaleString()}</p>
-                <p><strong>Updated At:</strong> ${inventory.updatedAt ? new Date(inventory.updatedAt).toLocaleString() : 'N/A'}</p>
-                <h2>Products (${inventory.products?.length || 0}):</h2>
-                <ul>
-                    ${inventory.products?.length
-                ? inventory.products
-                    .map(
-                        (product) => `
-                                        <li>
-                                            <strong>${product.name}</strong> - ${product.description || 'No description'}
-                                            <br />
-                                            Quantity: ${product.quantity || 0}
-                                            <br />
-                                            Price: ${product.price ? `$${product.price.toFixed(2)}` : 'N/A'}
-                                        </li>
-                                    `
-                    )
-                    .join('')
-                : '<li>No products available</li>'}
-                </ul>
-            </div>
+            <form class="inventory-form" data-inventory-id="${inventoryId}">
+                <div class="inventory-details">
+                    <label>
+                        <strong>Name:</strong>
+                        <input type="text" name="name" value="${inventory.name || ''}" />
+                    </label>
+                    <label>
+                        <strong>Address:</strong>
+                        <textarea name="address">${inventory.address || ''}</textarea>
+                    </label>
+                    <label>
+                        <strong>Status:</strong>
+                        <select name="status">
+                            <option value="ACTIVE" ${inventory.status === 'ACTIVE' ? 'selected' : ''}>Active</option>
+                            <option value="INACTIVE" ${inventory.status === 'INACTIVE' ? 'selected' : ''}>Inactive</option>
+                        </select>
+                    </label>
+                    <label>
+                        <strong>Type:</strong>
+                        <select name="inventoryType">
+                            <option value="WAREHOUSE" ${inventory.inventoryType === 'WAREHOUSE' ? 'selected' : ''}>Warehouse</option>
+                            <option value="STORE" ${inventory.inventoryType === 'STORE' ? 'selected' : ''}>Store</option>
+                            <option value="ONLINE" ${inventory.inventoryType === 'ONLINE' ? 'selected' : ''}>Online</option>
+                        </select>
+                    </label>
+                    <label>
+                        <strong>Area:</strong>
+                        <input type="number" step="0.01" name="area" value="${inventory.area || 0}" />
+                    </label>
+                    <label>
+                        <strong>Available Area:</strong>
+                        <input type="number" step="0.01" name="availableArea" value="${inventory.availableArea || 0}" />
+                    </label>
+                    <p><strong>Created At:</strong> ${new Date(inventory.createdAt).toLocaleString()}</p>
+                    <p><strong>Updated At:</strong> ${inventory.updatedAt ? new Date(inventory.updatedAt).toLocaleString() : 'N/A'}</p>
+                </div>
+                <div class="inventory-actions">
+                    <button type="button" class="btn btn--update">Update</button>
+                    <button type="button" class="btn btn--delete">Delete</button>
+                </div>
+            </form>
         `;
+
+        const form = inventoryContainer.querySelector('.inventory-form');
+
+        // Handle the Update button click
+        form.querySelector('.btn--update').addEventListener('click', async () => {
+            const formData = new FormData(form);
+            const updatedData = {};
+
+            formData.forEach((value, key) => {
+                updatedData[key] = value;
+            });
+
+            try {
+                const response = await updateInventory(inventoryId, updatedData);
+                console.log('Inventory updated:', response);
+                alert('Inventory updated successfully!');
+            } catch (error) {
+                console.error('Error updating inventory:', error);
+                alert('Failed to update inventory.');
+            }
+        });
+
+        // Handle the Delete button click
+        form.querySelector('.btn--delete').addEventListener('click', async () => {
+            if (confirm('Are you sure you want to delete this inventory?')) {
+                try {
+                    await deleteInventory(inventoryId);
+                    alert('Inventory deleted successfully!');
+                    window.location.href = '/inventories'; // Redirect to the listing page
+                } catch (error) {
+                    console.error('Error deleting inventory:', error);
+                    alert('Failed to delete inventory.');
+                }
+            }
+        });
     } catch (error) {
         console.error('Error fetching inventory:', error);
         inventoryContainer.innerHTML = `<p class="error">Failed to load inventory. Please try again later.</p>`;

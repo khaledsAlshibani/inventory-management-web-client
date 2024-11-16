@@ -49,3 +49,33 @@ export async function getInventoryById(inventoryId) {
 
     return response.json();
 }
+
+export async function updateInventory(id, updatedData) {
+    const response = await fetchWithAuth(`${API_INVENTORIES}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedData),
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to update inventory.');
+    }
+
+    return response.json();
+}
+
+export async function deleteInventory(id) {
+    const response = await fetchWithAuth(`${API_INVENTORIES}/${id}`, {
+        method: 'DELETE',
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to delete inventory.');
+    }
+
+    return response.json();
+}

@@ -59,9 +59,6 @@ export async function fetchWithAuth(url, options = {}) {
     try {
         const response = await fetch(url, options);
 
-        console.log('Response Status:', response.status);
-        console.log('Response Headers:', Array.from(response.headers.entries()));
-
         return response; 
     } catch (error) {
         console.error('Fetch error:', error);

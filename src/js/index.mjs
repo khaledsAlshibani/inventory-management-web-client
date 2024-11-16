@@ -1,5 +1,6 @@
 import { checkAccess, isUserLoggedIn, logout } from "./utils/auth.mjs";
 import { displayUserName, displayUserEmail } from "./utils/display-user-info.mjs";
+import { getUserInfo } from "./utils/storage.mjs";
 
 console.log("isUserLoggedIn:", isUserLoggedIn());
 
@@ -16,4 +17,5 @@ if (isUserLoggedIn()) {
     setupLogoutButton();
     displayUserName();
     displayUserEmail();
+    console.log(getUserInfo());
 }
