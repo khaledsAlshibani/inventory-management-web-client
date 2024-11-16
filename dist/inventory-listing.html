@@ -120,7 +120,7 @@
                             		value=""
                             		placeholder=" "
                             		class="input "
-                            		required="true"
+                            		data-required="true"
                             	/>
                             	<label for="inventoryName" class="input__label">Inventory Name</label>
                             </div>                                                    <div class="textarea__wrapper">
@@ -130,10 +130,9 @@
                                 name="description"
                                 placeholder=""
                                 class="textarea "
-                                required="false"
+                                data-required="false"
                               ></textarea>
-                            </div>
-                            <div class="select__wrapper">
+                            </div>                            <div class="select__wrapper">
                                 <label for="status" class="select__label ">Status</label>
                               <select
                                 id="status"
@@ -166,7 +165,7 @@
                             		value=""
                             		placeholder=" "
                             		class="input "
-                            		required="false"
+                            		data-required="false"
                             	/>
                             	<label for="address" class="input__label">Address</label>
                             </div>                                                    <div class="number-input__wrapper">
@@ -178,10 +177,9 @@
                                 step="0.01"
                                 placeholder=""
                                 class="number-input "
-                                required="false"
+                                data-required="true"
                               />
-                            </div>
-                            <div class="number-input__wrapper">
+                            </div>                            <div class="number-input__wrapper">
                                 <label for="availableArea" class="number-input__label ">Available Area</label>
                               <input
                                 id="availableArea"
@@ -190,85 +188,18 @@
                                 step="0.01"
                                 placeholder=""
                                 class="number-input "
-                                required="false"
+                                data-required="false"
                               />
-                            </div>
-    <button type="submit">Add Inventory</button>
+                            </div>    <button type="submit">Add Inventory</button>
                     </form>
                     
                     <section class="listing">
                         <header class="listing__header">
                             <h2 class="listing__header-title">Your Inventories</h2>
-                            <span class="listing__header-count">3</span>
                         </header>
                     
-                        <div class="listing__body">
-                                <div class="listing-card">
-                                    <div class="listing-card__section">
-                                        <h3 class="listing-card__title">My Inventory 1</h3>
-                                        <span class="listing-card__subtitle">Address: 123 Main St</span>
-                                        <p class="listing-card__description">30 products</p>
-                                        <div class="listing-card__badges">
-                                                <div class="badge badge--success ">
-                                                    <span class="badge__label">Active</span>
-                                                </div>                <div class="badge badge--warning ">
-                                                    <span class="badge__label">Full</span>
-                                                </div>        </div>
-                                    </div>
-                                    
-                                    <div class="listing-card__section">
-                                          <button
-                                            type=""
-                                            class="button button--standard button--small listing-card__button  "
-                                            
-                                          >
-                                              <i class="button__icon icon-edit-3"></i>
-                                            <span class="button__label">Edit</span>
-                                          </button>
-                                    </div>
-                                </div>            <div class="listing-card">
-                                    <div class="listing-card__section">
-                                        <h3 class="listing-card__title">My Inventory 2</h3>
-                                        <span class="listing-card__subtitle">Address: 456 Another St</span>
-                                        <p class="listing-card__description">15 products</p>
-                                        <div class="listing-card__badges">
-                                                <div class="badge badge--danger ">
-                                                    <span class="badge__label">Inactive</span>
-                                                </div>        </div>
-                                    </div>
-                                    
-                                    <div class="listing-card__section">
-                                          <button
-                                            type=""
-                                            class="button button--standard button--small listing-card__button  "
-                                            
-                                          >
-                                              <i class="button__icon icon-edit-3"></i>
-                                            <span class="button__label">Edit</span>
-                                          </button>
-                                    </div>
-                                </div>            <div class="listing-card">
-                                    <div class="listing-card__section">
-                                        <h3 class="listing-card__title">My Inventory 3</h3>
-                                        <span class="listing-card__subtitle">Address: 789 Different Rd</span>
-                                        <p class="listing-card__description">50 products</p>
-                                        <div class="listing-card__badges">
-                                                <div class="badge badge--success ">
-                                                    <span class="badge__label">Active</span>
-                                                </div>        </div>
-                                    </div>
-                                    
-                                    <div class="listing-card__section">
-                                          <button
-                                            type=""
-                                            class="button button--standard button--small listing-card__button  "
-                                            
-                                          >
-                                              <i class="button__icon icon-edit-3"></i>
-                                            <span class="button__label">Edit</span>
-                                          </button>
-                                    </div>
-                                </div>    </div>
+                        <div class="listing__body" data-inventory-listing="">
+                        </div>
                     </section>
                     <aside class="statistics-sidebar">
                     	<header class="statistics-sidebar__header">

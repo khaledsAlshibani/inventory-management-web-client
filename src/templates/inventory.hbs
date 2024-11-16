@@ -26,29 +26,10 @@
 					userPhoto=navUserPhoto
 					userPhotoAlt=navUserPhotoAlt
 				}}
-                <div class="container container--page container--page-padding container--hasSidebar">
-                    <form method="post" data-add-inventory>
-                    {{#each inputFields}}
-                        {{#if (eq type "textarea")}}
-                            {{> textarea this}}
-                        {{else if (eq type "select")}}
-                            {{> select this}}
-                        {{else if (eq type "number")}}
-                            {{> number-input this}}
-                        {{else}}
-                            {{> input this}}
-                        {{/if}}
-                    {{/each}}
-    <button type="submit">Add Inventory</button>
-                    </form>
-                    
+                <div class="container container--page container--page-padding">
                     {{> listing
 						title=listingTitle
 						dataAttribute=listingDataAttribute
-					}}
-                    {{> statistics-sidebar
-						title=statsSidebarTitle
-						items=statsSidebarItems
 					}}
                 </div>
             </div>

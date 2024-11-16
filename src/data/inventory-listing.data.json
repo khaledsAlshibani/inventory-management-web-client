@@ -41,48 +41,8 @@
     "navSearchName": "query",
     "navSearchValue": "",
     "navSearchPlaceholder": "Search...",
-    "navSearchClass": "navbar__search-field",
     "listingTitle": "Your Inventories",
-    "listingCards": [
-        {
-            "cardTitle": "My Inventory 1",
-            "cardSubtitle": "Address: 123 Main St",
-            "cardDescription": "30 products",
-            "badges": [
-                {
-                    "label": "Active",
-                    "variant": "success"
-                },
-                {
-                    "label": "Full",
-                    "variant": "warning"
-                }
-            ]
-        },
-        {
-            "cardTitle": "My Inventory 2",
-            "cardSubtitle": "Address: 456 Another St",
-            "cardDescription": "15 products",
-            "badges": [
-                {
-                    "label": "Inactive",
-                    "variant": "danger"
-                }
-            ]
-        },
-        {
-            "cardTitle": "My Inventory 3",
-            "cardSubtitle": "Address: 789 Different Rd",
-            "cardDescription": "50 products",
-            "badges": [
-                {
-                    "label": "Active",
-                    "variant": "success"
-                }
-            ]
-        }
-    ],
-    "listingCount": "3",
+    "listingDataAttribute": "data-inventory-listing",
     "statsSidebarItems": [
         {
             "heading": "Total Inventory Locations",
@@ -127,7 +87,6 @@
             "name": "name",
             "type": "text",
             "label": "Inventory Name",
-            "hideLabel": false,
             "required": true
         },
         {
@@ -135,7 +94,6 @@
             "name": "description",
             "type": "textarea",
             "label": "Description",
-            "hideLabel": false,
             "required": false
         },
         {
@@ -153,7 +111,6 @@
                 }
             ],
             "label": "Status",
-            "hideLabel": false,
             "required": true
         },
         {
@@ -175,7 +132,6 @@
                 }
             ],
             "label": "Inventory Type",
-            "hideLabel": false,
             "required": true
         },
         {
@@ -183,7 +139,6 @@
             "name": "address",
             "type": "text",
             "label": "Address",
-            "hideLabel": false,
             "required": false
         },
         {
@@ -192,8 +147,7 @@
             "type": "number",
             "step": "0.01",
             "label": "Total Area",
-            "hideLabel": false,
-            "required": false
+            "required": true
         },
         {
             "id": "availableArea",
@@ -201,7 +155,6 @@
             "type": "number",
             "step": "0.01",
             "label": "Available Area",
-            "hideLabel": false,
             "required": false
         }
     ]

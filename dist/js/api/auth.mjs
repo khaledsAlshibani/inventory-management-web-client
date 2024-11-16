@@ -56,30 +56,15 @@ export async function fetchWithAuth(url, options = {}) {
         };
     }
 
-    console.log('Request URL:', url);
-    console.log('Request Headers:', options.headers);
-    if (options.body) {
-        try {
-            const requestBody = JSON.parse(options.body); 
-            console.log('Request Body:', requestBody);
-        } catch (e) {
-            console.log('Request Body:', options.body);
-        }
-    }
-
     try {
         const response = await fetch(url, options);
 
-        console.log('Response Headers:', [...response.headers.entries()]);
         console.log('Response Status:', response.status);
+        console.log('Response Headers:', Array.from(response.headers.entries()));
 
-        const clonedResponse = response.clone();
-        const responseBody = await clonedResponse.json();
-        console.log('Response Body:', responseBody);
-
-        return response;
+        return response; 
     } catch (error) {
         console.error('Fetch error:', error);
-        throw error;
+        throw error; 
     }
 }

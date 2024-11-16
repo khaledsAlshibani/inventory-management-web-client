@@ -15,7 +15,6 @@
             "type": "email",
             "placeholder": "",
             "label": "Email",
-            "hideLabel": false,
             "required": true
         },
         {
@@ -24,7 +23,6 @@
             "type": "password",
             "placeholder": "",
             "label": "Password",
-            "hideLabel": false,
             "required": true
         }
     ],

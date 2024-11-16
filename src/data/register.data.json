@@ -15,7 +15,6 @@
             "type": "text",
             "placeholder": "",
             "label": "Full Name",
-            "hideLabel": false,
             "required": true
         },
         {
@@ -24,7 +23,6 @@
             "type": "email",
             "placeholder": "",
             "label": "Email",
-            "hideLabel": false,
             "required": true
         },
         {
@@ -33,7 +31,6 @@
             "type": "text",
             "placeholder": "",
             "label": "Username",
-            "hideLabel": false,
             "required": true
         },
         {
@@ -42,7 +39,6 @@
             "type": "password",
             "placeholder": "",
             "label": "Password",
-            "hideLabel": false,
             "required": true
         }
     ],

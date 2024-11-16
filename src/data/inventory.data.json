@@ -1,0 +1,46 @@
+{
+    "title": "Inventory Management - Inveit",
+    "navTitle": "Inventory Management",
+    "logo": "assets/images/full-logo.png",
+    "logoAlt": "Inveit",
+    "navLinks": [
+        {
+            "label": "Dashboard",
+            "link": "dashboard.html",
+            "icon": "dashboard"
+        },
+        {
+            "label": "Inventories Management",
+            "link": "inventory-listing.html",
+            "icon": "inventory"
+        },
+        {
+            "label": "Products Management",
+            "link": "product-listing.html",
+            "icon": "stop_circle"
+        }
+    ],
+    "secondaryNavLinks": [
+        {
+            "label": "FAQs",
+            "link": "#",
+            "icon": "help-circle"
+        },
+        {
+            "label": "Help & Center",
+            "link": "#",
+            "icon": "life-buoy"
+        },
+        {
+            "label": "Privacy Policy",
+            "link": "#",
+            "icon": "privacy_tip"
+        }
+    ],
+    "navSearchId": "navbarSearch",
+    "navSearchName": "query",
+    "navSearchValue": "",
+    "navSearchPlaceholder": "Search...",
+    "listingTitle": "Update Inventory",
+    "listingDataAttribute": "data-single-inventory"
+}

@@ -1,18 +1,12 @@
 <section class="listing">
     <header class="listing__header">
         <h2 class="listing__header-title">{{title}}</h2>
-        <span class="listing__header-count">{{count}}</span>
+        {{#if counter}}
+        <span class="listing__header-count">{{counter}}</span>
+        {{/if}}
     </header>
 
-    <div class="listing__body">
-        {{#each cards}}
-            {{> listing-card
-                title=this.cardTitle
-                subtitle=this.cardSubtitle
-                description=this.cardDescription
-                badges=this.badges
-                iconName="add"
-            }}
-        {{/each}}
+    <div class="listing__body" {{dataAttribute}}="">
+        {{!-- inventories will be dynamically created from js --}}
     </div>
 </section>
