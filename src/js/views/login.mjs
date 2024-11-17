@@ -1,4 +1,4 @@
-import { loginUser } from '../api/auth.mjs';
+import { loginUser } from '../api/user.mjs';
 import { setToken, setUserInfo } from '../utils/storage.mjs';
 import { redirectToDashboard } from '../utils/redirect.mjs';
 

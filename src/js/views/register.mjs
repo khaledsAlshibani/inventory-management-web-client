@@ -1,5 +1,5 @@
-import { registerUser } from '../api/auth.mjs';
-import { setToken } from '../utils/storage.mjs';
+import { registerUser } from '../api/user.mjs';
+import { setToken, setUserInfo } from '../utils/storage.mjs';
 import { redirectToDashboard } from '../utils/redirect.mjs';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,11 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
             credentials[key] = value;
         });
 
-        console.log("credentials ", credentials)
+        console.log("credentials ", credentials);
 
         try {
             const responseData = await registerUser(credentials);
+
+            // Store the token and user info
             setToken(responseData.token);
+            setUserInfo({
+                id: responseData.id,
+                name: responseData.name,
+                email: responseData.email
+            });
+
+            // Redirect to dashboard
             redirectToDashboard();
         } catch (error) {
             console.error('Register failed:', error.message);

@@ -6,6 +6,7 @@ export const API_BASE_URL = `http://localhost:8082/api/${API_VERSION}`;
 export const API_USERS = `${API_BASE_URL}/users`;
 export const API_LOGIN = `${API_USERS}/login`;
 export const API_REGISTER = `${API_USERS}`;
+export const API_PROFILE = `${API_USERS}/profile`;
 export const API_USER_PROFILE = (userId) => `${API_USERS}/${userId}`;
 export const API_UPDATE_PASSWORD = (userId) => `${API_USERS}/${userId}/password`;
 
