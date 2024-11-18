@@ -1,6 +1,7 @@
 import { API_PROFILE, API_USER_INVENTORIES } from './api-config.mjs';
 import { fetchWithAuth } from './auth.mjs'; import { API_LOGIN } from './api-config.mjs';
 import { API_REGISTER } from './api-config.mjs';
+import { setUserInfo } from '../utils/storage.mjs';
 
 export async function loginUser(credentials) {
     try {
@@ -78,27 +79,10 @@ export async function getUserProfile() {
 export async function updateUserProfile(updatedData, photoFile) {
     const formData = new FormData();
 
-    console.log('Received updatedData for FormData:', updatedData);
-    console.log('Received photoFile for FormData:', photoFile);
-
-    // Append user data as JSON blob
     formData.append('user', new Blob([JSON.stringify(updatedData)], { type: 'application/json' }));
 
-    // Append photo file if available
     if (photoFile) {
-        console.log('Appending photo file:', { name: photoFile.name, size: photoFile.size, type: photoFile.type });
         formData.append('photo', photoFile);
-    } else {
-        console.log('No photo file to append.');
-    }
-
-    console.log('Final FormData contents:');
-    for (const [key, value] of formData.entries()) {
-        if (value instanceof File) {
-            console.log(`${key}: File Name - ${value.name}, Size - ${value.size}, Type - ${value.type}`);
-        } else {
-            console.log(`${key}: ${value}`);
-        }
     }
 
     try {
@@ -116,6 +100,10 @@ export async function updateUserProfile(updatedData, photoFile) {
 
         const responseData = await response.json();
         console.log('API successful response:', responseData);
+
+        // Update local storage with new user info
+        setUserInfo(responseData);
+
         return responseData;
     } catch (error) {
         console.error('Error during API request:', error);

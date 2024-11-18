@@ -1729,7 +1729,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: calc(100% - 350px);
+  width: calc(100% - 400px);
 }
 @media screen and (max-width: 1024px) {
   .profile-form__inputs {
@@ -1741,10 +1741,11 @@
   gap: 20px;
 }
 .profile-form__photo {
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--primary-color);
+  padding: 2px;
   position: relative;
-  width: 250px;
-  height: 250px;
+  width: 230px;
+  height: 230px;
   border-radius: 50%;
   background-color: var(--bg-color-secondary);
 }
@@ -1769,17 +1770,17 @@
   font-size: var(--font-4);
   cursor: pointer;
   box-shadow: var(--shadow-gray);
+  border: 1px solid var(--white);
 }
 .profile-form__photo-wrapper {
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-color);
+  border: 1px solid var(--border-color-light);
   border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   padding: 25px;
-  width: 300px;
+  width: 350px;
 }
 @media screen and (max-width: 1024px) {
   .profile-form__photo-wrapper {

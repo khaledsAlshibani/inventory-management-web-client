@@ -8,7 +8,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-		width: calc(100% - 350px);
+		width: calc(100% - 400px);
 
         @media screen and (max-width: 1024px) {
             width: 100%;
@@ -21,8 +21,9 @@
 	}
 
 	&__photo {
-		$size: 250px;
-		border: 2px solid var(--border-color);
+		$size: 230px;
+		border: 2px solid var(--primary-color);
+		padding: 2px;
 		position: relative;
 		width: $size;
 		height: $size;
@@ -52,18 +53,18 @@
 			font-size: var(--font-4);
 			cursor: pointer;
 			box-shadow: var(--shadow-gray);
+			border: 1px solid var(--white);
 		}
 
 		&-wrapper {
-			border: 1px solid var(--border-color);
-            background-color: var(--bg-color);
+			border: 1px solid var(--border-color-light);
 			border-radius: var(--border-radius);
 			display: flex;
 			flex-direction: column;
 			text-align: center;
 			align-items: center;
 			padding: 25px;
-			width: 300px;
+			width: 350px;
 
             @media screen and (max-width: 1024px) {
                 width: 100%;

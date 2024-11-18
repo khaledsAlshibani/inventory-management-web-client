@@ -86,9 +86,6 @@ async function renderUserProfile() {
             const form = event.target.closest('form');
             const formData = new FormData(form);
         
-            const profileImageElement = document.querySelector('[data-profile-image]');
-            const profileImageSrc = profileImageElement ? profileImageElement.getAttribute('src') : '';
-        
             const photoInputElement = document.querySelector('input[type="file"][data-profile-image-input]');
             const photoFile = photoInputElement?.files?.[0] || null;
         
@@ -99,25 +96,16 @@ async function renderUserProfile() {
                 }
             });
         
-            if (profileImageSrc) {
-                updatedData.photoPath = profileImageSrc;
-            }
-        
-            if (!updatedData.email) {
-                alert('Email is required.');
-                return;
-            }
-        
             try {
-                console.log('Prepared data for API:', { updatedData, photoFile });
-                const response = await updateUserProfile(updatedData, photoFile);
-                console.log('API response:', response);
+                const updatedUserInfo = await updateUserProfile(updatedData, photoFile);
+                console.log('Profile updated:', updatedUserInfo);
                 alert('Profile updated successfully!');
             } catch (error) {
-                console.error('Error updating profile:', error);
+                console.error('Failed to update profile:', error);
                 alert('Failed to update profile.');
             }
-        });        
+        });
+        
 
         // Handle Delete
         formInputs.querySelector('[data-delete-profile]').addEventListener('click', async () => {
