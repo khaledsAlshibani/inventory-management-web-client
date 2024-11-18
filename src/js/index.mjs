@@ -1,5 +1,5 @@
 import { checkAccess, isUserLoggedIn, logout } from "./utils/auth.mjs";
-import { displayUserName, displayUsername } from "./utils/display-user-info.mjs";
+import { displayUserGreeting, displayUserName, displayUsername, displayUserPhoto } from "./utils/display-user-info.mjs";
 import { getUserInfo } from "./utils/storage.mjs";
 import { redirectExpiredToken } from "./utils/redirect.mjs";
 
@@ -17,6 +17,8 @@ function setupLogoutButton() {
 if (isUserLoggedIn()) {
     redirectExpiredToken();
     setupLogoutButton();
+    displayUserGreeting();
+    displayUserPhoto();
     displayUserName();
     displayUsername();
     console.log(getUserInfo());

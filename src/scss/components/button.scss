@@ -64,6 +64,14 @@
 		background: var(--gray-900);
 	}
 
+	&--delete {
+		color: var(--danger-color);
+		background: var(--danger-color-200);
+	}
+	&--delete &__icon {
+		border-right-color: var(--danger-color);
+	}
+
 	&--outlined {
 		border: 1px solid var(--primary-color);
 		color: var(--primary-color);

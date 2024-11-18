@@ -33,6 +33,7 @@
         box-shadow: var(--shadow-gray);
         border-radius: var(--border-radius);
         list-style-type: none;
+		z-index: 9999;
 
         &--visible {
             display: flex;

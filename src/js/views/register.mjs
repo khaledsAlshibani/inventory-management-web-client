@@ -18,17 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const responseData = await registerUser(credentials);
-
-            // Store the token and user info
             setToken(responseData.token);
             setUserInfo({
                 id: responseData.id,
                 username: responseData.username,
                 name: responseData.name,
-                email: responseData.email
+                email: responseData.email,
+                photoPath: responseData.photoPath,
             });
-
-            // Redirect to dashboard
             redirectToDashboard();
         } catch (error) {
             console.error('Register failed:', error.message);

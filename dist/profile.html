@@ -38,7 +38,7 @@
             							class="app-sidebar__nav-item-icon icon-inventory"
             							aria-hidden="true"
             						></i>
-            						Inventories Management
+            						Manage Inventories
             					</a>
             				</li>
             				<li>
@@ -47,7 +47,7 @@
             							class="app-sidebar__nav-item-icon icon-stop_circle"
             							aria-hidden="true"
             						></i>
-            						Products Management
+            						Manage Products 
             					</a>
             				</li>
             		</ul>
@@ -114,10 +114,10 @@
 				                    </ul>
 				                </div>
 				                <div class="user-profile-dropdown">
-				                    <img src="assets/images/default-user.png" alt="User profile photo - Inveit" class="user-profile-dropdown__photo" data-user-profile-dropdown-toggler data-display-user-photo />
+				                    <img src="" alt="User profile photo - Inveit" class="user-profile-dropdown__photo" data-user-profile-dropdown-toggler data-display-user-photo />
 				                
 				                    <div class="user-profile-dropdown__content" data-user-profile-dropdown>
-				                        <p class="user-profile-dropdown__greeting" data-display-user-name></p>
+				                        <p class="user-profile-dropdown__greeting" data-display-user-greeting></p>
 				                        <p class="user-profile-dropdown__username" data-display-username></p>
 				                        <div class="user-profile-dropdown__buttons">
 				                              <a
@@ -144,7 +144,24 @@
 				                </div>            </div>
 				        </div>
 					</div>
-				</section>                <div class="container container--page container--page-padding" data-profile>
+				</section>                <div class="container container--page container--page-padding" data-profile>       
+                    <form class="profile-form">
+                        <div class="profile-form__section profile-form__photo-wrapper">
+                            <div class="profile-form__photo">
+                                <img src="" alt="User profile photo - Inveit" data-profile-image>
+                                <label for="upload-photo" data-profile-image-button role="button">
+                                    <i class="profile-form__photo-icon icon-camera"></i>
+                                </label>
+                                <input class="sr-only" type="file" id="upload-photo" accept=".png, .jpg, .jpeg, .webp" data-profile-image-input />
+                            </div>
+                            <div class="profile-form__photo-info">
+                                <p class="profile-form__photo-info-name" data-display-user-name></p>
+                                <p class="profile-form__photo-info-email" data-display-user-age></p>
+                            </div>
+                        </div>
+                        <div class="profile-form__section profile-form__inputs" data-profile-inputs>
+                        </div>
+                    </form>
                 </div>
             </div>
         </main>

@@ -1,4 +1,4 @@
-export const Button = ({ label, type = "button", variant = "primary", size, iconStart, iconEnd }) => {
+export const Button = ({ label, type = "button", variant = "primary", size, iconStart, iconEnd, dataAttributes }) => {
     const button = document.createElement("button");
     button.setAttribute("type", type);
     button.className = `button button--${variant} ${size ? "button--" + size : ""}`;
@@ -18,6 +18,11 @@ export const Button = ({ label, type = "button", variant = "primary", size, icon
         const iconEndEl = document.createElement("i");
         iconEndEl.className = `button__icon icon-${iconEnd}`;
         button.appendChild(iconEndEl);
+    }
+
+    // dataAttributes will be like {"data-foo": "bar"}
+    if (dataAttributes) {
+        Object.entries(dataAttributes).forEach(([key, value]) => button.setAttribute(key, value));
     }
 
     return button;

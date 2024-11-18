@@ -11,12 +11,12 @@
             "icon": "dashboard"
         },
         {
-            "label": "Inventories Management",
+            "label": "Manage Inventories",
             "link": "inventories.html",
             "icon": "inventory"
         },
         {
-            "label": "Products Management",
+            "label": "Manage Products ",
             "link": "product-listing.html",
             "icon": "stop_circle"
         }

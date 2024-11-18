@@ -10,10 +10,11 @@ export async function fetchWithAuth(url, options = {}) {
         };
     }
 
-    // Log the request details for debugging
     console.log('Fetch request details:');
     console.log('URL:', url);
     console.log('Options:', options);
+    console.log('body:', JSON.stringify(options.body));
+
     if (options.body) {
         try {
             console.log('Request Body:', JSON.parse(options.body));

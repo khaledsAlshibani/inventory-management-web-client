@@ -18,7 +18,8 @@ document.querySelector('[data-login-form]').addEventListener('submit', async fun
             id: responseData.id,
             username: responseData.username,
             name: responseData.name,
-            email: responseData.email
+            email: responseData.email,
+            photoPath: responseData.photoPath,
         });
         redirectToDashboard();
     } catch (error) {

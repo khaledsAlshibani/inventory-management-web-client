@@ -1,5 +1,7 @@
 import { deleteUserProfile, getUserProfile, updateUserProfile } from "../api/user.mjs";
 import { logout } from "../utils/auth.mjs";
+import { capitalize } from "../utils/typography.mjs";
+import { Button, Input } from "../utils/ui.mjs";
 
 async function renderUserProfile() {
     const profileContainer = document.querySelector('[data-profile]');
@@ -7,75 +9,118 @@ async function renderUserProfile() {
     try {
         const user = await getUserProfile();
 
-        // Dynamically generate form inputs for each property except 'id', 'updatedAt', and 'createdAt'
+        if (user.birthdate) {
+            displayUserAge(user.birthdate);
+        }
+        if (user.photoPath) {
+            getUserImage(user.photoPath);
+        }
+
         const formFields = Object.entries(user)
-            .filter(([key]) => key !== 'id' && key !== 'updatedAt' && key !== 'createdAt') // Exclude 'id', 'updatedAt', and 'createdAt'
+            .filter(
+                ([key]) =>
+                    key !== "id" &&
+                    key !== "updatedAt" &&
+                    key !== "createdAt" &&
+                    key !== "password" &&
+                    key !== "photoPath"
+            )
             .map(([key, value]) => {
-                if (key === 'email') {
-                    // Email is editable but required
-                    return `
-                        <label>
-                            <strong>${capitalize(key)}:</strong>
-                            <input type="email" name="${key}" value="${value || ''}" required />
-                        </label>
-                    `;
-                } else if (typeof value === 'string' && value.length > 50) {
-                    // Use a textarea for longer strings
-                    return `
-                        <label>
-                            <strong>${capitalize(key)}:</strong>
-                            <textarea name="${key}">${value || ''}</textarea>
-                        </label>
-                    `;
-                } else {
-                    // Use a standard input for other fields
-                    return `
-                        <label>
-                            <strong>${capitalize(key)}:</strong>
-                            <input type="text" name="${key}" value="${value || ''}" />
-                        </label>
-                    `;
-                }
-            })
-            .join('');
+                const typeMap = {
+                    email: "email",
+                    name: "text",
+                    username: "text",
+                    birthdate: "date",
+                };
 
-        profileContainer.innerHTML = `
-            <form class="profile-form">
-                ${formFields}
-                <div class="profile-actions">
-                    <button type="button" class="btn btn--update">Update</button>
-                    <button type="button" class="btn btn--delete">Delete</button>
-                </div>
-            </form>
-        `;
+                const type = typeMap[key] || "text";
+                const required = key === "email";
 
-        const form = profileContainer.querySelector('.profile-form');
-
-        // Handle Update
-        form.querySelector('.btn--update').addEventListener('click', async () => {
-            const formData = new FormData(form);
-            const updatedData = {};
-            formData.forEach((value, key) => {
-                updatedData[key] = value;
+                return Input({
+                    label: capitalize(key),
+                    id: key,
+                    name: key,
+                    type,
+                    required,
+                    value: value || "",
+                    placeholder: `Enter your ${key}`,
+                    className: "form-control",
+                });
             });
 
-            // Ensure 'email' is included
+        const formInputs = profileContainer.querySelector('[data-profile-inputs]');
+
+        formFields.forEach((field) => {
+            formInputs.appendChild(field);
+        });
+
+        const buttonsContainer = document.createElement("div");
+        buttonsContainer.className = "profile-form__buttons";
+
+        const updateButtonEl = Button({
+            label: "Update",
+            type: "submit",
+            variant: "primary",
+            iconStart: "user-check",
+            iconEnd: false,
+            dataAttributes: { "data-update-profile": "" },
+        });
+        const deleteButtonEl = Button({
+            label: "Delete",
+            type: "button",
+            variant: "delete",
+            iconStart: "trash-2",
+            iconEnd: false,
+            dataAttributes: { "data-delete-profile": "" },
+        });
+
+        buttonsContainer.appendChild(updateButtonEl);
+        buttonsContainer.appendChild(deleteButtonEl);
+
+        formInputs.appendChild(buttonsContainer);
+
+        // handle update
+        formInputs.querySelector('[data-update-profile]').addEventListener('click', async (event) => {
+            event.preventDefault();
+        
+            const form = event.target.closest('form');
+            const formData = new FormData(form);
+        
+            const profileImageElement = document.querySelector('[data-profile-image]');
+            const profileImageSrc = profileImageElement ? profileImageElement.getAttribute('src') : '';
+        
+            const photoInputElement = document.querySelector('input[type="file"][data-profile-image-input]');
+            const photoFile = photoInputElement?.files?.[0] || null;
+        
+            const updatedData = {};
+            formData.forEach((value, key) => {
+                if (key !== 'photoPath') {
+                    updatedData[key] = value;
+                }
+            });
+        
+            if (profileImageSrc) {
+                updatedData.photoPath = profileImageSrc;
+            }
+        
             if (!updatedData.email) {
                 alert('Email is required.');
                 return;
             }
-
+        
             try {
-                await updateUserProfile(updatedData);
+                console.log('Prepared data for API:', { updatedData, photoFile });
+                const response = await updateUserProfile(updatedData, photoFile);
+                console.log('API response:', response);
                 alert('Profile updated successfully!');
             } catch (error) {
                 console.error('Error updating profile:', error);
                 alert('Failed to update profile.');
             }
-        });
+        });        
 
         // Handle Delete
-        form.querySelector('.btn--delete').addEventListener('click', async () => {
+        formInputs.querySelector('[data-delete-profile]').addEventListener('click', async () => {
             if (confirm('Are you sure you want to delete your account?')) {
                 try {
                     await deleteUserProfile();
@@ -93,8 +138,42 @@ async function renderUserProfile() {
     }
 }
 
-function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1).replace(/_/g, ' ');
+function displayUserAge(birthDate) {
+    const ageEl = document.querySelector('[data-display-user-age]');
+
+    if (ageEl) {
+        const today = new Date();
+        const birthdate = new Date(birthDate);
+        const age = today.getFullYear() - birthdate.getFullYear();
+        ageEl.textContent = `Age: ${age} years old.`;
+    }
+}
+
+function getUserImage(imagePath) {
+    const image = document.querySelector('[data-profile-image]');
+
+    if (image) {
+        image.setAttribute('src', imagePath);
+    }
+}
+
+function updateUserImage() {
+    const image = document.querySelector('[data-profile-image]');
+    const imageInput = document.querySelector('[data-profile-image-input]');
+
+    if (image && imageInput) {
+        imageInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    image.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
 }
 
 renderUserProfile();
+updateUserImage();

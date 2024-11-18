@@ -1,0 +1,84 @@
+.profile-form {
+	display: flex;
+	justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 50px;
+
+	&__inputs {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		width: calc(100% - 350px);
+
+        @media screen and (max-width: 1024px) {
+            width: 100%;
+        }
+	}
+
+	&__buttons {
+		display: flex;
+		gap: 20px;
+	}
+
+	&__photo {
+		$size: 250px;
+		border: 2px solid var(--border-color);
+		position: relative;
+		width: $size;
+		height: $size;
+		border-radius: 50%;
+        background-color: var(--bg-color-secondary);
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 50%;
+		}
+
+		&-icon {
+			$size: 45px;
+			position: absolute;
+			bottom: 35px;
+			right: 0;
+			width: $size;
+			height: $size;
+			border-radius: 50%;
+			background-color: var(--primary-color);
+			color: var(--white);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: var(--font-4);
+			cursor: pointer;
+			box-shadow: var(--shadow-gray);
+		}
+
+		&-wrapper {
+			border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+			border-radius: var(--border-radius);
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+			align-items: center;
+			padding: 25px;
+			width: 300px;
+
+            @media screen and (max-width: 1024px) {
+                width: 100%;
+            }
+		}
+
+		&-info {
+			display: flex;
+			flex-direction: column;
+			text-align: left;
+			gap: 10px;
+			margin-top: 40px;
+			color: var(--gray-700);
+			font-size: var(--font-3);
+			width: 100%;
+		}
+	}
+}
