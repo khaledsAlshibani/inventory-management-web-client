@@ -55,7 +55,7 @@ async function renderUserProfile() {
         });
 
         const buttonsContainer = document.createElement("div");
-        buttonsContainer.className = "profile-form__buttons";
+        buttonsContainer.className = "page-form__buttons";
 
         const updateButtonEl = Button({
             label: "Update",

@@ -1,7 +1,8 @@
 import { addInventory, deleteInventory, getInventoryById, updateInventory } from '../api/inventory.mjs';
 import { getUserInventories } from '../api/user.mjs';
 import { redirectToInventories } from '../utils/redirect.mjs'
-import { Button } from '../utils/ui.mjs';
+import { capitalize } from '../utils/typography.mjs';
+import { Button, Input, Select, Textarea } from '../utils/ui.mjs';
 
 function handleAddInventory() {
     const form = document.querySelector('[data-add-inventory]');
@@ -17,48 +18,34 @@ function handleAddInventory() {
             inventoryData[key] = value;
         });
 
-        const inventoryTypeElement = document.querySelector('[data-inventory-type]');
-        if (inventoryTypeElement) {
-            const inventoryTypeValue = inventoryTypeElement.getAttribute('data-selected-value');
-            if (inventoryTypeValue) {
-                inventoryData.inventoryType = inventoryTypeValue;
-            }
+        const typeSelect = form.querySelector('[data-inventory-type][data-selected-value]');
+        const statusSelect = form.querySelector('[data-inventory-status][data-selected-value]');
+
+        if (typeSelect) {
+            inventoryData.inventoryType = typeSelect.getAttribute('data-selected-value');
         }
 
-        const statusElement = document.querySelector('[data-inventory-status]');
-        if (statusElement) {
-            const statusValue = statusElement.getAttribute('data-selected-value');
-            if (statusValue) {
-                inventoryData.status = statusValue;
-            }
+        if (statusSelect) {
+            inventoryData.status = statusSelect.getAttribute('data-selected-value');
         }
 
         if (inventoryData.area) inventoryData.area = parseFloat(inventoryData.area);
         if (inventoryData.availableArea) inventoryData.availableArea = parseFloat(inventoryData.availableArea);
 
-        console.log("inventoryData", inventoryData);
-
-        const inventoriesElement = document.querySelector("[data-inventories]");
-        if (inventoriesElement) {
-            fetch(window.location.href)
-                .then(response => response.text())
-                .then(html => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, "text/html");
-                    const newContent = doc.querySelector("[data-inventories]");
-                    if (newContent) {
-                        inventoriesElement.innerHTML = newContent.innerHTML;
-                    }
-                })
-                .catch(error => {
-                    console.error("Error loading inventories:", error);
-                });
+        try {
+            const responseData = await addInventory(inventoryData);
+            console.log('Inventory data:', responseData);
+        } catch (error) {
+            console.error('Error details:', error);
         }
     });
 }
 
 async function renderInventories() {
     const listingContainer = document.querySelector('[data-inventories]');
+
+    if (!listingContainer) return;
+
     try {
         const inventories = await getUserInventories();
 
@@ -144,7 +131,7 @@ async function renderSingleInventory() {
 
     try {
         const inventory = await getInventoryById(inventoryId);
-        renderInventoryForm(inventoryContainer, inventoryId, inventory);
+        renderInventoryForm(inventoryId, inventory);
         attachFormHandlers(inventoryContainer, inventoryId);
     } catch (error) {
         console.error('Error fetching inventory:', error);
@@ -159,65 +146,132 @@ function getInventoryIdFromUrl() {
     return inventoryId;
 }
 
-function renderInventoryForm(container, inventoryId, inventory) {
-    container.innerHTML = `
-        <form class="inventory-form" data-inventory-id="${inventoryId}">
-            <div class="inventory-details">
-                <label>
-                    <strong>Name:</strong>
-                    <input type="text" name="name" value="${inventory.name || ''}" />
-                </label>
-                <label>
-                    <strong>Address:</strong>
-                    <textarea name="address">${inventory.address || ''}</textarea>
-                </label>
-                <label>
-                    <strong>Status:</strong>
-                    <select name="status">
-                        <option value="ACTIVE" ${inventory.status === 'ACTIVE' ? 'selected' : ''}>Active</option>
-                        <option value="INACTIVE" ${inventory.status === 'INACTIVE' ? 'selected' : ''}>Inactive</option>
-                    </select>
-                </label>
-                <label>
-                    <strong>Type:</strong>
-                    <select name="inventoryType">
-                        <option value="WAREHOUSE" ${inventory.inventoryType === 'WAREHOUSE' ? 'selected' : ''}>Warehouse</option>
-                        <option value="STORE" ${inventory.inventoryType === 'STORE' ? 'selected' : ''}>Store</option>
-                        <option value="ONLINE" ${inventory.inventoryType === 'ONLINE' ? 'selected' : ''}>Online</option>
-                    </select>
-                </label>
-                <label>
-                    <strong>Area:</strong>
-                    <input type="number" step="0.01" name="area" value="${inventory.area || 0}" />
-                </label>
-                <label>
-                    <strong>Available Area:</strong>
-                    <input type="number" step="0.01" name="availableArea" value="${inventory.availableArea || 0}" />
-                </label>
-                <p><strong>Created At:</strong> ${new Date(inventory.createdAt).toLocaleString()}</p>
-                <p><strong>Updated At:</strong> ${inventory.updatedAt ? new Date(inventory.updatedAt).toLocaleString() : 'N/A'}</p>
-            </div>
-            <div class="inventory-actions">
-                ${Button("Update", "submit")}
-                ${Button("Delete", "button", "delete")}
-            </div>
-        </form>
-    `;
+function renderInventoryForm(inventoryId, inventory) {
+    const formFields = Object.entries(inventory)
+        .filter(([key]) => key !== "id" && key !== "createdAt" && key !== "updatedAt" && key !== "message")
+        .map(([key, value]) => {
+            const typeMap = {
+                name: "text",
+                address: "text",
+                description: "textarea",
+                status: "select",
+                inventoryType: "select",
+                area: "number",
+                availableArea: "number",
+            };
+
+            const label = capitalize(key);
+            const type = typeMap[key];
+
+            if (type === "textarea") {
+                return Textarea({
+                    label,
+                    id: `inventory-${key}-${inventoryId}`,
+                    name: key,
+                    value: value || "",
+                    className: "form-control",
+                });
+            } else if (type === "select") {
+                const options =
+                    key === "status"
+                        ? [
+                              { label: "Active", value: "ACTIVE", isSelected: value === "ACTIVE" },
+                              { label: "Inactive", value: "INACTIVE", isSelected: value === "INACTIVE" },
+                          ]
+                        : [
+                              { label: "Warehouse", value: "WAREHOUSE", isSelected: value === "WAREHOUSE" },
+                              { label: "Store", value: "STORE", isSelected: value === "STORE" },
+                              { label: "Online", value: "ONLINE", isSelected: value === "ONLINE" },
+                          ];
+
+                const selectedOption = options.find((option) => option.isSelected);
+                const defaultValue = selectedOption ? selectedOption.label : `Select ${key}`;
+
+                return Select({
+                    label,
+                    togglerId: `inventory-${key}-toggler-${inventoryId}`,
+                    selectId: `inventory-${key}-${inventoryId}`,
+                    className: "form-control",
+                    defaultValue,
+                    options,
+                });
+            } else {
+                return Input({
+                    label,
+                    id: `inventory-${key}-${inventoryId}`,
+                    name: key,
+                    type: type || "text",
+                    value: value || "",
+                    className: "form-control",
+                });
+            }
+        });
+
+    const inputsContainer = document.querySelector('[data-inventory-inputs]');
+    const form = inputsContainer.closest('form');
+    form.setAttribute("data-inventory-id", inventoryId);
+
+    formFields.forEach((field) => {
+        inputsContainer.appendChild(field);
+    });
+
+    const createdAtParagraph = document.createElement("p");
+    createdAtParagraph.innerHTML = `<strong>Created At:</strong> ${new Date(inventory.createdAt).toLocaleString()}`;
+    inputsContainer.appendChild(createdAtParagraph);
+
+    const updatedAtParagraph = document.createElement("p");
+    updatedAtParagraph.innerHTML = `<strong>Last Updated At:</strong> ${
+        inventory.updatedAt ? new Date(inventory.updatedAt).toLocaleString() : "N/A"
+    }`;
+    inputsContainer.appendChild(updatedAtParagraph);
+
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.className = "page-form__buttons";
+
+    const updateButtonEl = Button({
+        label: "Update",
+        type: "submit",
+        variant: "primary",
+        iconStart: "user-check",
+        iconEnd: false,
+        dataAttributes: { "data-update-profile": "" },
+    });
+    const deleteButtonEl = Button({
+        label: "Delete",
+        type: "button",
+        variant: "delete",
+        iconStart: "trash-2",
+        iconEnd: false,
+        dataAttributes: { "data-delete-profile": "" },
+    });
+
+    buttonsContainer.appendChild(updateButtonEl);
+    buttonsContainer.appendChild(deleteButtonEl);
+
+    inputsContainer.appendChild(buttonsContainer);
 }
 
 function attachFormHandlers(container, inventoryId) {
-    const form = container.querySelector('.inventory-form');
+    const form = container.querySelector('.page-form'); // Use the form container
     if (!form) {
         return;
     }
 
     // Handle the Update button click
-    form.querySelector('.btn--update').addEventListener('click', async () => {
+    const updateButton = form.querySelector("[data-update-profile]");
+    const deleteButton = form.querySelector("[data-delete-profile]");
+
+    if (!updateButton || !deleteButton) {
+        return;
+    }
+
+    updateButton.addEventListener('click', async (event) => {
+        event.preventDefault();
         await handleUpdateInventory(form, inventoryId);
     });
 
     // Handle the Delete button click
-    form.querySelector('.btn--delete').addEventListener('click', async () => {
+    deleteButton.addEventListener('click', async () => {
         await handleDeleteInventory(inventoryId);
     });
 }
@@ -229,6 +283,19 @@ async function handleUpdateInventory(form, inventoryId) {
     formData.forEach((value, key) => {
         updatedData[key] = value;
     });
+
+    const typeSelect = form.querySelector('[data-inventory-type]');
+    const statusSelect = form.querySelector('[data-inventory-status]');
+
+    if (typeSelect) {
+        updatedData.inventoryType = typeSelect.getAttribute('data-selected-value');
+    }
+
+    if (statusSelect) {
+        updatedData.status = statusSelect.getAttribute('data-selected-value');
+    }
+
+    console.log('Updated Data:', updatedData);
 
     try {
         const response = await updateInventory(inventoryId, updatedData);
