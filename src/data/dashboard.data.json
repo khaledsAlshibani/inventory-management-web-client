@@ -47,22 +47,22 @@
         {
             "iconName": "shopping-bag",
             "title": "Total Sales",
-            "value": "$5M"
+            "attributes": "data-sells-chart"
         },
         {
             "iconName": "category",
             "title": "Total Products",
-            "value": "1,200"
+            "attributes": "data-total-products-chart"
         },
         {
             "iconName": "inventory",
             "title": "Total Inventories",
-            "value": "1,200"
+            "attributes": "data-total-inventories-chart"
         },
         {
             "iconName": "stop_circle",
-            "title": "Total Active Products",
-            "value": "250"
+            "title": "Total Active Inventories",
+            "attributes": "data-active-inventories-chart"
         }
     ]
 }

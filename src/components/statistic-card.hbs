@@ -1,6 +1,6 @@
-<div class="statistic-card">
+<div class="statistic-card"{{#if attributes}} {{attributes}}{{/if}}>
     <i class="statistic-card__icon icon-{{iconName}}" aria-hidden="true"></i>
     <span class="statistic-card__title">{{title}}</span>
-    <span class="statistic-card__value">{{value}}</span>
+    <span class="statistic-card__value" data-statistic-value>{{value}}</span>
     <span class="statistic-card__period">Full Time</span>
 </div>

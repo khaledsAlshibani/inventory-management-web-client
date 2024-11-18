@@ -3,6 +3,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	gap: 40px;
 
 	canvas {
 		width: 100%;
@@ -11,10 +12,10 @@
 		border-radius: var(--border-radius);
         padding: 20px;
 
-		&:first-child {
+		&:nth-child(odd) {
 			max-width: calc(100% - 450px);
 		}
-		&:nth-child(2) {
+		&:nth-child(even) {
 			max-width: 400px;
 		}
 	}

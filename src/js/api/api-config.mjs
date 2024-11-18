@@ -13,6 +13,7 @@ export const API_UPDATE_PASSWORD = (userId) => `${API_USERS}/${userId}/password`
 /* Inventory Endpoints */
 export const API_INVENTORIES = `${API_BASE_URL}/inventories`;
 export const API_USER_INVENTORIES = `${API_USERS}/inventories`;
+export const API_INVENTORIES_STATS = `${API_INVENTORIES}/statistics`;
 
 /* Product Endpoints */
 export const API_PRODUCTS = `${API_BASE_URL}/products`;

@@ -1786,6 +1786,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 40px;
 }
 .charts canvas {
   width: 100%;
@@ -1794,10 +1795,10 @@
   border-radius: var(--border-radius);
   padding: 20px;
 }
-.charts canvas:first-child {
+.charts canvas:nth-child(odd) {
   max-width: calc(100% - 450px);
 }
-.charts canvas:nth-child(2) {
+.charts canvas:nth-child(even) {
   max-width: 400px;
 }
 

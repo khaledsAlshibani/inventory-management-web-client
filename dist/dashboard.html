@@ -146,30 +146,31 @@
                 	</div>
                 </section>                <div class="container container--page container--page-padding">
                     <div class="grid cols-4">
-                            <div class="statistic-card">
+                            <div class="statistic-card" data-sells-chart>
                                 <i class="statistic-card__icon icon-shopping-bag" aria-hidden="true"></i>
                                 <span class="statistic-card__title">Total Sales</span>
-                                <span class="statistic-card__value">$5M</span>
+                                <span class="statistic-card__value" data-statistic-value></span>
                                 <span class="statistic-card__period">Full Time</span>
-                            </div>                            <div class="statistic-card">
+                            </div>                            <div class="statistic-card" data-total-products-chart>
                                 <i class="statistic-card__icon icon-category" aria-hidden="true"></i>
                                 <span class="statistic-card__title">Total Products</span>
-                                <span class="statistic-card__value">1,200</span>
+                                <span class="statistic-card__value" data-statistic-value></span>
                                 <span class="statistic-card__period">Full Time</span>
-                            </div>                            <div class="statistic-card">
+                            </div>                            <div class="statistic-card" data-total-inventories-chart>
                                 <i class="statistic-card__icon icon-inventory" aria-hidden="true"></i>
                                 <span class="statistic-card__title">Total Inventories</span>
-                                <span class="statistic-card__value">1,200</span>
+                                <span class="statistic-card__value" data-statistic-value></span>
                                 <span class="statistic-card__period">Full Time</span>
-                            </div>                            <div class="statistic-card">
+                            </div>                            <div class="statistic-card" data-active-inventories-chart>
                                 <i class="statistic-card__icon icon-stop_circle" aria-hidden="true"></i>
-                                <span class="statistic-card__title">Total Active Products</span>
-                                <span class="statistic-card__value">250</span>
+                                <span class="statistic-card__title">Total Active Inventories</span>
+                                <span class="statistic-card__value" data-statistic-value></span>
                                 <span class="statistic-card__period">Full Time</span>
                             </div>                    </div>
                     <div class="charts">
-                        <canvas data-sells-chart></canvas>
-                        <canvas data-revenue-chart></canvas>
+                        <canvas data-sales-chart></canvas>
+                        <canvas data-status-chart></canvas>
+                        <canvas data-type-chart></canvas>
                     </div>
                 </div>
             </div>
