@@ -36,6 +36,10 @@ async function renderUserProfile() {
                 const type = typeMap[key] || "text";
                 const required = key === "email";
 
+                // Determine readonly or disabled state for specific fields
+                const isReadonly = key === "email" || key === "username";
+                const isDisabled = false; // Set true if you prefer disabled over readonly.
+
                 return Input({
                     label: capitalize(key),
                     id: key,
@@ -45,6 +49,8 @@ async function renderUserProfile() {
                     value: value || "",
                     placeholder: `Enter your ${key}`,
                     className: "form-control",
+                    readonly: isReadonly,
+                    disabled: isDisabled,
                 });
             });
 
@@ -82,20 +88,20 @@ async function renderUserProfile() {
         // handle update
         formInputs.querySelector('[data-update-profile]').addEventListener('click', async (event) => {
             event.preventDefault();
-        
+
             const form = event.target.closest('form');
             const formData = new FormData(form);
-        
+
             const photoInputElement = document.querySelector('input[type="file"][data-profile-image-input]');
             const photoFile = photoInputElement?.files?.[0] || null;
-        
+
             const updatedData = {};
             formData.forEach((value, key) => {
                 if (key !== 'photoPath') {
                     updatedData[key] = value;
                 }
             });
-        
+
             try {
                 const updatedUserInfo = await updateUserProfile(updatedData, photoFile);
                 console.log('Profile updated:', updatedUserInfo);
@@ -105,7 +111,7 @@ async function renderUserProfile() {
                 alert('Failed to update profile.');
             }
         });
-        
+
 
         // Handle Delete
         formInputs.querySelector('[data-delete-profile]').addEventListener('click', async () => {

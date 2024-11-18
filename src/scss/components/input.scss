@@ -17,6 +17,16 @@
 		outline-color: var(--primary-color);
 	}
 
+	&:read-only {
+		// cursor: not-allowed;
+		opacity: 0.6;
+	}
+	&:read-only:hover,
+	&:read-only:focus-within,
+	&:read-only:focus {
+		outline-color: var(--border-color);
+	}
+
 	&:focus ~ &__label,
 	&:not(:placeholder-shown) ~ &__label {
 		top: -2px;

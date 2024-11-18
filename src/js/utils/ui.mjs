@@ -37,6 +37,8 @@ export const Input = ({
     value = "",
     placeholder = " ",
     className = "",
+    readonly = false,
+    disabled = false,
 }) => {
     const wrapper = document.createElement("div");
     wrapper.className = "input__wrapper";
@@ -50,6 +52,12 @@ export const Input = ({
     input.className = `input ${className}`;
     if (required) {
         input.setAttribute("required", "required");
+    }
+    if(readonly) {
+        input.setAttribute("readonly", "readonly");
+    }
+    if(disabled) {
+        input.setAttribute("disabled", "disabled");
     }
 
     const labelEl = document.createElement("label");

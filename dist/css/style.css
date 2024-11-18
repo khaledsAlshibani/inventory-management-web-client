@@ -519,7 +519,7 @@
 .page-form__inputs {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 }
 .page-form__buttons {
   display: flex;
@@ -760,6 +760,12 @@
 }
 .input:hover, .input:focus-within, .input:focus {
   outline-color: var(--primary-color);
+}
+.input:read-only {
+  opacity: 0.6;
+}
+.input:read-only:hover, .input:read-only:focus-within, .input:read-only:focus {
+  outline-color: var(--border-color);
 }
 .input:focus ~ .input__label, .input:not(:placeholder-shown) ~ .input__label {
   top: -2px;
