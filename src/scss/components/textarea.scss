@@ -1,4 +1,4 @@
-.input {
+.textarea {
 	display: block;
 	width: 100%;
 	padding: var(--input-padding-block) var(--input-padding-inline);
@@ -8,6 +8,8 @@
 	line-height: var(--line-height-md);
 	border: 0;
 	font-weight: 300;
+    min-height: 150px;
+    resize: vertical;
 	font-size: var(--font-3);
 	font-family: var(--font);
 
@@ -20,15 +22,15 @@
 	&:focus ~ &__label,
 	&:not(:placeholder-shown) ~ &__label {
 		top: -2px;
+        transform: translateY(-50%);
 		font-size: var(--font-1);
 	}
 
 	&__label {
 		position: absolute;
 		pointer-events: none;
-		top: 50%;
+		top: 10px;
 		left: calc(var(--input-padding-inline) - 2px);
-		transform: translateY(-50%);
 		transition: all 0.2s ease;
 		font-size: var(--font-2);
 		color: var(--gray-600);

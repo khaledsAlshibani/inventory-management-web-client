@@ -1,0 +1,68 @@
+.select {
+	width: 100%;
+	position: relative;
+
+	--toggler-padding-block: 10px;
+	--toggler-padding-inline: 20px;
+
+	&__label {
+		margin-bottom: 5px;
+		display: inline-block;
+	}
+
+	&__toggler {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		cursor: pointer;
+		border: 1px solid var(--border-color);
+		color: var(--text-color);
+		padding: var(--toggler-padding-block) var(--toggler-padding-inline);
+		border-radius: var(--border-radius);
+		background-color: var(--bg-color-secondary);
+		font-size: var(--font-3);
+
+		&-icon {
+			color: inherit;
+			font-size: var(--font-4);
+		}
+
+		&--active {
+			border-color: var(--primary-color);
+		}
+	}
+
+	&__dropdown {
+		display: none;
+		position: absolute;
+		top: 68px;
+		right: 0;
+		left: 0;
+		background-color: var(--bg-color-secondary);
+		border: 1px solid var(--border-color);
+		box-shadow: var(--shadow-gray);
+		color: var(--text-color);
+		z-index: 9;
+		border-radius: var(--border-radius);
+		list-style-type: none;
+
+		&--visible {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	&__option {
+		cursor: pointer;
+		padding: 10px 15px;
+
+		&:hover {
+			background-color: var(--gray-100);
+		}
+
+		&:not(:last-child) {
+			border-bottom: 1px solid var(--border-color-light);
+		}
+	}
+}

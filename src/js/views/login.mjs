@@ -14,7 +14,12 @@ document.querySelector('[data-login-form]').addEventListener('submit', async fun
     try {
         const responseData = await loginUser(credentials);
         setToken(responseData.token);
-        setUserInfo({ id: responseData.id, name: responseData.name, email: responseData.email });
+        setUserInfo({
+            id: responseData.id,
+            username: responseData.username,
+            name: responseData.name,
+            email: responseData.email
+        });
         redirectToDashboard();
     } catch (error) {
         console.error('Login failed:', error.message);

@@ -1,9 +1,15 @@
-.listing {
+.panel {
 	$contentPadding: 30px;
 
 	background-color: var(--bg-color-secondary);
 	border-radius: var(--border-radius);
 	border: 1px solid var(--border-color);
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
 
 	&__header {
 		background-color: var(--bg-color);
@@ -34,5 +40,8 @@
 	}
 
     &__body {
+        &--hasPadding {
+            padding: $contentPadding;
+        }
     }
 }

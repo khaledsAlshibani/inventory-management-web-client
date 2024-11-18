@@ -1,0 +1,26 @@
+<div class="user-profile-dropdown">
+    <img src="assets/images/default-user.png" alt="User profile photo - Inveit" class="user-profile-dropdown__photo" data-user-profile-dropdown-toggler data-display-user-photo />
+
+    <div class="user-profile-dropdown__content" data-user-profile-dropdown>
+        <p class="user-profile-dropdown__greeting" data-display-user-name></p>
+        <p class="user-profile-dropdown__username" data-display-username></p>
+        <div class="user-profile-dropdown__buttons">
+            {{> button
+                label="Profile Settings"
+                variant="standard"
+                href="profile.html"
+                size="small"
+                iconStart=true
+                iconName="settings"
+            }}
+            {{> button
+                label="logout"
+                dataAttributes="data-logout"
+                variant="outlined-standard"
+                size="small"
+                iconStart=true
+                iconName="log-out"
+            }}
+        </div>
+    </div>
+</div>

@@ -10,7 +10,7 @@ import { redirectToDashboard, redirectToLogin } from './redirect.mjs';
 const accessConfig = {
     allowedForLoggedIn: [
         '/dashboard.html',
-        '/inventory-listing.html',
+        '/inventories.html',
         '/product-listing.html',
     ],
     restrictedForLoggedIn: [

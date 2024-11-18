@@ -16,18 +16,18 @@ export function displayUserName(elementSelector = '[data-display-user-name]') {
     }
 }
 
-export function displayUserEmail(elementSelector = '[data-display-user-email]') {
-    if (hasLocalStorageItem('userEmail') && hasQuerySelector(elementSelector)) {
-        const userEmail = localStorage.getItem('userEmail');
-        if (userEmail) {
+export function displayUsername(elementSelector = '[data-display-username]') {
+    if (hasLocalStorageItem('username') && hasQuerySelector(elementSelector)) {
+        const username = localStorage.getItem('username');
+        if (username) {
             const element = document.querySelector(elementSelector);
             if (element) {
-                element.textContent = `Email: ${userEmail}`;
+                element.textContent = `@${username}`;
             } else {
                 console.log(`No element found for selector '${elementSelector}'`);
             }
         } else {
-            console.log('No userEmail found in localStorage');
+            console.log('No username found in localStorage');
         }
     }
 }

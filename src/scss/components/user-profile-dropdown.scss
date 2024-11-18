@@ -1,0 +1,54 @@
+.user-profile-dropdown {
+	position: relative;
+
+	&__photo {
+		cursor: pointer;
+		$size: 37px;
+		width: $size;
+		height: $size;
+		object-fit: cover;
+		border-radius: var(--border-radius);
+		border: 1px solid var(--border-color);
+		padding: 5px;
+		transition: all 0.2s ease-in-out;
+
+		&:hover {
+			border-color: var(--primary-color);
+		}
+	}
+
+	&__content {
+		display: none;
+        position: absolute;
+        top: 52px;
+        right: 0;
+        background-color: var(--bg-color-secondary);
+        min-width: 280px;
+        border: 1px solid var(--border-color);
+        padding: 20px;
+        box-shadow: var(--shadow-gray);
+        border-radius: var(--border-radius);
+        text-align: center;
+
+        &--visible {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+	}
+
+    &__greeting {
+        font-weight: 600;
+    }
+
+    &__username {
+        color: var(--gray-600);
+    }
+
+    &__buttons {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

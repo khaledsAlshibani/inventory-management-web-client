@@ -72,6 +72,17 @@
 			background-color: var(--primary-color);
 			color: var(--white);
 		}
+
+		&-standard {
+			border: 1px solid var(--gray-900);
+			color: var(--gray-900);
+			background-color: var(--white);
+	
+			&:hover {
+				background-color: var(--gray-900);
+				color: var(--white);
+			}
+		}
 	}
 
 	&--small {

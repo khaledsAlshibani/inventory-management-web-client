@@ -1,12 +1,11 @@
 <div class="textarea__wrapper">
-  {{#if label}}
-    <label for="{{id}}" class="textarea__label {{#if hideLabel}}sr-only{{/if}}">{{label}}</label>
-  {{/if}}
-  <textarea
-    id="{{id}}"
-    name="{{name}}"
-    placeholder="{{placeholder}}"
-    class="textarea {{class}}"
-    data-required="{{required}}"
-  >{{value}}</textarea>
+	<textarea
+		id="{{id}}"
+		name="{{name}}"
+		type="{{type}}"
+		placeholder=" "
+		class="textarea {{class}}"
+        {{#if required}}required{{/if}}
+	></textarea>
+	<label for="{{id}}" class="textarea__label">{{label}}</label>
 </div>

@@ -11,7 +11,7 @@
         },
         {
             "label": "Inventories Management",
-            "link": "inventory-listing.html",
+            "link": "inventories.html",
             "icon": "inventory"
         },
         {

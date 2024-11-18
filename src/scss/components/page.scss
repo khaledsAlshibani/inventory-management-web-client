@@ -19,8 +19,6 @@
 		border-top-left-radius: var(--border-radius-lg);
 		background-color: var(--bg-color-secondary);
 		width: calc(100% - var(--sidebar-width));
-		/* margin-left: var(--sidebar-width);
-        margin-top: 15px; */
 		position: fixed;
 		top: 15px;
 		left: var(--sidebar-width);
@@ -33,5 +31,15 @@
 				width: calc(100% - 20px);
 			}
 		} */
+	}
+
+	&__layout {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 15%;
+
+		& > :first-child {
+			grid-column: span 2;
+		}
 	}
 }

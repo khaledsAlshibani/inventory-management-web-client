@@ -1,16 +1,38 @@
-{{!-- selectComponent.hbs --}}
-<div class="select__wrapper">
-  {{#if label}}
-    <label for="{{id}}" class="select__label {{#if hideLabel}}sr-only{{/if}}">{{label}}</label>
-  {{/if}}
-  <select
-    id="{{id}}"
-    name="{{name}}"
-    class="select {{class}}"
-    required="{{required}}"
-  >
-    {{#each options}}
-      <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
-    {{/each}}
-  </select>
+<div class="select" data-select>
+	<span class="select__label">{{label}}</span>
+	<button
+		type="button"
+		id="{{togglerId}}"
+		class="select__toggler button {{class}}"
+		aria-haspopup="listbox"
+		aria-expanded="false"
+		aria-controls="{{selectId}}"
+		data-selected-value=""
+		data-select-toggler
+    	{{#if dataAttributes}}{{dataAttributes}}=""{{/if}}
+	>
+		{{defaultValue}}
+		<i class="select__toggler-icon icon-keyboard_arrow_down"></i>
+	</button>
+	<ul
+		class="select__dropdown"
+		id="{{selectId}}"
+		role="listbox"
+		aria-labelledby="{{togglerId}}"
+		data-select-dropdown
+	>
+		{{#each options}}
+			<li
+				class="select__option"
+				role="option"
+				tabindex="0"
+				aria-selected="{{this.isSelected}}"
+				data-value="{{this.value}}"
+				tabindex="0"
+				data-select-option
+			>
+				{{this.label}}
+			</li>
+		{{/each}}
+	</ul>
 </div>

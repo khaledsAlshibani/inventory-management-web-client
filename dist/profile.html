@@ -33,7 +33,7 @@
             					</a>
             				</li>
             				<li>
-            					<a class="app-sidebar__nav-item" href="inventory-listing.html">
+            					<a class="app-sidebar__nav-item" href="inventories.html">
             						<i
             							class="app-sidebar__nav-item-icon icon-inventory"
             							aria-hidden="true"
@@ -101,13 +101,47 @@
 				                    class="search-field "
 				                  />
 				                </div>                
-				                <button type="button" data-logout>logout</button>
-				                <i class="app-navbar__icon icon-plus" role="button" aria-label="Choose What to add"></i>
-				
-				                <div class="app-navbar__user-photo-wrapper">
-				                    <img src="assets/images/default-user.png" alt="User profile photo" class="app-navbar__user-photo" />
+				                <div class="add-new-dropdown">
+				                    <i class="add-new-dropdown__icon icon-plus" role="button" aria-label="Choose What to add" data-add-new-dropdown-toggler></i>
+				                
+				                    <ul class="add-new-dropdown__content" data-add-new-dropdown>
+				                        <li>
+				                            <a href="inventories.html#add-inventory">Add New Inventory</a>
+				                        </li>
+				                        <li>
+				                            <a href="products.html">Add New Product</a>
+				                        </li>
+				                    </ul>
 				                </div>
-				            </div>
+				                <div class="user-profile-dropdown">
+				                    <img src="assets/images/default-user.png" alt="User profile photo - Inveit" class="user-profile-dropdown__photo" data-user-profile-dropdown-toggler data-display-user-photo />
+				                
+				                    <div class="user-profile-dropdown__content" data-user-profile-dropdown>
+				                        <p class="user-profile-dropdown__greeting" data-display-user-name></p>
+				                        <p class="user-profile-dropdown__username" data-display-username></p>
+				                        <div class="user-profile-dropdown__buttons">
+				                              <a
+				                                href="profile.html"
+				                                class="button button--standard button--small   "
+				                                
+				                                
+				                                
+				                              >
+				                                  <i class="button__icon icon-settings"></i>
+				                                <span class="button__label">Profile Settings</span>
+				                              </a>
+				                              <button
+				                                type=""
+				                                class="button button--outlined-standard button--small   "
+				                                
+				                                data-logout=""
+				                              >
+				                                  <i class="button__icon icon-log-out"></i>
+				                                <span class="button__label">logout</span>
+				                              </button>
+				                        </div>
+				                    </div>
+				                </div>            </div>
 				        </div>
 					</div>
 				</section>                <div class="container container--page container--page-padding" data-profile>

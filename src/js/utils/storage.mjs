@@ -8,6 +8,7 @@ export function getToken() {
 
 export function setUserInfo(userInfo) {
     localStorage.setItem('userId', userInfo.id);
+    localStorage.setItem('username', userInfo.username);
     localStorage.setItem('userName', userInfo.name);
     localStorage.setItem('userEmail', userInfo.email);
 }
@@ -15,6 +16,7 @@ export function setUserInfo(userInfo) {
 export function getUserInfo() {
     return {
         id: localStorage.getItem('userId'),
+        username: localStorage.getItem('username'),
         name: localStorage.getItem('userName'),
         email: localStorage.getItem('userEmail')
     };
@@ -23,6 +25,7 @@ export function getUserInfo() {
 export function removeUserInfo() {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('userId');
+    localStorage.removeItem('username');
     localStorage.removeItem('userName');
     localStorage.removeItem('userEmail');
 }

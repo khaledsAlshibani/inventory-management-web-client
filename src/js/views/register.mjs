@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setToken(responseData.token);
             setUserInfo({
                 id: responseData.id,
+                username: responseData.username,
                 name: responseData.name,
                 email: responseData.email
             });

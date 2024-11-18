@@ -1,0 +1,78 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{title}}</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+
+    <body>
+        <main class="page page--hasSidebar">
+            {{> app-sidebar
+                logo=logo
+                logoAlt=logoAlt
+                navLinks=navLinks
+            }}
+            
+            <div class="page__content">
+				{{> app-navbar
+					title=navTitle
+					searchId=navSearchId
+					searchName=navSearchName
+					searchValue=navSearchValue
+					searchPlaceholder=navSearchPlaceholder
+					searchClass=navSearchClass
+					userPhoto=navUserPhoto
+					userPhotoAlt=navUserPhotoAlt
+				}}
+                <div class="container container--page container--page-padding">                    
+                    <div class="page__layout">
+                        <div class="panel__group">                        
+                            {{> panel
+                                title=listingTitle
+                                dataAttribute=listingDataAttribute
+                            }}
+                            <section class="panel">
+                                <header class="panel__header">
+                                    <h2 class="panel__header-title">Add New Inventory</h2>
+                                </header>
+
+                                <div class="panel__body panel__body--hasPadding">
+                                    <form id="add-inventory" class="form" method="post" data-add-inventory>
+                                        {{#each inputFields}}
+                                            {{#if (eq type "textarea")}}
+                                                {{> textarea this}}
+                                            {{else if (eq type "select")}}
+                                                {{> select this}}
+                                            {{else if (eq type "number")}}
+                                                {{> number-input this}}
+                                            {{else}}
+                                                {{> input this}}
+                                            {{/if}}
+                                        {{/each}}
+                                        
+                                        {{> button 
+                                            label="Add Inventory"
+                                            type="submit"
+                                            variant="primary"
+                                            iconStart=true
+                                            iconName="plus"
+                                        }}
+                                    </form>
+                                </div>
+                            </section>
+                        </div>
+                        {{> statistics-sidebar
+                            title=statsSidebarTitle
+                            items=statsSidebarItems
+                        }}
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <script src="js/views/inventory.mjs" type="module"></script>
+        <script src="js/index.mjs" type="module"></script>
+    </body>
+</html>

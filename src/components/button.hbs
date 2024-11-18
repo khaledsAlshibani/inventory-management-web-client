@@ -4,12 +4,14 @@
     class="button {{#if variant}}button--{{variant}}{{/if}} {{#if size}}button--{{size}}{{/if}} {{class}} {{#if disabled}}button--disabled{{/if}} {{#if fullWidth}}button--fullWidth{{/if}}"
     {{#if target}}target="{{target}}"{{/if}}
     {{#if disabled}}aria-disabled="true"{{/if}}
+    {{#if dataAttributes}}{{dataAttributes}}=""{{/if}}
   >
 {{else}}
   <button
     type="{{type}}"
     class="button {{#if variant}}button--{{variant}}{{/if}} {{#if size}}button--{{size}}{{/if}} {{class}} {{#if disabled}}button--disabled{{/if}} {{#if fullWidth}}button--fullWidth{{/if}}"
     {{#if disabled}}disabled{{/if}}
+    {{#if dataAttributes}}{{dataAttributes}}=""{{/if}}
   >
 {{/if}}
     {{#if iconStart}}

@@ -1,0 +1,12 @@
+<section class="panel">
+    <header class="panel__header">
+        <h2 class="panel__header-title">{{title}}</h2>
+        {{#if counter}}
+        <span class="panel__header-count">{{counter}}</span>
+        {{/if}}
+    </header>
+
+    <div class="panel__body" {{dataAttribute}}="">
+        {{!-- Items should be dynamically created from js --}}
+    </div>
+</section>

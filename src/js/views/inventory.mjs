@@ -1,6 +1,7 @@
 import { addInventory, deleteInventory, getInventoryById, updateInventory } from '../api/inventory.mjs';
 import { getUserInventories } from '../api/user.mjs';
 import { redirectToInventories } from '../utils/redirect.mjs'
+import { Button } from '../utils/ui.mjs';
 
 function handleAddInventory() {
     const form = document.querySelector('[data-add-inventory]');
@@ -16,20 +17,48 @@ function handleAddInventory() {
             inventoryData[key] = value;
         });
 
+        const inventoryTypeElement = document.querySelector('[data-inventory-type]');
+        if (inventoryTypeElement) {
+            const inventoryTypeValue = inventoryTypeElement.getAttribute('data-selected-value');
+            if (inventoryTypeValue) {
+                inventoryData.inventoryType = inventoryTypeValue;
+            }
+        }
+
+        const statusElement = document.querySelector('[data-inventory-status]');
+        if (statusElement) {
+            const statusValue = statusElement.getAttribute('data-selected-value');
+            if (statusValue) {
+                inventoryData.status = statusValue;
+            }
+        }
+
         if (inventoryData.area) inventoryData.area = parseFloat(inventoryData.area);
         if (inventoryData.availableArea) inventoryData.availableArea = parseFloat(inventoryData.availableArea);
 
-        try {
-            const responseData = await addInventory(inventoryData);
-            console.log('Inventory data:', responseData);
-        } catch (error) {
-            console.error('Error details:', error);
+        console.log("inventoryData", inventoryData);
+
+        const inventoriesElement = document.querySelector("[data-inventories]");
+        if (inventoriesElement) {
+            fetch(window.location.href)
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, "text/html");
+                    const newContent = doc.querySelector("[data-inventories]");
+                    if (newContent) {
+                        inventoriesElement.innerHTML = newContent.innerHTML;
+                    }
+                })
+                .catch(error => {
+                    console.error("Error loading inventories:", error);
+                });
         }
     });
 }
 
 async function renderInventories() {
-    const listingContainer = document.querySelector('[data-inventory-listing]');
+    const listingContainer = document.querySelector('[data-inventories]');
     try {
         const inventories = await getUserInventories();
 
@@ -38,29 +67,50 @@ async function renderInventories() {
             return;
         }
 
-        const inventoryHtml = inventories
-            .map((inventory) => {
-                return `
-                    <div class="listing-card" role="button" data-inventory-id="${inventory.id}">
-                        <div class="listing-card__section">
-                            <h3 class="listing-card__title">${inventory.name}</h3>
-                            <span class="listing-card__subtitle">Address: ${inventory.address || 'N/A'}</span>
-                            <p class="listing-card__description">${inventory.products?.length || 0} products</p>
-                            <div class="listing-card__badges">
-                                ${inventory.status === 'ACTIVE'
-                        ? `<span class="badge badge--success">Active</span>`
-                        : `<span class="badge badge--danger">Inactive</span>`}
-                            </div>
-                        </div>
-                        <div class="listing-card__section">
-                            <button class="btn btn--small btn--standard">View</button>
-                        </div>
-                    </div>
-                `;
-            })
-            .join('');
+        // Clear container to append elements dynamically
+        listingContainer.innerHTML = '';
 
-        listingContainer.innerHTML = inventoryHtml;
+        inventories.forEach((inventory) => {
+            const listingCard = document.createElement('div');
+            listingCard.className = 'listing-card';
+            listingCard.setAttribute('role', 'button');
+            listingCard.setAttribute('data-inventory-id', inventory.id);
+
+            // First Section
+            const firstSection = document.createElement('div');
+            firstSection.className = 'listing-card__section';
+            firstSection.innerHTML = `
+                <h3 class="listing-card__title">${inventory.name}</h3>
+                <span class="listing-card__subtitle">Address: ${inventory.address || 'N/A'}</span>
+                <p class="listing-card__description">${inventory.products?.length || 0} products</p>
+                <div class="listing-card__badges">
+                    ${inventory.status === 'ACTIVE'
+                    ? `<span class="badge badge--success">Active</span>`
+                    : `<span class="badge badge--danger">Inactive</span>`}
+                </div>
+            `;
+
+            // Second Section
+            const secondSection = document.createElement('div');
+            secondSection.className = 'listing-card__section';
+
+            // Create and append the button
+            const viewButton = Button({
+                label: "View",
+                type: "button",
+                variant: "standard",
+                size: "small",
+                iconStart: "edit-3",
+            });
+            secondSection.appendChild(viewButton);
+
+            // Append sections to the listing card
+            listingCard.appendChild(firstSection);
+            listingCard.appendChild(secondSection);
+
+            // Append the listing card to the container
+            listingContainer.appendChild(listingCard);
+        });
 
         navigateToInventoryPage();
     } catch (error) {
@@ -148,8 +198,8 @@ function renderInventoryForm(container, inventoryId, inventory) {
                 <p><strong>Updated At:</strong> ${inventory.updatedAt ? new Date(inventory.updatedAt).toLocaleString() : 'N/A'}</p>
             </div>
             <div class="inventory-actions">
-                <button type="button" class="btn btn--update">Update</button>
-                <button type="button" class="btn btn--delete">Delete</button>
+                ${Button("Update", "submit")}
+                ${Button("Delete", "button", "delete")}
             </div>
         </form>
     `;

@@ -13,12 +13,9 @@
                     searchClass = this.searchClass
                 }}
                 
-                <button type="button" data-logout>logout</button>
-                <i class="app-navbar__icon icon-plus" role="button" aria-label="Choose What to add"></i>
+                {{> add-new-dropdown}}
 
-                <div class="app-navbar__user-photo-wrapper">
-                    <img src="assets/images/default-user.png" alt="User profile photo" class="app-navbar__user-photo" />
-                </div>
+                {{> user-profile-dropdown}}
             </div>
         </div>
 	</div>

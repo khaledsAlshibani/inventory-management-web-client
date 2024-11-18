@@ -10,7 +10,7 @@ export function redirectToLogin() {
 }
 
 export function redirectToInventories() {
-    window.location.href = '/inventory-listing.html';
+    window.location.href = '/inventories.html';
 }
 
 export function redirectExpiredToken() {

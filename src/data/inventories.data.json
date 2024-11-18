@@ -11,7 +11,7 @@
         },
         {
             "label": "Inventories Management",
-            "link": "inventory-listing.html",
+            "link": "inventories.html",
             "icon": "inventory"
         },
         {
@@ -42,7 +42,7 @@
     "navSearchValue": "",
     "navSearchPlaceholder": "Search...",
     "listingTitle": "Your Inventories",
-    "listingDataAttribute": "data-inventory-listing",
+    "listingDataAttribute": "data-inventories",
     "statsSidebarItems": [
         {
             "heading": "Total Inventory Locations",
@@ -100,38 +100,53 @@
             "id": "status",
             "name": "status",
             "type": "select",
+            "togglerId": "status-toggler",
+            "selectId": "status-select",
+            "defaultValue": "Active",
+            "class": "select--status",
+            "label": "Status",
+            "dataAttributes": "data-inventory-status",
             "options": [
                 {
                     "value": "ACTIVE",
-                    "label": "Active"
+                    "label": "Active",
+                    "isSelected": true
                 },
                 {
                     "value": "INACTIVE",
-                    "label": "Inactive"
+                    "label": "Inactive",
+                    "isSelected": false
                 }
             ],
-            "label": "Status",
             "required": true
         },
         {
             "id": "inventoryType",
             "name": "inventoryType",
             "type": "select",
+            "togglerId": "inventoryType-toggler",
+            "selectId": "inventoryType-select",
+            "defaultValue": "Warehouse",
+            "class": "select--inventory-type",
+            "label": "Inventory Type",
+            "dataAttributes": "data-inventory-type",
             "options": [
                 {
                     "value": "WAREHOUSE",
-                    "label": "Warehouse"
+                    "label": "Warehouse",
+                    "isSelected": true
                 },
                 {
                     "value": "STORE",
-                    "label": "Store"
+                    "label": "Store",
+                    "isSelected": false
                 },
                 {
                     "value": "ONLINE",
-                    "label": "Online"
+                    "label": "Online",
+                    "isSelected": false
                 }
             ],
-            "label": "Inventory Type",
             "required": true
         },
         {
@@ -145,7 +160,7 @@
             "id": "area",
             "name": "area",
             "type": "number",
-            "step": "0.01",
+            "step": "10",
             "label": "Total Area",
             "required": true
         },
@@ -153,7 +168,7 @@
             "id": "availableArea",
             "name": "availableArea",
             "type": "number",
-            "step": "0.01",
+            "step": "10",
             "label": "Available Area",
             "required": false
         }

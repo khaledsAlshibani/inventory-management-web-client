@@ -49,16 +49,6 @@ body {
 		display: grid;
 		place-items: center;
 	}
-
-	&--hasSidebar {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 15%;
-
-		& > :first-child {
-			grid-column: span 2;
-		}
-	}
 }
 
 .sr-only {
