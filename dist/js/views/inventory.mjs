@@ -186,7 +186,14 @@ function renderInventoryForm(inventoryId, inventory) {
 
                 const selectedOption = options.find((option) => option.isSelected);
                 const defaultValue = selectedOption ? selectedOption.label : `Select ${key}`;
-
+                
+                const dataAttributes = {};
+                if (key.startsWith("inventory")) {
+                    key = key.replace("inventory", "");
+                    dataAttributes[`data-inventory-type`] = "";
+                } else {
+                    dataAttributes[`data-inventory-${key}`] = "";
+                }
                 return Select({
                     label,
                     togglerId: `inventory-${key}-toggler-${inventoryId}`,
@@ -194,6 +201,7 @@ function renderInventoryForm(inventoryId, inventory) {
                     className: "form-control",
                     defaultValue,
                     options,
+                    dataAttributes,
                 });
             } else {
                 return Input({
@@ -284,8 +292,8 @@ async function handleUpdateInventory(form, inventoryId) {
         updatedData[key] = value;
     });
 
-    const typeSelect = form.querySelector('[data-inventory-type]');
-    const statusSelect = form.querySelector('[data-inventory-status]');
+    const typeSelect = form.querySelector('[data-inventory-type][data-selected-value]');
+    const statusSelect = form.querySelector('[data-inventory-status][data-selected-value]');
 
     if (typeSelect) {
         updatedData.inventoryType = typeSelect.getAttribute('data-selected-value');
@@ -295,6 +303,7 @@ async function handleUpdateInventory(form, inventoryId) {
         updatedData.status = statusSelect.getAttribute('data-selected-value');
     }
 
+    console.log('Inventory ID:', inventoryId);
     console.log('Updated Data:', updatedData);
 
     try {
