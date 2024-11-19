@@ -17,4 +17,5 @@ export const API_INVENTORIES_STATS = `${API_INVENTORIES}/statistics`;
 
 /* Product Endpoints */
 export const API_PRODUCTS = `${API_BASE_URL}/products`;
-export const API_PRODUCT_DETAILS = (productId) => `${API_PRODUCTS}/${productId}`;
+export const API_USER_PRODUCTS = `${API_USERS}/products`;
+export const API_PRODUCTS_STATS = `${API_PRODUCTS}/statistics`;

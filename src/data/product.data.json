@@ -1,7 +1,6 @@
 {
-    "title": "Dashboard - Inveit",
-    "navTitle": "Dashboard",
-    
+    "title": "Product Management - Inveit",
+    "navTitle": "Product Management",
     "logo": "assets/images/full-logo.png",
     "logoAlt": "Inveit",
     "navLinks": [
@@ -42,27 +41,6 @@
     "navSearchName": "query",
     "navSearchValue": "",
     "navSearchPlaceholder": "Search...",
-    "navSearchClass": "navbar__search-field",
-    "statistics": [
-        {
-            "iconName": "shopping-bag",
-            "title": "Total Price Value",
-            "attributes": "data-total-products-price-value"
-        },
-        {
-            "iconName": "category",
-            "title": "Total Products",
-            "attributes": "data-total-products"
-        },
-        {
-            "iconName": "inventory",
-            "title": "Total Inventories",
-            "attributes": "data-active-inventories"
-        },
-        {
-            "iconName": "stop_circle",
-            "title": "Total Active Inventories",
-            "attributes": "data-average-products-per-inventory"
-        }
-    ]
+    "listingTitle": "Update Product",
+    "listingDataAttribute": ""
 }

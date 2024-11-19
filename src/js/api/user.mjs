@@ -1,4 +1,4 @@
-import { API_PROFILE, API_USER_INVENTORIES } from './api-config.mjs';
+import { API_PROFILE, API_USER_INVENTORIES, API_USER_PRODUCTS } from './api-config.mjs';
 import { fetchWithAuth } from './auth.mjs'; import { API_LOGIN } from './api-config.mjs';
 import { API_REGISTER } from './api-config.mjs';
 import { setUserInfo } from '../utils/storage.mjs';
@@ -58,6 +58,22 @@ export async function getUserInventories() {
     if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || 'Failed to fetch user inventories.');
+    }
+
+    return response.json();
+}
+
+export async function getUserProducts() {
+    const response = await fetchWithAuth(API_USER_PRODUCTS, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to fetch user products.');
     }
 
     return response.json();

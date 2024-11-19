@@ -1,7 +1,6 @@
 {
-    "title": "Dashboard - Inveit",
-    "navTitle": "Dashboard",
-    
+    "title": "Manage Products - Inveit",
+    "navTitle": "Manage Products",
     "logo": "assets/images/full-logo.png",
     "logoAlt": "Inveit",
     "navLinks": [
@@ -11,7 +10,7 @@
             "icon": "dashboard"
         },
         {
-            "label": "Manage Inventories",
+            "label": "Manage Products",
             "link": "inventories.html",
             "icon": "inventory"
         },
@@ -42,27 +41,14 @@
     "navSearchName": "query",
     "navSearchValue": "",
     "navSearchPlaceholder": "Search...",
-    "navSearchClass": "navbar__search-field",
-    "statistics": [
+    "listingTitle": "Your Products",
+    "listingDataAttribute": "data-inventories",
+    "statsSidebarItems": [
         {
-            "iconName": "shopping-bag",
-            "title": "Total Price Value",
-            "attributes": "data-total-products-price-value"
-        },
-        {
-            "iconName": "category",
-            "title": "Total Products",
-            "attributes": "data-total-products"
-        },
-        {
-            "iconName": "inventory",
-            "title": "Total Inventories",
-            "attributes": "data-active-inventories"
-        },
-        {
-            "iconName": "stop_circle",
-            "title": "Total Active Inventories",
-            "attributes": "data-average-products-per-inventory"
+            "heading": "Total Products",
+            "value": 100
         }
+    ],
+    "inputFields": [
     ]
 }
