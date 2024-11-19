@@ -1,16 +1,17 @@
-<aside class="statistics-sidebar">
+<aside class="statistics-sidebar" data-sidebar-stats>
 	<header class="statistics-sidebar__header">
 		<span class="statistics-sidebar__header-heading">Statistic</span>
 		<span class="statistics-sidebar__header-heading">Value</span>
 	</header>
 	<div class="statistics-sidebar__content">
 		{{#each items}}
-			<div class="statistics-sidebar__item">
+			<div class="statistics-sidebar__item"{{#if attributes}} {{attributes}}{{/if}}>
 				<span
 					class="statistics-sidebar__item-heading"
 				>{{this.heading}}</span>
 				<span
 					class="statistics-sidebar__item-value"
+					data-statistic-value
 				>{{this.value}}</span>
 			</div>
 		{{/each}}

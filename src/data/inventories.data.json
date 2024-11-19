@@ -16,7 +16,7 @@
         },
         {
             "label": "Manage Products ",
-            "link": "product-listing.html",
+            "link": "products.html",
             "icon": "stop_circle"
         }
     ],
@@ -46,39 +46,39 @@
     "statsSidebarItems": [
         {
             "heading": "Total Inventory Locations",
-            "value": 100
+            "attributes": "data-total-inventories"
         },
         {
             "heading": "Fully Stocked Inventories",
-            "value": 45
+            "attributes": "data-fully-stocked-inventories"
         },
         {
             "heading": "Active Inventory Locations",
-            "value": 30
+            "attributes": "data-active-inventories"
         },
         {
             "heading": "Inactive Inventory Locations",
-            "value": 15
+            "attributes": "data-inactive-inventories"
         },
         {
             "heading": "Empty Inventory Locations",
-            "value": 10
+            "attributes": "data-empty-inventories"
         },
         {
             "heading": "Inventories with Low Stock",
-            "value": 5
+            "attributes": "data-low-stock-inventories"
         },
         {
-            "heading": "Average Items per Inventory",
-            "value": 350
+            "heading": "Average Products per Inventory",
+            "attributes": "data-avg-products-per-inventory"
         },
         {
             "heading": "Total Inventory Area (km²)",
-            "value": 350
+            "attributes": "data-total-inventory-area"
         },
         {
             "heading": "Inventories with Expired Products",
-            "value": 3
+            "attributes": "data-inventories-with-expired-products"
         }
     ],
     "inputFields": [

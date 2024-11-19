@@ -17,7 +17,7 @@
         },
         {
             "label": "Manage Products ",
-            "link": "product-listing.html",
+            "link": "products.html",
             "icon": "stop_circle"
         }
     ],

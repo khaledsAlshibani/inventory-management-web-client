@@ -3,6 +3,7 @@ import { getUserInventories } from '../api/user.mjs';
 import { redirectToInventories } from '../utils/redirect.mjs'
 import { capitalize } from '../utils/typography.mjs';
 import { Button, Input, Select, Textarea } from '../utils/ui.mjs';
+import { fetchInventoryStatistics } from '../api/statistics.mjs';
 
 function handleAddInventory() {
     const form = document.querySelector('[data-add-inventory]');
@@ -335,8 +336,51 @@ async function handleDeleteInventory(inventoryId) {
     }
 }
 
+async function updateInventorySidebarStats() {
+    const sidebarItems = [
+        { heading: "Total Inventory Locations", attribute: "data-total-inventories", statKey: "totalInventories" },
+        { heading: "Fully Stocked Inventories", attribute: "data-fully-stocked-inventories", statKey: "fullyStockedInventories" },
+        { heading: "Active Inventory Locations", attribute: "data-active-inventories", statKey: "statusCounts.ACTIVE" },
+        { heading: "Inactive Inventory Locations", attribute: "data-inactive-inventories", statKey: "statusCounts.INACTIVE" },
+        { heading: "Empty Inventory Locations", attribute: "data-empty-inventories", statKey: "emptyInventories" },
+        { heading: "Inventories with Low Stock", attribute: "data-low-stock-inventories", statKey: "inventoriesWithLowStock" },
+        { heading: "Average Products per Inventory", attribute: "data-avg-products-per-inventory", statKey: "averageProductsPerInventory" },
+        { heading: "Total Inventory Area (km²)", attribute: "data-total-inventory-area", statKey: "totalArea" },
+        { heading: "Inventories with Expired Products", attribute: "data-inventories-with-expired-products", statKey: "inventoriesWithExpiredProducts" },
+    ];
+
+    try {
+        const stats = await fetchInventoryStatistics();
+        console.log('Fetched statistics:', stats);
+
+        sidebarItems.forEach(item => {
+            const element = document.querySelector(`[${item.attribute}]`);
+            if (element) {
+                const valueElement = element.querySelector('[data-statistic-value]');
+                if (valueElement) {
+                    const statValue = item.statKey.includes(".")
+                        ? item.statKey.split(".").reduce((obj, key) => obj?.[key], stats) 
+                        : stats[item.statKey];
+                    valueElement.textContent = statValue ?? 0; 
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error updating inventory sidebar stats:', error);
+        handleSidebarStatsError();
+    }
+}
+
+function handleSidebarStatsError() {
+    const sidebar = document.querySelector('[data-sidebar-stats]');
+    if (sidebar) {
+        sidebar.innerHTML = '<p class="error">Failed to load statistics. Please try again later.</p>';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderInventories();
     handleAddInventory();
     renderSingleInventory();
+    updateInventorySidebarStats();
 });
