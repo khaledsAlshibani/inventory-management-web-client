@@ -50,6 +50,7 @@ export const Input = ({
     input.setAttribute("value", value);
     input.setAttribute("placeholder", placeholder);
     input.className = `input ${className}`;
+    
     if (required) {
         input.setAttribute("required", "required");
     }

@@ -3,6 +3,47 @@ import { logout } from "../utils/auth.mjs";
 import { capitalize } from "../utils/typography.mjs";
 import { Button, Input } from "../utils/ui.mjs";
 
+function renderProfileFormFields(user) {
+    const formFields = Object.entries(user)
+        .filter(
+            ([key]) =>
+                key !== "id" &&
+                key !== "updatedAt" &&
+                key !== "createdAt" &&
+                key !== "password" &&
+                key !== "photoPath"
+        )
+        .map(([key, value]) => {
+            const typeMap = {
+                email: "email",
+                name: "text",
+                username: "text",
+                birthdate: "date",
+            };
+
+            const type = typeMap[key] || "text";
+            const required = key === "email";
+
+            const isReadonly = key === "email" || key === "username";
+            const isDisabled = false;
+
+            return Input({
+                label: capitalize(key),
+                id: key,
+                name: key,
+                type,
+                required,
+                value: value || "",
+                placeholder: `Enter your ${key}`,
+                className: "form-control",
+                readonly: isReadonly,
+                disabled: isDisabled,
+            });
+        });
+
+    return formFields;
+}
+
 async function renderUserProfile() {
     const profileContainer = document.querySelector('[data-profile]');
 
@@ -16,44 +57,7 @@ async function renderUserProfile() {
             getUserImage(user.photoPath);
         }
 
-        const formFields = Object.entries(user)
-            .filter(
-                ([key]) =>
-                    key !== "id" &&
-                    key !== "updatedAt" &&
-                    key !== "createdAt" &&
-                    key !== "password" &&
-                    key !== "photoPath"
-            )
-            .map(([key, value]) => {
-                const typeMap = {
-                    email: "email",
-                    name: "text",
-                    username: "text",
-                    birthdate: "date",
-                };
-
-                const type = typeMap[key] || "text";
-                const required = key === "email";
-
-                // Determine readonly or disabled state for specific fields
-                const isReadonly = key === "email" || key === "username";
-                const isDisabled = false; // Set true if you prefer disabled over readonly.
-
-                return Input({
-                    label: capitalize(key),
-                    id: key,
-                    name: key,
-                    type,
-                    required,
-                    value: value || "",
-                    placeholder: `Enter your ${key}`,
-                    className: "form-control",
-                    readonly: isReadonly,
-                    disabled: isDisabled,
-                });
-            });
-
+        const formFields = renderProfileFormFields();
         const formInputs = profileContainer.querySelector('[data-profile-inputs]');
 
         formFields.forEach((field) => {
@@ -85,51 +89,68 @@ async function renderUserProfile() {
 
         formInputs.appendChild(buttonsContainer);
 
-        // handle update
-        formInputs.querySelector('[data-update-profile]').addEventListener('click', async (event) => {
-            event.preventDefault();
-
-            const form = event.target.closest('form');
-            const formData = new FormData(form);
-
-            const photoInputElement = document.querySelector('input[type="file"][data-profile-image-input]');
-            const photoFile = photoInputElement?.files?.[0] || null;
-
-            const updatedData = {};
-            formData.forEach((value, key) => {
-                if (key !== 'photoPath') {
-                    updatedData[key] = value;
-                }
-            });
-
-            try {
-                const updatedUserInfo = await updateUserProfile(updatedData, photoFile);
-                console.log('Profile updated:', updatedUserInfo);
-                alert('Profile updated successfully!');
-            } catch (error) {
-                console.error('Failed to update profile:', error);
-                alert('Failed to update profile.');
-            }
-        });
-
-
-        // Handle Delete
-        formInputs.querySelector('[data-delete-profile]').addEventListener('click', async () => {
-            if (confirm('Are you sure you want to delete your account?')) {
-                try {
-                    await deleteUserProfile();
-                    alert('Account deleted successfully!');
-                    logout();
-                } catch (error) {
-                    console.error('Error deleting account:', error);
-                    alert('Failed to delete account.');
-                }
-            }
-        });
+        handleProfileUpdate(formInputs);
+        handleProfileDelete(formInputs);
     } catch (error) {
         console.error('Error fetching profile:', error);
         profileContainer.innerHTML = `<p class="error">Failed to load profile. Please try again later.</p>`;
     }
+}
+
+
+function handleProfileUpdate(formInputs) {
+    if (!formInputs) return;
+
+    const updateButton = formInputs.querySelector('[data-update-profile]');
+    if (updateButton) return;
+    
+    updateButton.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        const form = event.target.closest('form');
+        const formData = new FormData(form);
+
+        const photoInputElement = document.querySelector('input[type="file"][data-profile-image-input]');
+        const photoFile = photoInputElement?.files?.[0] || null;
+
+        const updatedData = {};
+        formData.forEach((value, key) => {
+            if (key !== 'photoPath') {
+                updatedData[key] = value;
+            }
+        });
+
+        try {
+            const updatedUserInfo = await updateUserProfile(updatedData, photoFile);
+            alert('Profile updated successfully!');
+        } catch (error) {
+            console.error('Failed to update profile:', error);
+            alert('Failed to update profile.');
+        }
+    });
+}
+
+function handleProfileDelete(formInputs) {
+    if (!formInputs) return;
+
+    const deleteButton = formInputs.querySelector('[data-delete-profile]');
+    if (deleteButton) return;
+
+    deleteButton.addEventListener('click', async () => {
+        if (confirm('Are you sure you want to delete your account?')) {
+            await deleteUserProfile();
+            alert('Account deleted successfully!');
+            logout();
+            // try {
+            //     await deleteUserProfile();
+            //     alert('Account deleted successfully!');
+            //     logout();
+            // } catch (error) {
+            //     console.error('Error deleting account:', error);
+            //     alert('Failed to delete account.');
+            // }
+        }
+    });
 }
 
 function displayUserAge(birthDate) {

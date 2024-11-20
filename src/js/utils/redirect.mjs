@@ -13,6 +13,10 @@ export function redirectToInventories() {
     window.location.href = '/inventories.html';
 }
 
+export function redirectToProducts() {
+    window.location.href = '/products.html';
+}
+
 export function redirectExpiredToken() {
     const token = getToken();
 

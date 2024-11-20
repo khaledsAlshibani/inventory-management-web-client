@@ -42,13 +42,115 @@
     "navSearchValue": "",
     "navSearchPlaceholder": "Search...",
     "listingTitle": "Your Products",
-    "listingDataAttribute": "data-inventories",
+    "listingDataAttribute": "data-products",
     "statsSidebarItems": [
         {
             "heading": "Total Products",
             "value": 100
         }
-    ],
-    "inputFields": [
+    ],"inputFields": [
+        {
+            "id": "productName",
+            "name": "name",
+            "type": "text",
+            "label": "Product Name",
+            "maxLength": 100,
+            "required": true
+        },
+        {
+            "id": "description",
+            "name": "description",
+            "type": "textarea",
+            "label": "Description",
+            "maxLength": 65535,
+            "required": false
+        },
+        {
+            "id": "sku",
+            "name": "sku",
+            "type": "text",
+            "label": "SKU",
+            "maxLength": 50,
+            "required": true
+        },
+        {
+            "id": "price",
+            "name": "price",
+            "type": "number",
+            "step": "0.01",
+            "label": "Price",
+            "min": 0.01,
+            "required": true
+        },
+        {
+            "id": "quantity",
+            "name": "quantity",
+            "type": "number",
+            "label": "Quantity",
+            "min": 0,
+            "required": true
+        },
+        {
+            "id": "initialQuantity",
+            "name": "initialQuantity",
+            "type": "number",
+            "label": "Initial Quantity",
+            "min": 0,
+            "required": false
+        },
+        {
+            "id": "area",
+            "name": "area",
+            "type": "number",
+            "step": "0.01",
+            "label": "Area (m²)",
+            "min": 0,
+            "required": false
+        },
+        {
+            "id": "status",
+            "name": "status",
+            "type": "select",
+            "togglerId": "status-toggler",
+            "selectId": "status-select",
+            "defaultValue": "Available",
+            "class": "select--status",
+            "label": "Status",
+            "dataAttributes": "data-product-status",
+            "options": [
+                {
+                    "value": "AVAILABLE",
+                    "label": "Available",
+                    "isSelected": true
+                },
+                {
+                    "value": "UNAVAILABLE",
+                    "label": "Unavailable",
+                    "isSelected": false
+                }
+            ],
+            "required": true
+        },
+        {
+            "id": "inventoryId",
+            "name": "inventoryId",
+            "type": "number",
+            "label": "Inventory ID",
+            "required": false
+        },
+        {
+            "id": "expirationDate",
+            "name": "expirationDate",
+            "type": "date",
+            "label": "Expiration Date",
+            "required": false
+        },
+        {
+            "id": "productionDate",
+            "name": "productionDate",
+            "type": "date",
+            "label": "Production Date",
+            "required": false
+        }
     ]
 }

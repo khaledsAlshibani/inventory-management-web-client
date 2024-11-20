@@ -12,6 +12,9 @@ const accessConfig = {
         '/dashboard.html',
         '/inventories.html',
         '/products.html',
+        '/profile.html',
+        '/inventory.html',
+        '/product.html',
     ],
     restrictedForLoggedIn: [
         '/login.html',

@@ -3,9 +3,9 @@ import { fetchWithAuth } from './auth.mjs'; import { API_LOGIN } from './api-con
 import { API_REGISTER } from './api-config.mjs';
 import { setUserInfo } from '../utils/storage.mjs';
 
-export async function loginUser(credentials) {
+export async function userPost(credentials, APIUrl, messageType) {
     try {
-        const response = await fetch(API_LOGIN, {
+        const response = await fetch(APIUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -15,36 +15,79 @@ export async function loginUser(credentials) {
 
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.message || 'Login Failed!');
+            throw new Error(errorData.message || `${messageType} Failed!`);
         }
 
         return await response.json();
     } catch (error) {
-        console.error('Login error:', error);
+        console.error(`${messageType} error:`, error);
         throw error;
     }
 }
 
+export async function loginUser(credentials) {
+    userPost(credentials, API_LOGIN, "Login");
+}
+
 export async function registerUser(credentials) {
+    userPost(credentials, API_REGISTER, "Register");
+}
+
+export async function getUserProfile() {
+    const response = await fetchWithAuth(API_PROFILE, {
+        method: 'GET',
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to fetch user profile.');
+    }
+
+    return response.json();
+}
+
+export async function updateUserProfile(updatedData, photoFile) {
+    const formData = new FormData();
+
+    formData.append('user', new Blob([JSON.stringify(updatedData)], { type: 'application/json' }));
+
+    if (photoFile) {
+        formData.append('photo', photoFile);
+    }
+
     try {
-        const response = await fetch(API_REGISTER, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(credentials)
+        const response = await fetchWithAuth(API_PROFILE, {
+            method: 'PUT',
+            body: formData,
         });
 
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.message || 'Register Failed!');
+            throw new Error(errorData.message || 'Failed to update profile.');
         }
 
-        return await response.json();
+        const responseData = await response.json();
+
+        setUserInfo(responseData);
+
+        return responseData;
     } catch (error) {
-        console.error('Register error:', error);
+        console.error('Error during API request:', error);
         throw error;
     }
+}
+
+export async function deleteUserProfile() {
+    const response = await fetchWithAuth(API_PROFILE, {
+        method: 'DELETE',
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to delete profile.');
+    }
+
+    return response.json();
 }
 
 export async function getUserInventories() {
@@ -74,67 +117,6 @@ export async function getUserProducts() {
     if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || 'Failed to fetch user products.');
-    }
-
-    return response.json();
-}
-
-export async function getUserProfile() {
-    const response = await fetchWithAuth(API_PROFILE, {
-        method: 'GET',
-    });
-
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to fetch user profile.');
-    }
-
-    return response.json();
-}
-
-export async function updateUserProfile(updatedData, photoFile) {
-    const formData = new FormData();
-
-    formData.append('user', new Blob([JSON.stringify(updatedData)], { type: 'application/json' }));
-
-    if (photoFile) {
-        formData.append('photo', photoFile);
-    }
-
-    try {
-        console.log('Sending FormData to API...');
-        const response = await fetchWithAuth(API_PROFILE, {
-            method: 'PUT',
-            body: formData,
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.error('API error response:', errorData);
-            throw new Error(errorData.message || 'Failed to update profile.');
-        }
-
-        const responseData = await response.json();
-        console.log('API successful response:', responseData);
-
-        // Update local storage with new user info
-        setUserInfo(responseData);
-
-        return responseData;
-    } catch (error) {
-        console.error('Error during API request:', error);
-        throw error;
-    }
-}
-
-export async function deleteUserProfile() {
-    const response = await fetchWithAuth(API_PROFILE, {
-        method: 'DELETE',
-    });
-
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to delete profile.');
     }
 
     return response.json();

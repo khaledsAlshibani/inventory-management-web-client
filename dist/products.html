@@ -11,14 +11,9 @@
         <main class="page page--hasSidebar">
             <aside class="app-sidebar">
             	<div class="app-sidebar__header">
-            		<a href="#">
+            		<a href="index.html">
             			<img src="assets/images/full-logo.png" alt="Inveit" class="app-sidebar__logo" />
             		</a>
-            		<i
-            			class="app-sidebar__toggler icon-app-sidebar"
-            			role="button"
-            			aria-label="Toggle app-sidebar"
-            		></i>
             	</div>
             
             	<nav class="app-sidebar__nav">
@@ -87,6 +82,11 @@
 				    <div class="container container--page">
 				        <div class="app-navbar__content">
 				            <div class="app-navbar__section">
+				                <i
+				                    class="app-navbar__sidebar-toggler icon-app-sidebar"
+				                    role="button"
+				                    aria-label="Toggle app-sidebar"
+				                ></i>
 				                <h1 class="app-navbar__title">Manage Products</h1>
 				            </div>
 				            <div class="app-navbar__section">
@@ -152,7 +152,7 @@
                                     <h2 class="panel__header-title">Your Products</h2>
                                 </header>
                             
-                                <div class="panel__body" data-inventories="">
+                                <div class="panel__body" data-products="">
                                 </div>
                             </section>
                             <section class="panel">
@@ -162,7 +162,172 @@
 
                                 <div class="panel__body panel__body--hasPadding">
                                     <form id="add-product" class="form" method="post" data-add-product>
-                                        
+                                                <div class="input__wrapper">
+                                                	<input
+                                                		id="productName"
+                                                		name="name"
+                                                		type="text"
+                                                		value=""
+                                                		placeholder=" "
+                                                		class="input "
+                                                        required
+                                                	/>
+                                                	<label for="productName" class="input__label">Product Name</label>
+                                                </div>                                                                                            <div class="textarea__wrapper">
+                                                	<textarea
+                                                		id="description"
+                                                		name="description"
+                                                		type="textarea"
+                                                		placeholder=" "
+                                                		class="textarea "
+                                                        
+                                                	></textarea>
+                                                	<label for="description" class="textarea__label">Description</label>
+                                                </div>                                                <div class="input__wrapper">
+                                                	<input
+                                                		id="sku"
+                                                		name="sku"
+                                                		type="text"
+                                                		value=""
+                                                		placeholder=" "
+                                                		class="input "
+                                                        required
+                                                	/>
+                                                	<label for="sku" class="input__label">SKU</label>
+                                                </div>                                                                                            <div class="input__wrapper">
+                                                	<input
+                                                		id="price"
+                                                		name="price"
+                                                		type="number"
+                                                		value=""
+                                                		placeholder=" "
+                                                    step="0.01"
+                                                    min="0"
+                                                		class="input "
+                                                        required
+                                                	/>
+                                                	<label for="price" class="input__label">Price</label>
+                                                </div>                                                <div class="input__wrapper">
+                                                	<input
+                                                		id="quantity"
+                                                		name="quantity"
+                                                		type="number"
+                                                		value=""
+                                                		placeholder=" "
+                                                    step=""
+                                                    min="0"
+                                                		class="input "
+                                                        required
+                                                	/>
+                                                	<label for="quantity" class="input__label">Quantity</label>
+                                                </div>                                                <div class="input__wrapper">
+                                                	<input
+                                                		id="initialQuantity"
+                                                		name="initialQuantity"
+                                                		type="number"
+                                                		value=""
+                                                		placeholder=" "
+                                                    step=""
+                                                    min="0"
+                                                		class="input "
+                                                        
+                                                	/>
+                                                	<label for="initialQuantity" class="input__label">Initial Quantity</label>
+                                                </div>                                                <div class="input__wrapper">
+                                                	<input
+                                                		id="area"
+                                                		name="area"
+                                                		type="number"
+                                                		value=""
+                                                		placeholder=" "
+                                                    step="0.01"
+                                                    min="0"
+                                                		class="input "
+                                                        
+                                                	/>
+                                                	<label for="area" class="input__label">Area (m²)</label>
+                                                </div>                                                <div class="select" data-select>
+                                                	<span class="select__label">Status</span>
+                                                	<button
+                                                		type="button"
+                                                		id="status-toggler"
+                                                		class="select__toggler button select--status"
+                                                		aria-haspopup="listbox"
+                                                		aria-expanded="false"
+                                                		aria-controls="status-select"
+                                                		data-selected-value=""
+                                                		data-select-toggler
+                                                    	data-product-status=""
+                                                	>
+                                                		Available
+                                                		<i class="select__toggler-icon icon-keyboard_arrow_down"></i>
+                                                	</button>
+                                                	<ul
+                                                		class="select__dropdown"
+                                                		id="status-select"
+                                                		role="listbox"
+                                                		aria-labelledby="status-toggler"
+                                                		data-select-dropdown
+                                                	>
+                                                			<li
+                                                				class="select__option"
+                                                				role="option"
+                                                				tabindex="0"
+                                                				aria-selected="true"
+                                                				data-value="AVAILABLE"
+                                                				tabindex="0"
+                                                				data-select-option
+                                                			>
+                                                				Available
+                                                			</li>
+                                                			<li
+                                                				class="select__option"
+                                                				role="option"
+                                                				tabindex="0"
+                                                				aria-selected="false"
+                                                				data-value="UNAVAILABLE"
+                                                				tabindex="0"
+                                                				data-select-option
+                                                			>
+                                                				Unavailable
+                                                			</li>
+                                                	</ul>
+                                                </div>                                                <div class="input__wrapper">
+                                                	<input
+                                                		id="inventoryId"
+                                                		name="inventoryId"
+                                                		type="number"
+                                                		value=""
+                                                		placeholder=" "
+                                                    step=""
+                                                    min="0"
+                                                		class="input "
+                                                        
+                                                	/>
+                                                	<label for="inventoryId" class="input__label">Inventory ID</label>
+                                                </div>                                                <div class="input__wrapper">
+                                                	<input
+                                                		id="expirationDate"
+                                                		name="expirationDate"
+                                                		type="date"
+                                                		value=""
+                                                		placeholder=" "
+                                                		class="input "
+                                                        
+                                                	/>
+                                                	<label for="expirationDate" class="input__label">Expiration Date</label>
+                                                </div>                                                                                            <div class="input__wrapper">
+                                                	<input
+                                                		id="productionDate"
+                                                		name="productionDate"
+                                                		type="date"
+                                                		value=""
+                                                		placeholder=" "
+                                                		class="input "
+                                                        
+                                                	/>
+                                                	<label for="productionDate" class="input__label">Production Date</label>
+                                                </div>                                                                                    
                                           <button
                                             type="submit"
                                             class="button button--primary    "

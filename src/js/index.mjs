@@ -24,7 +24,6 @@ if (isUserLoggedIn()) {
     console.log(getUserInfo());
 }
 
-
 function scrollToTop() {
     const scrollToTopButton = document.querySelector("[data-scroll-to-top]");
 

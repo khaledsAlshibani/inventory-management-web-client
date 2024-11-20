@@ -31,6 +31,13 @@
 				width: calc(100% - 20px);
 			}
 		} */
+
+		@media screen and (max-width: 767px) {
+			& {
+				width: calc(100% - 15px);
+				left: 15px;
+			}
+		}
 	}
 
 	&__layout {

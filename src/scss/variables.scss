@@ -67,6 +67,10 @@
 		hsla(220, 7%, 48%, 0.15) 0px -25px 20px -20px;
 	--shadow-gray: 0px 15px 30px 0px rgba(0, 0, 0, 0.089);
 
+	// @media screen and (max-width: 767px) {
+	// 	--sidebar-width: 300px;
+	// }
+
 	@media screen and (max-width: 567px) {
 		& {
 			--font-4: 16px;

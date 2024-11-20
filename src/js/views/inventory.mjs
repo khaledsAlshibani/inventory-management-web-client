@@ -55,7 +55,6 @@ async function renderInventories() {
             return;
         }
 
-        // Clear container to append elements dynamically
         listingContainer.innerHTML = '';
 
         inventories.forEach((inventory) => {
@@ -64,7 +63,6 @@ async function renderInventories() {
             listingCard.setAttribute('role', 'button');
             listingCard.setAttribute('data-inventory-id', inventory.id);
 
-            // First Section
             const firstSection = document.createElement('div');
             firstSection.className = 'listing-card__section';
             firstSection.innerHTML = `
@@ -78,11 +76,8 @@ async function renderInventories() {
                 </div>
             `;
 
-            // Second Section
             const secondSection = document.createElement('div');
             secondSection.className = 'listing-card__section';
-
-            // Create and append the button
             const viewButton = Button({
                 label: "View",
                 type: "button",
@@ -90,13 +85,10 @@ async function renderInventories() {
                 size: "small",
                 iconStart: "edit-3",
             });
-            secondSection.appendChild(viewButton);
 
-            // Append sections to the listing card
+            secondSection.appendChild(viewButton);
             listingCard.appendChild(firstSection);
             listingCard.appendChild(secondSection);
-
-            // Append the listing card to the container
             listingContainer.appendChild(listingCard);
         });
 
@@ -147,8 +139,8 @@ function getInventoryIdFromUrl() {
     return inventoryId;
 }
 
-function renderInventoryForm(inventoryId, inventory) {
-    const formFields = Object.entries(inventory)
+function renderInventoryFormFields(inventoryId, inventory) {
+    const fields = Object.entries(inventory)
         .filter(([key]) => key !== "id" && key !== "createdAt" && key !== "updatedAt" && key !== "message")
         .map(([key, value]) => {
             const typeMap = {
@@ -176,18 +168,18 @@ function renderInventoryForm(inventoryId, inventory) {
                 const options =
                     key === "status"
                         ? [
-                              { label: "Active", value: "ACTIVE", isSelected: value === "ACTIVE" },
-                              { label: "Inactive", value: "INACTIVE", isSelected: value === "INACTIVE" },
-                          ]
+                            { label: "Active", value: "ACTIVE", isSelected: value === "ACTIVE" },
+                            { label: "Inactive", value: "INACTIVE", isSelected: value === "INACTIVE" },
+                        ]
                         : [
-                              { label: "Warehouse", value: "WAREHOUSE", isSelected: value === "WAREHOUSE" },
-                              { label: "Store", value: "STORE", isSelected: value === "STORE" },
-                              { label: "Online", value: "ONLINE", isSelected: value === "ONLINE" },
-                          ];
+                            { label: "Warehouse", value: "WAREHOUSE", isSelected: value === "WAREHOUSE" },
+                            { label: "Store", value: "STORE", isSelected: value === "STORE" },
+                            { label: "Online", value: "ONLINE", isSelected: value === "ONLINE" },
+                        ];
 
                 const selectedOption = options.find((option) => option.isSelected);
                 const defaultValue = selectedOption ? selectedOption.label : `Select ${key}`;
-                
+
                 const dataAttributes = {};
                 if (key.startsWith("inventory")) {
                     key = key.replace("inventory", "");
@@ -216,6 +208,12 @@ function renderInventoryForm(inventoryId, inventory) {
             }
         });
 
+    return fields;
+}
+
+function renderInventoryForm(inventoryId, inventory) {
+    const formFields = renderInventoryFormFields(inventoryId, inventory);
+
     const inputsContainer = document.querySelector('[data-inventory-inputs]');
     const form = inputsContainer.closest('form');
     form.setAttribute("data-inventory-id", inventoryId);
@@ -229,9 +227,8 @@ function renderInventoryForm(inventoryId, inventory) {
     inputsContainer.appendChild(createdAtParagraph);
 
     const updatedAtParagraph = document.createElement("p");
-    updatedAtParagraph.innerHTML = `<strong>Last Updated At:</strong> ${
-        inventory.updatedAt ? new Date(inventory.updatedAt).toLocaleString() : "N/A"
-    }`;
+    updatedAtParagraph.innerHTML = `<strong>Last Updated At:</strong> ${inventory.updatedAt ? new Date(inventory.updatedAt).toLocaleString() : "N/A"
+        }`;
     inputsContainer.appendChild(updatedAtParagraph);
 
     const buttonsContainer = document.createElement("div");
@@ -262,25 +259,20 @@ function renderInventoryForm(inventoryId, inventory) {
 
 function attachFormHandlers(container, inventoryId) {
     const form = container.querySelector('.page-form'); // Use the form container
-    if (!form) {
-        return;
-    }
+    if (!form) return;
 
-    // Handle the Update button click
     const updateButton = form.querySelector("[data-update-profile]");
     const deleteButton = form.querySelector("[data-delete-profile]");
 
-    if (!updateButton || !deleteButton) {
-        return;
-    }
+    if (!updateButton || !deleteButton) return;
 
     updateButton.addEventListener('click', async (event) => {
         event.preventDefault();
         await handleUpdateInventory(form, inventoryId);
     });
 
-    // Handle the Delete button click
     deleteButton.addEventListener('click', async () => {
+        event.preventDefault();
         await handleDeleteInventory(inventoryId);
     });
 }
@@ -303,9 +295,6 @@ async function handleUpdateInventory(form, inventoryId) {
     if (statusSelect) {
         updatedData.status = statusSelect.getAttribute('data-selected-value');
     }
-
-    console.log('Inventory ID:', inventoryId);
-    console.log('Updated Data:', updatedData);
 
     try {
         const response = await updateInventory(inventoryId, updatedData);
@@ -359,9 +348,9 @@ async function updateInventorySidebarStats() {
                 const valueElement = element.querySelector('[data-statistic-value]');
                 if (valueElement) {
                     const statValue = item.statKey.includes(".")
-                        ? item.statKey.split(".").reduce((obj, key) => obj?.[key], stats) 
+                        ? item.statKey.split(".").reduce((obj, key) => obj?.[key], stats)
                         : stats[item.statKey];
-                    valueElement.textContent = statValue ?? 0; 
+                    valueElement.textContent = statValue ?? 0;
                 }
             }
         });

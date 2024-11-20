@@ -10,13 +10,20 @@
 		max-height: 450px;
 		border: 1px solid var(--border-color);
 		border-radius: var(--border-radius);
-        padding: 20px;
+		padding: 20px;
 
 		&:nth-child(odd) {
 			max-width: calc(100% - 450px);
 		}
 		&:nth-child(even) {
 			max-width: 400px;
+		}
+		
+		@media screen and (max-width: 1024px) {
+			& {
+				max-height: 100%;
+				max-width: 100% !important;
+			}
 		}
 	}
 }
