@@ -1,0 +1,19 @@
+.sidebar-toggler {
+	$size: 37px;
+	font-size: var(--font-4);
+	cursor: pointer;
+	display: inline-block;
+	color: var(--gray-800);
+	width: $size;
+	height: $size;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--border-radius);
+	border: 1px solid var(--border-color);
+	transition: all 0.2s ease-in-out;
+
+	&:hover {
+		border-color: var(--text-color-light);
+	}
+}

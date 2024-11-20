@@ -26,27 +26,39 @@
 		height: 100%;
 		overflow-y: auto;
 
-		/* @media screen and (max-width: 1024px) {
-			& {
-				width: calc(100% - 20px);
-			}
-		} */
-
-		@media screen and (max-width: 767px) {
+		@media screen and (max-width: 1024px) {
 			& {
 				width: calc(100% - 15px);
 				left: 15px;
 			}
 		}
+
+		&--toggled {
+			width: calc(100% - 15px);
+			left: 15px;
+		}
 	}
 
 	&__layout {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 15%;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 80px;
 
 		& > :first-child {
-			grid-column: span 2;
+			width: 60%;
+
+			@media screen and (max-width: 1024px) {
+				width: 100%;
+			}
+		}
+
+		& > :nth-child(2) {
+			width: calc(40% - 80px);
+
+			@media screen and (max-width: 1024px) {
+				width: 100%;
+			}
 		}
 	}
 }

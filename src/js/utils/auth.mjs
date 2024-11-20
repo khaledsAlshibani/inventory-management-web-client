@@ -15,23 +15,6 @@ export function logout() {
     }
 }
 
-export function checkAccess() {
-    const token = getToken();
-    const isLoggedIn = !!token;
-    const currentPath = window.location.pathname;
-
-    const routes = {
-        noAccessForLoggedInUsers: ['/login.html', '/register.html'],
-        restrictedPages: ['/dashboard.html', '/profile.html', '/inventory.html']
-    };
-
-    if (isLoggedIn && routes.noAccessForLoggedInUsers.includes(currentPath)) {
-        redirectToDashboard();
-    } else if (!isLoggedIn && routes.restrictedPages.includes(currentPath)) {
-        redirectToLogin();
-    }
-}
-
 export function parseJwt(token) {
     try {
         const base64Url = token.split('.')[1];

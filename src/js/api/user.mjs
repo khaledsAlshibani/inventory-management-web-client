@@ -3,9 +3,9 @@ import { fetchWithAuth } from './auth.mjs'; import { API_LOGIN } from './api-con
 import { API_REGISTER } from './api-config.mjs';
 import { setUserInfo } from '../utils/storage.mjs';
 
-export async function userPost(credentials, APIUrl, messageType) {
+async function sendUserRequest(endpoint, credentials) {
     try {
-        const response = await fetch(APIUrl, {
+        const response = await fetch(endpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -15,22 +15,22 @@ export async function userPost(credentials, APIUrl, messageType) {
 
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.message || `${messageType} Failed!`);
+            throw new Error(errorData.message || 'Request Failed!');
         }
 
         return await response.json();
     } catch (error) {
-        console.error(`${messageType} error:`, error);
+        console.error('Request error:', error);
         throw error;
     }
 }
 
 export async function loginUser(credentials) {
-    userPost(credentials, API_LOGIN, "Login");
+    return await sendUserRequest(API_LOGIN, credentials);
 }
 
 export async function registerUser(credentials) {
-    userPost(credentials, API_REGISTER, "Register");
+    return await sendUserRequest(API_REGISTER, credentials);
 }
 
 export async function getUserProfile() {

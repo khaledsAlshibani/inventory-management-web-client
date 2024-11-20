@@ -2,21 +2,17 @@
     <div class="container container--page">
         <div class="app-navbar__content">
             <div class="app-navbar__section">
-                <i
-                    class="app-navbar__sidebar-toggler icon-app-sidebar"
-                    role="button"
-                    aria-label="Toggle app-sidebar"
-                ></i>
+                {{> sidebar-toggler}}
                 <h1 class="app-navbar__title">{{title}}</h1>
             </div>
             <div class="app-navbar__section">
-                {{> search-field
+                {{!-- {{> search-field
                     searchId = this.searchId
                     searchName = this.searchName
                     searchValue = this.searchValue
                     searchPlaceholder = this.searchPlaceholder
                     searchClass = this.searchClass
-                }}
+                }} --}}
                 
                 {{> add-new-dropdown}}
 

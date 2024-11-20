@@ -6,8 +6,6 @@ function handleUserRegister () {
     document.querySelector('[data-register-form]').addEventListener('submit', async function (event) {
         event.preventDefault();
     
-        const errorMessageElement = document.querySelector('#error-message');
-    
         const formData = new FormData(event.target);
         const credentials = {};
         formData.forEach((value, key) => {
@@ -27,9 +25,6 @@ function handleUserRegister () {
             redirectToDashboard();
         } catch (error) {
             console.error('Register failed:', error.message);
-            if (errorMessageElement) {
-                errorMessageElement.textContent = error.message;
-            }
         }
     });
 }

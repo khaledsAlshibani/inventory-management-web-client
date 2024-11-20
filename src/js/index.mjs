@@ -1,11 +1,9 @@
-import { checkAccess, isUserLoggedIn, logout } from "./utils/auth.mjs";
+import { checkPagesAccess } from "./utils/access-control.mjs";
+import { isUserLoggedIn, logout } from "./utils/auth.mjs";
 import { displayUserGreeting, displayUserName, displayUsername, displayUserPhoto } from "./utils/display-user-info.mjs";
-import { getUserInfo } from "./utils/storage.mjs";
 import { redirectExpiredToken } from "./utils/redirect.mjs";
 
-console.log("isUserLoggedIn:", isUserLoggedIn());
-
-checkAccess();
+checkPagesAccess();
 
 function setupLogoutButton() {
     const logoutButton = document.querySelector('[data-logout]');
@@ -21,7 +19,6 @@ if (isUserLoggedIn()) {
     displayUserPhoto();
     displayUserName();
     displayUsername();
-    console.log(getUserInfo());
 }
 
 function scrollToTop() {
@@ -69,7 +66,7 @@ function toggleFaqAccordion() {
 }
 
 function implementSelect() {
-    let activeSelect = null; 
+    let activeSelect = null;
 
     document.body.addEventListener('click', (event) => {
         const toggler = event.target.closest('[data-select-toggler]');
@@ -101,9 +98,9 @@ function implementSelect() {
             const optionText = option.textContent;
 
             const selectToggler = select.querySelector('[data-select-toggler]');
-            selectToggler.textContent = optionText; 
-            selectToggler.setAttribute('data-selected-value', selectedValue); 
-            
+            selectToggler.textContent = optionText;
+            selectToggler.setAttribute('data-selected-value', selectedValue);
+
             closeSelect(select);
             activeSelect = null;
         }

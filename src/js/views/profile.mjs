@@ -57,7 +57,7 @@ async function renderUserProfile() {
             getUserImage(user.photoPath);
         }
 
-        const formFields = renderProfileFormFields();
+        const formFields = renderProfileFormFields(user);
         const formInputs = profileContainer.querySelector('[data-profile-inputs]');
 
         formFields.forEach((field) => {

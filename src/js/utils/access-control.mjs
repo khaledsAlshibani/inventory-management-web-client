@@ -4,11 +4,11 @@ import { redirectToDashboard, redirectToLogin } from './redirect.mjs';
 /**
  * Access control configuration
  *
- * allowedForLoggedIn - list of pages that require a user to be logged in
- * restrictedForLoggedIn - list of pages that require a user to be logged out
+ * restrictedPages - list of pages that require a user to be logged in
+ * noAccessForLoggedInUsers - list of pages that require a user to be logged out
  */
-const accessConfig = {
-    allowedForLoggedIn: [
+const routes = {
+    restrictedPages: [
         '/dashboard.html',
         '/inventories.html',
         '/products.html',
@@ -16,26 +16,24 @@ const accessConfig = {
         '/inventory.html',
         '/product.html',
     ],
-    restrictedForLoggedIn: [
+    noAccessForLoggedInUsers: [
+        '/index.html',
         '/login.html',
         '/register.html',
     ],
 };
 
+export function checkPagesAccess() {
+    const isLoggedIn = isUserLoggedIn();
 
-export function checkPageAccess() {
-    const currentPage = window.location.pathname;
-
-    if (isUserLoggedIn()) {
-        if (accessConfig.restrictedForLoggedIn.includes(currentPage)) {
-            redirectToDashboard();
-            return true; 
-        }
-    } else {
-        if (accessConfig.allowedForLoggedIn.includes(currentPage)) {
-            redirectToLogin();
-            return true;
-        }
+    let currentPath = window.location.pathname;
+    if (currentPath === '/') {
+        currentPath = '/index.html';
     }
-    return false;
+
+    if (isLoggedIn && routes.noAccessForLoggedInUsers.includes(currentPath)) {
+        redirectToDashboard();
+    } else if (!isLoggedIn && routes.restrictedPages.includes(currentPath)) {
+        redirectToLogin();
+    }
 }

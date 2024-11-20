@@ -2,8 +2,6 @@ import { fetchInventoryStatistics, fetchProductStatistics } from '../api/statist
 
 async function displayNumericStatistics(inventoriesStats, productsStats) {
     try {
-        console.log('Received statistics:', inventoriesStats);
-
         const mappings = [
             { attribute: 'data-total-products-price-value', value: productsStats.totalPriceValue },
             { attribute: 'data-total-products', value: inventoriesStats.totalInventories },

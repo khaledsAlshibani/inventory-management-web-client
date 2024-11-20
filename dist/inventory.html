@@ -9,12 +9,18 @@
 
     <body>
         <main class="page page--hasSidebar">
-            <aside class="app-sidebar">
+            <aside class="app-sidebar" data-app-sidebar>
             	<div class="app-sidebar__header">
-            		<a href="index.html">
+            		<a href="dashboard.html">
             			<img src="assets/images/full-logo.png" alt="Inveit" class="app-sidebar__logo" />
             		</a>
-            	</div>
+            		<i
+            			class="sidebar-toggler icon-sidebar"
+            			role="button"
+            			aria-label="Toggle app-sidebar"
+            			onClick="implementToggleAppSidebar()"
+            			data-toggle-app-sidebar
+            		></i>	</div>
             
             	<nav class="app-sidebar__nav">
             		<ul class="app-sidebar__nav-menu">
@@ -83,24 +89,15 @@
 				        <div class="app-navbar__content">
 				            <div class="app-navbar__section">
 				                <i
-				                    class="app-navbar__sidebar-toggler icon-app-sidebar"
-				                    role="button"
-				                    aria-label="Toggle app-sidebar"
-				                ></i>
-				                <h1 class="app-navbar__title">Inventory Management</h1>
+				                	class="sidebar-toggler icon-sidebar"
+				                	role="button"
+				                	aria-label="Toggle app-sidebar"
+				                	onClick="implementToggleAppSidebar()"
+				                	data-toggle-app-sidebar
+				                ></i>                <h1 class="app-navbar__title">Inventory Management</h1>
 				            </div>
 				            <div class="app-navbar__section">
-				                <div class="search-field__wrapper">
-				                  <i class="search-field__icon icon-search"></i>
-				                  <input
-				                    id=""
-				                    name=""
-				                    type="search"
-				                    value=""
-				                    placeholder="Search ..."
-				                    class="search-field "
-				                  />
-				                </div>                
+				                
 				                <div class="add-new-dropdown">
 				                    <i class="add-new-dropdown__icon icon-plus" role="button" aria-label="Choose What to add" data-add-new-dropdown-toggler></i>
 				                
@@ -164,5 +161,6 @@
         
         <script src="js/views/inventory.mjs" type="module"></script>
         <script src="js/index.mjs" type="module"></script>
+        <script src="js/app.js"></script>
     </body>
 </html>

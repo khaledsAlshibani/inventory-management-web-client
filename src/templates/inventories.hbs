@@ -28,7 +28,15 @@
 				}}
                 <div class="container container--page container--page-padding">                    
                     <div class="page__layout">
-                        <div class="panel__group">                        
+                        <div class="panel__group">    
+                            {{> button
+                                label="Add New Inventory"
+                                variant="standard"
+                                iconStart=true
+                                iconName="plus"
+                                size="small"
+                                href="#add-inventory"
+                            }}                    
                             {{> panel
                                 title=listingTitle
                                 dataAttribute=listingDataAttribute
@@ -74,5 +82,6 @@
         
         <script src="js/views/inventory.mjs" type="module"></script>
         <script src="js/index.mjs" type="module"></script>
+        <script src="js/app.js"></script>
     </body>
 </html>

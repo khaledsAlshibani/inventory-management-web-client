@@ -8,15 +8,31 @@
 	max-width: var(--sidebar-width);
 	padding: 40px 0;
 	overflow-y: auto;
+	z-index: 9999;
+	background-color: var(--bg-color);
 
-	@media screen and (max-width: 767px) {
+	.sidebar-toggler {
+		display: none;
+	}
+
+	@media screen and (max-width: 1024px) {
 		& {
 			display: none;
 		}
 	}
 
-	&--visible {
-		display: block;
+	&--toggled {
+		display: none;
+
+		@media screen and (max-width: 1024px) {
+			& {
+				display: block;
+
+				.sidebar-toggler {
+					display: flex;
+				}
+			}
+		}
 	}
 
 	&__header {
@@ -37,7 +53,7 @@
 		display: flex;
 		flex-direction: column;
 		margin-top: 40px;
-		height: calc(100% - 70px);
+		height: calc(100% - 80px);
 		padding-left: 10px;
 		padding-right: 10px;
 

@@ -24,6 +24,5 @@ document.querySelector('[data-login-form]').addEventListener('submit', async fun
         redirectToDashboard();
     } catch (error) {
         console.error('Login failed:', error.message);
-        document.querySelector('#error-message').textContent = error.message;
     }
 });
