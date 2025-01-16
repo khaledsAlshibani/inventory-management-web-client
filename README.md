@@ -53,16 +53,6 @@ Here are some screenshots of the web client interface:
 
 ---
 
-## Technologies Used
-
-- **HTML**: Structure of the web pages.
-- **CSS**: Styling for the application.
-- **JavaScript (ES6)**: For interactivity and API communication.
-- **Fetch API**: To send requests to the Inventory Management API.
-- **Bootstrap**: For responsive design.
-
----
-
 ## Installation & Usage
 
 ### 1. Clone the Repository  
